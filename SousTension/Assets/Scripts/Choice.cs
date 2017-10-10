@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class Choice : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public bool affectStress = false;
+    public int impactOnStress = 0;
+    public Dialogue dialogue;
+
+    private StressLevel stress;
+    private GameObject player;
+    private GameObject choice;
+
+
+
+    public void MakeChoice()
+    {
+        if (affectStress)
+        {
+            player = GameObject.Find("Player");
+            stress = player.GetComponent<StressLevel>();
+            stress.AddStress(impactOnStress);
+        }
+        choice = GameObject.FindGameObjectWithTag("ChoiceUI");
+       // dialogue.StartDialogue();
+        
+    }
 }

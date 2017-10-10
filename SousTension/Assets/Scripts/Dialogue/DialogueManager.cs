@@ -52,7 +52,7 @@ public class DialogueManager : MonoBehaviour {
         switch(sentence)
         {
             case "choice1":
-                //Launch one choice
+                //Launch one choice 
                 break;
             case "choice2":
                 //Launch two choices

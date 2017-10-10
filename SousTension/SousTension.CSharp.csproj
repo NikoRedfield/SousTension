@@ -78,6 +78,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Extern\2DLightAsset\Examples\RigidBodyInterpolationSolution\FollowLight2d.cs" />
+    <Compile Include="Assets\Extern\2DLightAsset\Scripts\2DLight\DynamicLight.cs" />
+    <Compile Include="Assets\Extern\2DLightAsset\Scripts\Helpers\TablaSenoCoseno.cs" />
+    <Compile Include="Assets\Extern\2DLightAsset\Scripts\Helpers\interface_touch.cs" />
+    <Compile Include="Assets\Extern\2DLightAsset\Scripts\Helpers\interface_touch2.cs" />
+    <Compile Include="Assets\Extern\2DLightAsset\Scripts\rotate.cs" />
     <Compile Include="Assets\Extern\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\Extern\SampleScenes\Menu\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Extern\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
@@ -193,6 +199,9 @@
     <Compile Include="Assets\Scripts\StressLevel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Extern\2DLightAsset\Shaders\Gradient-NoTexture-Radial-SingleColor-ToTransparent-RegularUV-AlphaBlend.shader" />
+    <None Include="Assets\Extern\2DLightAsset\Shaders\Gradient-ZFighting.shader" />
+    <None Include="Assets\Extern\2DLightAsset\Shaders\NoTexture.shader" />
     <None Include="Assets\Extern\SampleScenes\Shaders\Skybox-Procedural.shader" />
     <None Include="Assets\Extern\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Extern\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
