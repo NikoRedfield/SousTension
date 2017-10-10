@@ -8,19 +8,23 @@ public class ButtonManager : MonoBehaviour {
 
     public AudioClip EnterSound;
     public string LevelToLoad = "Level01";
+   
+
     private AudioSource source;
+
 
     void Awake()
     {
         Cursor.visible = true;
         Time.timeScale = 1;
         source = GetComponent<AudioSource>();
+       
         source.clip = EnterSound;
     }
 
     public void NewGame()
     {
-       //SceneManager.LoadScene(LevelToLoad);
+        //SceneManager.LoadScene(LevelToLoad);
         StartCoroutine(PlaySoundThenLoad());
     }
 

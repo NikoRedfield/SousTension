@@ -7,6 +7,9 @@ public class DialogueManager : MonoBehaviour {
 
     public Text nText;
     public Text dText;
+    public Dialogue dialogue;
+    public GameObject dialogueUI;
+    public bool singleChoice = true;
 
     private Queue<string> sentences;
     
@@ -18,7 +21,7 @@ public class DialogueManager : MonoBehaviour {
     }
 
     //Launching Dialogue
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue()
     {
         Debug.Log("Engaging a new conversation with " + dialogue.npcName);
 
@@ -45,12 +48,31 @@ public class DialogueManager : MonoBehaviour {
             return;
         }
         string sentence = sentences.Dequeue();
-        dText.text = sentence;
+       
+        switch(sentence)
+        {
+            case "choice1":
+                //Launch one choice
+                break;
+            case "choice2":
+                //Launch two choices
+                break;
+            case "choice3":
+                //Launch three choices
+                break;
+            case "choice4":
+                //Launch four choices
+                break;
+            default:
+                dText.text = sentence;
+                break;
+        }
     }
 
     //Ending The Conversation
     private void EndDialogue()
     {
         Debug.Log("Ending Conversation...");
+        dialogueUI.SetActive(false);
     }
 }

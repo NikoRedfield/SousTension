@@ -182,10 +182,14 @@
     <Compile Include="Assets\Extern\Standard Assets\Vehicles\Car\Scripts\Suspension.cs" />
     <Compile Include="Assets\Extern\Standard Assets\Vehicles\Car\Scripts\WheelEffects.cs" />
     <Compile Include="Assets\Scripts\ButtonManager.cs" />
+    <Compile Include="Assets\Scripts\Choice.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueTrigger.cs" />
+    <Compile Include="Assets\Scripts\Interaction.cs" />
     <Compile Include="Assets\Scripts\LoadAfterTime.cs" />
+    <Compile Include="Assets\Scripts\NotReady\FadeManager.cs" />
+    <Compile Include="Assets\Scripts\SetInactiveAfterDelay.cs" />
     <Compile Include="Assets\Scripts\StressLevel.cs" />
   </ItemGroup>
   <ItemGroup>

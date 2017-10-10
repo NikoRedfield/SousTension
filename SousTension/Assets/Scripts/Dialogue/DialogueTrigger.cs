@@ -8,6 +8,6 @@ public class DialogueTrigger : MonoBehaviour {
 
     public void EngageDialogue()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+       // FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 }
