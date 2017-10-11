@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class DoorStation : MonoBehaviour {
 
     public string _nextLevel = "";
+    public FadeManager fade;
+    public float _delay = 1f;
 
     private bool canExit = false;
 
@@ -23,8 +25,15 @@ public class DoorStation : MonoBehaviour {
     {
         if(canExit & Input.GetKeyDown("e"))
         {
-            SceneManager.LoadScene(_nextLevel);
+            fade.Fade(false, 5f);
+            StartCoroutine(FadeThenLoad()); 
         }
+    }
+
+    private IEnumerator FadeThenLoad()
+    {
+        yield return new WaitForSeconds(_delay);
+        SceneManager.LoadScene(_nextLevel);
     }
 
 }

@@ -20,7 +20,7 @@ public class FadeManager : MonoBehaviour {
     {
         Instance = this;
 
-        Fade(false, 3f);
+        Fade(false, 5f);
 
     }
 
@@ -46,7 +46,7 @@ public class FadeManager : MonoBehaviour {
         }
 
         transition += (isShowing) ? Time.deltaTime * (1 / duration) : -Time.deltaTime * (1 / duration);
-        fadeImage.color = Color.Lerp(new Color(1, 1, 1, 0), Color.black, transition);
+        fadeImage.color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, transition);
 
         if(transition > 1 || transition < 0) //transition is over
         {
