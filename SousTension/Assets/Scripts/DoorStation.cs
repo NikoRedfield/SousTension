@@ -25,7 +25,7 @@ public class DoorStation : MonoBehaviour {
     {
         if(canExit & Input.GetKeyDown("e"))
         {
-            fade.Fade(false, 5f);
+            fade.Fade(false, 10f);
             StartCoroutine(FadeThenLoad()); 
         }
     }

@@ -24,7 +24,7 @@ public class Interaction : MonoBehaviour {
 
         if (interactionsEnabled)
         {
-            if (Input.GetKeyDown("t"))
+            if (Input.GetKeyDown("e"))
             {
                 objectToEnable.SetActive(true);
                 FindObjectOfType<DialogueManager>().StartDialogue();
