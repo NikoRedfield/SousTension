@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LoadAfterTime : MonoBehaviour
 {
@@ -11,6 +12,6 @@ public class LoadAfterTime : MonoBehaviour
     public IEnumerator Start()
     {
         yield return new WaitForSeconds(_delay);
-        Application.LoadLevel(_nextScene);
+        SceneManager.LoadScene(_nextScene);
     }
 }
