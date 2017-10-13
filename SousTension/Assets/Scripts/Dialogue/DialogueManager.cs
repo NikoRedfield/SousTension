@@ -5,73 +5,70 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour {
 
-    public Text nText;
-    public Text dText;
-    public Dialogue dialogue;
-    public GameObject dialogueUI;
-    public bool singleChoice = true;
+    //AddSpriteImage
+    public Text mtext;
 
-    private Queue<string> sentences;
+    public Dialogue[] dialogues;
+    public GameObject dialogueUI;
+    public bool hasChoice = false;
+    public Choice choice;
+
+    private Queue<Dialogue> Qdialogues;
+    private Dialogue currentDialogue;
+    
     
 
     //Initialiazing Queue Of Dialogue
     public void Start()
     {
-        sentences = new Queue<string>();
+        Qdialogues = new Queue<Dialogue>();
     }
 
     //Launching Dialogue
     public void StartDialogue()
     {
-        Debug.Log("Engaging a new conversation with " + dialogue.npcName);
+        Debug.Log("Engaging a new conversation " );
 
-        nText.text = dialogue.npcName;
+        Qdialogues.Clear();
 
-
-        sentences.Clear();
-
-        foreach(string sentence in dialogue.sentences)
+        foreach(Dialogue dialogue in dialogues)
         {
-            sentences.Enqueue(sentence);
+            Qdialogues.Enqueue(dialogue);
 
         }
-
-        DisplayNextSentence();
+        currentDialogue = Qdialogues.Dequeue();
+        mtext.text += "\n";
+        mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
+        mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n\n";
     }
 
     //Continuing the dialogue to the next Sequence
-    public void DisplayNextSentence()
+    public void Update()
     {
-        if (sentences.Count == 0)
+        if (Input.GetKeyDown("space"))
         {
-            EndDialogue();
-            return;
-        }
-        string sentence = sentences.Dequeue();
+            if (Qdialogues.Count == 0)
+            {
+                EndDialogue();
+                return;
+            }
+            currentDialogue = Qdialogues.Dequeue();
+           
+            mtext.text = mtext.text + "<size=20><b><color=yellow>   "+currentDialogue.npcName+"</color></b></size>\n\n";
+            mtext.text = mtext.text+ "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n\n";
+        }  
+        
        
-        switch(sentence)
-        {
-            case "choice1":
-                //Launch one choice 
-                break;
-            case "choice2":
-                //Launch two choices
-                break;
-            case "choice3":
-                //Launch three choices
-                break;
-            case "choice4":
-                //Launch four choices
-                break;
-            default:
-                dText.text = sentence;
-                break;
-        }
+
     }
 
     //Ending The Conversation
     private void EndDialogue()
     {
+        if (hasChoice)
+        {
+            choice.LaunchChoice();
+        }
         Debug.Log("Ending Conversation...");
         dialogueUI.SetActive(false);
     }
