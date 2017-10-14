@@ -5,6 +5,8 @@ using UnityEngine;
 public class Interaction : MonoBehaviour {
 
     public GameObject objectToEnable;
+    public FadeManager fade;
+    public DialogueManager dialogue;
 
     private bool interactionsEnabled = false;
     
@@ -26,8 +28,9 @@ public class Interaction : MonoBehaviour {
         {
             if (Input.GetKeyDown("e"))
             {
+                fade.Fade(false, 2f);
                 objectToEnable.SetActive(true);
-                FindObjectOfType<DialogueManager>().StartDialogue();
+                dialogue.StartDialogue();
             }
         }
 		

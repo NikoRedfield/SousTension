@@ -7,8 +7,10 @@ public class Choice : MonoBehaviour {
 
     public string Choice1;
     public string Choice2;
-    public DialogueManager dialogueChoice1;
-    public DialogueManager dialogueChoice2;
+ 
+    public GameObject dialogueChoice1;
+    public GameObject dialogueChoice2;
+    public DialogueManager followUpDialogue;
     public GameObject button;
     public RectTransform panel;
 
@@ -30,13 +32,29 @@ public class Choice : MonoBehaviour {
 
 
 
-        button1.GetComponentInChildren<Text>().text = "1";
-        button2.GetComponentInChildren<Text>().text = "2";
+        button1.GetComponentInChildren<Text>().text = Choice1;
+        button2.GetComponentInChildren<Text>().text = Choice2;
+
+        button1.GetComponent<Button>().onClick.AddListener(MakeChoice1);
+        button2.GetComponent<Button>().onClick.AddListener(MakeChoice2);
     }
 
-    public void MakeChoice()
+    public void MakeChoice1()
     {
-        Debug.Log("OHKFDOGDFGOQ");
-        
+        Debug.Log("Choice1");
+        dialogueChoice1.SetActive(true);
+        dialogueChoice1.GetComponent<DialogueManager>().StartDialogue();
+        button2.SetActive(false);
+        return;
+    }
+
+    public void MakeChoice2()
+    {
+        Debug.Log("Choice2");
+        dialogueChoice2.SetActive(true);
+        dialogueChoice2.GetComponent<DialogueManager>().StartDialogue();
+        button1.SetActive(false);
+        return;
+
     }
 }
