@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Choice : MonoBehaviour {
@@ -17,11 +18,15 @@ public class Choice : MonoBehaviour {
     private GameObject button1;
     private GameObject button2;
 
+   
+   
 
 
 
     public void LaunchChoice()
     {
+        EventSystem.current.SetSelectedGameObject(null);
+
         button1 = (GameObject)Instantiate(button);
         button1.transform.SetParent(panel);
         button1.GetComponent<RectTransform>().sizeDelta = new Vector2(150, 50);
@@ -37,6 +42,14 @@ public class Choice : MonoBehaviour {
 
         button1.GetComponent<Button>().onClick.AddListener(MakeChoice1);
         button2.GetComponent<Button>().onClick.AddListener(MakeChoice2);
+
+        //EventSystem.current.firstSelectedGameObject = button1.gameObject;
+
+        EventSystem.current.SetSelectedGameObject(button1.gameObject);
+                           // Highlight the button
+        button1.GetComponent<Button>().OnSelect(new BaseEventData(EventSystem.current));
+
+
     }
 
     public void MakeChoice1()
@@ -45,6 +58,7 @@ public class Choice : MonoBehaviour {
         dialogueChoice1.SetActive(true);
         dialogueChoice1.GetComponent<DialogueManager>().StartDialogue();
         button2.SetActive(false);
+        button1.GetComponent<Button>().interactable = false;
         return;
     }
 
@@ -54,6 +68,7 @@ public class Choice : MonoBehaviour {
         dialogueChoice2.SetActive(true);
         dialogueChoice2.GetComponent<DialogueManager>().StartDialogue();
         button1.SetActive(false);
+        button2.GetComponent<Button>().interactable = false;
         return;
 
     }

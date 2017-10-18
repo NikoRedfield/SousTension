@@ -24,6 +24,8 @@ public class DialogueManager : MonoBehaviour {
 
     private bool choiceEngaged = false;
 
+    private bool isLaunched = false;
+
     public GameObject portrait1;
     public GameObject portrait2;
 
@@ -41,7 +43,7 @@ public class DialogueManager : MonoBehaviour {
     //Launching Dialogue
     public void StartDialogue()
     {
-        
+        isLaunched = true;
 
         currentTextArea = (GameObject)Instantiate(textArea);
         currentTextArea.transform.SetParent(panel);
@@ -78,35 +80,38 @@ public class DialogueManager : MonoBehaviour {
     //Continuing the dialogue to the next Sequence
     public void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (isLaunched)
         {
-            fadeLayout.SetActive(false);
-            if (Qdialogues.Count == 0)
+
+            if (Input.GetKeyDown("space") || Input.GetButtonDown("Submit"))
             {
-                if (!choiceEngaged)
+                fadeLayout.SetActive(false);
+                if (Qdialogues.Count == 0)
                 {
-                    EndDialogue();
+                    if (!choiceEngaged)
+                    {
+                        EndDialogue();
+                    }
+                    return;
                 }
-                return;
-            }
-            currentDialogue = Qdialogues.Dequeue();
-            if (currentDialogue.npcName == "Gaius")
-            {
-                portrait2.SetActive(false);
-                portrait1.SetActive(true);
-            }
-            else
-            {
-                portrait1.SetActive(false);
-                portrait2.SetActive(true);
+                currentDialogue = Qdialogues.Dequeue();
+                if (currentDialogue.npcName == "Gaius")
+                {
+                    portrait2.SetActive(false);
+                    portrait1.SetActive(true);
+                }
+                else
+                {
+                    portrait1.SetActive(false);
+                    portrait2.SetActive(true);
+                }
+
+                mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
+                mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n\n";
             }
 
-            mtext.text = mtext.text + "<size=20><b><color=yellow>   "+currentDialogue.npcName+"</color></b></size>\n\n";
-            mtext.text = mtext.text+ "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n\n";
-        }  
-        
-       
 
+        }
     }
 
     //Ending The Conversation

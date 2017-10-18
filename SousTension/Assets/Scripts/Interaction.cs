@@ -7,8 +7,11 @@ public class Interaction : MonoBehaviour {
     public GameObject objectToEnable;
     public FadeManager fade;
     public DialogueManager dialogue;
+    public GameObject controllerButton;
+    
 
     private bool interactionsEnabled = false;
+ 
     
 
     public void OnTriggerEnter2D(Collider2D col)
@@ -26,13 +29,25 @@ public class Interaction : MonoBehaviour {
 
         if (interactionsEnabled)
         {
-            if (Input.GetKeyDown("e"))
+           
+            controllerButton.SetActive(!objectToEnable.activeSelf);       
+
+            if (Input.GetKeyDown("e") || Input.GetButtonDown("Submit"))
             {
+                if (objectToEnable.activeSelf)
+                {
+                    return;
+                }
                 fade.Fade(false, 2f);
                 objectToEnable.SetActive(true);
                 dialogue.StartDialogue();
             }
         }
+        else
+        {
+            controllerButton.SetActive(false);
+        }
+       
 		
 	}
 }

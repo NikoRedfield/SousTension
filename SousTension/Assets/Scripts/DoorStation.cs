@@ -8,6 +8,7 @@ public class DoorStation : MonoBehaviour {
     public string _nextLevel = "";
     public FadeManager fade;
     public float _delay = 1f;
+    public GameObject controllerButton;
 
     private bool canExit = false;
 
@@ -23,10 +24,19 @@ public class DoorStation : MonoBehaviour {
 
     private void Update()
     {
-        if(canExit & Input.GetKeyDown("e"))
+        if(canExit)
         {
-            fade.Fade(false, 10f);
-            StartCoroutine(FadeThenLoad()); 
+            controllerButton.SetActive(true);
+
+            if (Input.GetKeyDown("e") || Input.GetButtonDown("Submit"))
+            {
+                fade.Fade(false, 10f);
+                StartCoroutine(FadeThenLoad());
+            }
+        }
+        else
+        {
+            controllerButton.SetActive(false);
         }
     }
 
