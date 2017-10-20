@@ -30,7 +30,9 @@ public class DoorStation : MonoBehaviour {
 
             if (Input.GetKeyDown("e") || Input.GetButtonDown("Submit"))
             {
-                fade.Fade(false, 10f);
+                //fade.gameObject.SetActive(true);
+
+                //fade.Fade(false, 10f);
                 StartCoroutine(FadeThenLoad());
             }
         }

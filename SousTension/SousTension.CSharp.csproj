@@ -191,12 +191,15 @@
     <Compile Include="Assets\Scripts\ButtonManager.cs" />
     <Compile Include="Assets\Scripts\CameraFollow2D.cs" />
     <Compile Include="Assets\Scripts\Choice.cs" />
+    <Compile Include="Assets\Scripts\ChoiceNarration.cs" />
     <Compile Include="Assets\Scripts\Depth.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueTrigger.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\Narration.cs" />
     <Compile Include="Assets\Scripts\DoorStation.cs" />
     <Compile Include="Assets\Scripts\Interaction.cs" />
+    <Compile Include="Assets\Scripts\Ladder.cs" />
     <Compile Include="Assets\Scripts\LaunchNarration.cs" />
     <Compile Include="Assets\Scripts\LoadAfterTime.cs" />
     <Compile Include="Assets\Scripts\NotReady\FadeManager.cs" />

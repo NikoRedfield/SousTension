@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LaunchNarration : MonoBehaviour {
 
-    public DialogueManager dialogue;
+    //public DialogueManager dialogue;
+    public Narration dialogue;
 
 	// Use this for initialization
 	void Start () {

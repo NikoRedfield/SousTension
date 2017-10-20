@@ -4,31 +4,34 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Choice : MonoBehaviour {
+public class ChoiceNarration : MonoBehaviour
+{
 
     public string Choice1;
     public string Choice2;
- 
+
     public GameObject dialogueChoice1;
     public GameObject dialogueChoice2;
-    public DialogueManager followUpDialogue; 
+    
     public GameObject button;
     public RectTransform panel;
+
+    public Narration followUpDialogue = null;
 
     private GameObject button1;
     private GameObject button2;
 
-   
-   
+
+
 
 
 
     public void LaunchChoice()
     {
-        EventSystem.current.SetSelectedGameObject(null);  //Release the item selected by the event system
+        EventSystem.current.SetSelectedGameObject(null);
 
-        button1 = (GameObject)Instantiate(button);   //Creates a new button based on the prefab
-        button1.transform.SetParent(panel);  //Position the newly created button in the right panel
+        button1 = (GameObject)Instantiate(button);
+        button1.transform.SetParent(panel);
         button1.GetComponent<RectTransform>().sizeDelta = new Vector2(150, 50);
 
         button2 = (GameObject)Instantiate(button);
@@ -40,32 +43,33 @@ public class Choice : MonoBehaviour {
         button1.GetComponentInChildren<Text>().text = Choice1;
         button2.GetComponentInChildren<Text>().text = Choice2;
 
-        button1.GetComponent<Button>().onClick.AddListener(MakeChoice1);  //Adds the behavior when clicked
+        button1.GetComponent<Button>().onClick.AddListener(MakeChoice1);
         button2.GetComponent<Button>().onClick.AddListener(MakeChoice2);
 
         //EventSystem.current.firstSelectedGameObject = button1.gameObject;
 
         EventSystem.current.SetSelectedGameObject(button1.gameObject);
-        button1.GetComponent<Button>().OnSelect(new BaseEventData(EventSystem.current)); // Highlight the button
+        // Highlight the button
+        button1.GetComponent<Button>().OnSelect(new BaseEventData(EventSystem.current));
 
 
     }
 
-    public void MakeChoice1() //Using the first button
+    public void MakeChoice1()
     {
         Debug.Log("Choice1");
-        dialogueChoice1.SetActive(true); 
-        dialogueChoice1.GetComponent<DialogueManager>().StartDialogue(); //Launching associated dialogue
-        button2.SetActive(false); //Hide the unused choice
-        button1.GetComponent<Button>().interactable = false; // Prevents the player from interacting again with the button
+        dialogueChoice1.SetActive(true);
+        dialogueChoice1.GetComponent<Narration>().StartDialogue();
+        button2.SetActive(false);
+        button1.GetComponent<Button>().interactable = false;
         return;
     }
 
-    public void MakeChoice2()  //Using the second button
+    public void MakeChoice2()
     {
         Debug.Log("Choice2");
         dialogueChoice2.SetActive(true);
-        dialogueChoice2.GetComponent<DialogueManager>().StartDialogue();
+        dialogueChoice2.GetComponent<Narration>().StartDialogue();
         button1.SetActive(false);
         button2.GetComponent<Button>().interactable = false;
         return;

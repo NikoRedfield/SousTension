@@ -16,12 +16,12 @@ public class Interaction : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D col)
     {
-        interactionsEnabled = true;
+        interactionsEnabled = true; //Enables interaction with character
     }
 
     public void OnTriggerExit2D(Collider2D col)
     {
-        interactionsEnabled = false;
+        interactionsEnabled = false;  //Disables interaction with character
     }
 
 	// Update is called once per frame
@@ -30,22 +30,22 @@ public class Interaction : MonoBehaviour {
         if (interactionsEnabled)
         {
            
-            controllerButton.SetActive(!objectToEnable.activeSelf);       
+            controllerButton.SetActive(!objectToEnable.activeSelf);       //Displays the interaction UI
 
             if (Input.GetKeyDown("e") || Input.GetButtonDown("Submit"))
             {
-                if (objectToEnable.activeSelf)
+                if (objectToEnable.activeSelf)  //Dialogue UI already displaying
                 {
                     return;
                 }
                 fade.Fade(false, 2f);
-                objectToEnable.SetActive(true);
+                objectToEnable.SetActive(true);  //Displays Dialogue UI
                 dialogue.StartDialogue();
             }
         }
         else
         {
-            controllerButton.SetActive(false);
+            controllerButton.SetActive(false);  //Disables the interaction UI
         }
        
 		

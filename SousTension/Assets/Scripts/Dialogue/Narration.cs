@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class DialogueManager : MonoBehaviour {
+public class Narration : MonoBehaviour
+{
 
     //AddSpriteImage
     public GameObject textArea;
@@ -12,7 +15,7 @@ public class DialogueManager : MonoBehaviour {
     public GameObject dialogueUI;
     public bool hasChoice = false;
     public bool isChoice = false;
-    public Choice choice;
+    public ChoiceNarration choice;
     public GameObject fadeLayout;
     public RectTransform panel;
     public Narration followUpDialogue = null;
@@ -27,19 +30,6 @@ public class DialogueManager : MonoBehaviour {
 
     private bool isLaunched = false;
 
-    public GameObject portrait1;
-    public GameObject portrait2;
-
-
-    //Initialiazing Queue Of Dialogue
-    /* public void Awake()
-     {
-         currentTextArea = (GameObject)Instantiate(textArea);
-         currentTextArea.transform.SetParent(panel);
-         Qdialogues = new Queue<Dialogue>();
-         mtext = currentTextArea.GetComponent<Text>();
-     }*/
-
 
     //Launching Dialogue
     public void StartDialogue()
@@ -51,31 +41,27 @@ public class DialogueManager : MonoBehaviour {
         Qdialogues = new Queue<Dialogue>();
         mtext = currentTextArea.GetComponent<Text>();
         choiceEngaged = false;
-    
 
-        Debug.Log("Engaging a new conversation " );
+        EventSystem.current.SetSelectedGameObject(currentTextArea.gameObject);
+
+
+        Debug.Log("Engaging a new conversation ");
 
         Qdialogues.Clear();
 
-        foreach(Dialogue dialogue in dialogues)
+        foreach (Dialogue dialogue in dialogues)
         {
             Qdialogues.Enqueue(dialogue);
 
         }
         currentDialogue = Qdialogues.Dequeue();
-        if(currentDialogue.npcName == "Gaius")
+
+        if (currentDialogue.npcName != "")
         {
-            portrait2.SetActive(false);
-            portrait1.SetActive(true);
+            mtext.text += "\n";
+            mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
         }
-        else
-        {
-           portrait1.SetActive(false);
-           portrait2.SetActive(true);
-        }
-        mtext.text += "\n";
-        mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
-        mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n\n";
+        mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n";
     }
 
     //Continuing the dialogue to the next Sequence
@@ -96,19 +82,12 @@ public class DialogueManager : MonoBehaviour {
                     return;
                 }
                 currentDialogue = Qdialogues.Dequeue();
-                if (currentDialogue.npcName == "Gaius")
-                {
-                    portrait2.SetActive(false);
-                    portrait1.SetActive(true);
-                }
-                else
-                {
-                    portrait1.SetActive(false);
-                    portrait2.SetActive(true);
-                }
 
-                mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
-                mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n\n";
+                if (currentDialogue.npcName != "")
+                {
+                    mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
+                }
+                mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n";
             }
 
 
@@ -118,9 +97,10 @@ public class DialogueManager : MonoBehaviour {
     //Ending The Conversation
     private void EndDialogue()
     {
-        if (hasChoice && dialogueUI.activeSelf)  //Launching the corresponding choice
+        if (hasChoice && dialogueUI.activeSelf)
         {
             choiceEngaged = true;
+
             choice.LaunchChoice();
             return;
         }
@@ -132,22 +112,22 @@ public class DialogueManager : MonoBehaviour {
             {
                 gameObject.SetActive(false);
             }
-            //gameObject.SetActive(false);
-            //return;
+  
         }
         else
         {
-            Debug.Log("Ending Conversation...");    //Ending the dialogue
+            Debug.Log("Ending Conversation...");
             dialogueUI.SetActive(false);
             fadeLayout.SetActive(true);
             fadeLayout.GetComponent<FadeManager>().Fade(false, 2f);
             choiceEngaged = false;
             if (isChoice)
             {
-                gameObject.SetActive(false);  
+                gameObject.SetActive(false);
             }
+            SceneManager.LoadScene("Dialogue2");
         }
     }
 
-    
+
 }

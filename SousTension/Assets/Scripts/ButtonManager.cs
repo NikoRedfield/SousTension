@@ -16,18 +16,21 @@ public class ButtonManager : MonoBehaviour {
     void Awake()
     {
         Cursor.visible = true;
-        Time.timeScale = 1;
+        Time.timeScale = 1; //In case of pause menu during the game before getting back to the main menu
         source = GetComponent<AudioSource>();
        
         source.clip = EnterSound;
     }
 
+
+    //Launch new game
     public void NewGame()
     {
         //SceneManager.LoadScene(LevelToLoad);
         StartCoroutine(PlaySoundThenLoad());
     }
 
+    //Plays the button sound effect before loading the next scene
     public IEnumerator PlaySoundThenLoad()
     {
         source.Play();
@@ -36,6 +39,7 @@ public class ButtonManager : MonoBehaviour {
        
     }
 
+    //Plays the button sound effect before closing the game
     public IEnumerator PlaySoundThenQuit()
     {
         source.Play();
@@ -44,7 +48,7 @@ public class ButtonManager : MonoBehaviour {
 
     }
 
-
+    //Exit The Game
     public void QuitGame()
     {
         StartCoroutine(PlaySoundThenQuit());
