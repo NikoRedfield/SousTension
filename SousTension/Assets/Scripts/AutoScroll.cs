@@ -7,18 +7,21 @@ public class AutoScroll : MonoBehaviour {
 
     public ScrollRect panel;
 
-    private float delay = 4;
+    private float delay = 0;
     private float timer = 0;
+   
     
 	// Update is called once per frame
 	void Update () {
         if (Input.GetAxis("Vertical") > 0)
         {
             panel.verticalNormalizedPosition += 0.01f;
+            delay = 3;
         }
         if (Input.GetAxis("Vertical") < 0)
         {
             panel.verticalNormalizedPosition -= 0.01f;
+            delay = 3;
         }
         else
         {
@@ -27,6 +30,7 @@ public class AutoScroll : MonoBehaviour {
             {
                 panel.verticalNormalizedPosition = 0f;
                 timer = 0;
+                delay = 0;
             }
         }
       
