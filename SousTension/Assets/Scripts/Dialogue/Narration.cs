@@ -30,6 +30,8 @@ public class Narration : MonoBehaviour
 
     private bool isLaunched = false;
 
+    private bool dover = false;
+
 
     //Launching Dialogue
     public void StartDialogue()
@@ -61,7 +63,10 @@ public class Narration : MonoBehaviour
             mtext.text += "\n";
             mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
         }
-        mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n";
+        //mtext.text = mtext.text + "<size=16><color=white>   ";
+        StartCoroutine("PlayText");
+       // mtext.text += currentDialogue.sentence;
+       // mtext.text = mtext.text + "</color></size>\n\n";
     }
 
     //Continuing the dialogue to the next Sequence
@@ -69,9 +74,10 @@ public class Narration : MonoBehaviour
     {
         if (isLaunched)
         {
-
-            if (Input.GetKeyDown("space") || Input.GetButtonDown("Submit"))
+           if ((Input.GetKeyDown("space") || Input.GetButtonDown("Submit")) && dover)
             {
+                dover = false;
+
                 fadeLayout.SetActive(false);
                 if (Qdialogues.Count == 0)
                 {
@@ -87,7 +93,8 @@ public class Narration : MonoBehaviour
                 {
                     mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
                 }
-                mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n";
+               // mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n";
+                StartCoroutine("PlayText"); 
             }
 
 
@@ -127,6 +134,26 @@ public class Narration : MonoBehaviour
             }
             SceneManager.LoadScene("Dialogue2");
         }
+    }
+
+    IEnumerator PlayText()
+    {
+        float delay = 0f;
+        foreach (char c in currentDialogue.sentence)
+        {
+            mtext.text += "<size=16><color=white>";
+            mtext.text += c;
+            mtext.text = mtext.text + "</color></size>";
+            if(!dover) {
+                yield return new WaitForSeconds(delay);
+            }
+            if (Input.GetButtonDown("Submit") && !dover)
+            {
+                dover = true;
+            }
+        }
+        mtext.text = mtext.text + "\n\n";
+        dover = true;
     }
 
 

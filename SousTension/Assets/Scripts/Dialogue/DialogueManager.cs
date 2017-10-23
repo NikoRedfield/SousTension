@@ -15,7 +15,7 @@ public class DialogueManager : MonoBehaviour {
     public Choice choice;
     public GameObject fadeLayout;
     public RectTransform panel;
-    public Narration followUpDialogue = null;
+    public DialogueManager followUpDialogue = null;
 
     private Queue<Dialogue> Qdialogues;
     private Dialogue currentDialogue;
@@ -29,6 +29,8 @@ public class DialogueManager : MonoBehaviour {
 
     public GameObject portrait1;
     public GameObject portrait2;
+
+    private bool dover = false;
 
 
     //Initialiazing Queue Of Dialogue
@@ -45,6 +47,11 @@ public class DialogueManager : MonoBehaviour {
     public void StartDialogue()
     {
         isLaunched = true;
+
+        if (isChoice)
+        {
+            gameObject.SetActive(true);
+        }
 
         currentTextArea = (GameObject)Instantiate(textArea);
         currentTextArea.transform.SetParent(panel);
@@ -73,9 +80,10 @@ public class DialogueManager : MonoBehaviour {
            portrait1.SetActive(false);
            portrait2.SetActive(true);
         }
-        mtext.text += "\n";
+         mtext.text += "\n";
         mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
-        mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n\n";
+        //mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n\n";
+        StartCoroutine("PlayText");
     }
 
     //Continuing the dialogue to the next Sequence
@@ -84,8 +92,10 @@ public class DialogueManager : MonoBehaviour {
         if (isLaunched)
         {
 
-            if (Input.GetKeyDown("space") || Input.GetButtonDown("Submit"))
+            if ((Input.GetKeyDown("space") || Input.GetButtonDown("Submit")) && dover)
             {
+                dover = false;
+
                 fadeLayout.SetActive(false);
                 if (Qdialogues.Count == 0)
                 {
@@ -108,7 +118,8 @@ public class DialogueManager : MonoBehaviour {
                 }
 
                 mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
-                mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n\n";
+                // mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n\n";
+                StartCoroutine("PlayText");
             }
 
 
@@ -149,5 +160,27 @@ public class DialogueManager : MonoBehaviour {
         }
     }
 
-    
+
+    IEnumerator PlayText()
+    {
+        float delay = 0f;
+        foreach (char c in currentDialogue.sentence)
+        {
+            mtext.text += "<size=16><color=white>";
+            mtext.text += c;
+            mtext.text = mtext.text + "</color></size>";
+            if (!dover)
+            {
+                yield return new WaitForSeconds(delay);
+            }
+            if (Input.GetButtonDown("Submit") && !dover)
+            {
+                dover = true;
+            }
+        }
+        mtext.text = mtext.text + "\n\n";
+        dover = true;
+    }
+
+
 }

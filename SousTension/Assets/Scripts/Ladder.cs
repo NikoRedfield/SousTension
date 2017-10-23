@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Ladder : MonoBehaviour {
 
-    public float speed = 6;
+    public float speed = 2;
+
+   // private bool isClimbing = false;
 
 	// Use this for initialization
 	void Start () {
@@ -19,11 +21,28 @@ public class Ladder : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D col)
     {
-       // float v = Input.GetAxis("Vertical");
-        if (Input.GetKeyDown("z"))
-        {
-            Debug.Log("FUUUUUUUU");
-            col.GetComponent<Rigidbody2D>().velocity = new Vector2(0, speed);
-        }
+
+       // if (Input.GetButtonDown("Submit"))
+        //{
+         //   isClimbing = true;
+        //}
+
+      //  if (isClimbing)
+        //{
+            if (Input.GetAxis("Vertical") > 0)
+            {
+                Debug.Log("FUUUUUUUU");
+                col.GetComponent<Rigidbody2D>().velocity = new Vector2(0, speed);
+            }
+            else
+            {
+                col.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            }
+        //}
     }
+
+  /*  void onTriggerExit()
+    {
+        isClimbing = false;
+    }*/
 }
