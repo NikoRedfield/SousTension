@@ -21,8 +21,15 @@ public class ChoiceNarration : MonoBehaviour
     private GameObject button1;
     private GameObject button2;
 
+    public Animator anim;
+    public Animator animChoice;
 
 
+    void Start()
+    {
+        anim.enabled = false;
+        animChoice.enabled = false;
+    }
 
 
 
@@ -52,11 +59,18 @@ public class ChoiceNarration : MonoBehaviour
         // Highlight the button
         button1.GetComponent<Button>().OnSelect(new BaseEventData(EventSystem.current));
 
+        anim.enabled = true;
+        animChoice.enabled = true;
+        
+        anim.Play("MoveBack");
+        animChoice.Play("MovePanel");
 
     }
 
     public void MakeChoice1()
     {
+        anim.Play("MoveLeft");
+        animChoice.Play("MovePanelBack");
         Debug.Log("Choice1");
         dialogueChoice1.SetActive(true);
         dialogueChoice1.GetComponent<Narration>().StartDialogue();
@@ -67,6 +81,8 @@ public class ChoiceNarration : MonoBehaviour
 
     public void MakeChoice2()
     {
+        anim.Play("MoveLeft");
+        animChoice.Play("MovePanelBack");
         Debug.Log("Choice2");
         dialogueChoice2.SetActive(true);
         dialogueChoice2.GetComponent<Narration>().StartDialogue();
