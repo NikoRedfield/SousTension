@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour {
 
 
     public AudioClip EnterSound;
+    public AudioClip FadeSound;
     public string LevelToLoad = "Level01";
-   
+    public FadeManager fade;
+    public GameObject deactivate;
+    public Button button;
 
     private AudioSource source;
 
@@ -20,6 +24,7 @@ public class ButtonManager : MonoBehaviour {
         source = GetComponent<AudioSource>();
        
         source.clip = EnterSound;
+        DontDestroyOnLoad(fade);
     }
 
 
@@ -33,9 +38,14 @@ public class ButtonManager : MonoBehaviour {
     //Plays the button sound effect before loading the next scene
     public IEnumerator PlaySoundThenLoad()
     {
+        button.interactable = false;
+        deactivate.SetActive(false);
+        source.clip = FadeSound;
+        fade.gameObject.SetActive(true);
+        fade.Fade(false, 25f);
         source.Play();
-        yield return new WaitForSeconds(source.clip.length);
-        SceneManager.LoadScene(LevelToLoad);
+        yield return new WaitForSeconds(5f);
+       SceneManager.LoadScene(LevelToLoad);
        
     }
 
@@ -53,4 +63,10 @@ public class ButtonManager : MonoBehaviour {
     {
         StartCoroutine(PlaySoundThenQuit());
     }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }
+ 

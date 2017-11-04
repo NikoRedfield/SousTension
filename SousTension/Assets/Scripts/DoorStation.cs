@@ -9,8 +9,17 @@ public class DoorStation : MonoBehaviour {
     public FadeManager fade;
     public float _delay = 1f;
     public GameObject controllerButton;
+    public AudioClip clip;
 
     private bool canExit = false;
+    private AudioSource source;
+
+    private void Start()
+    {
+        source = this.GetComponent<AudioSource>();
+        source.clip = clip;
+        //DontDestroyOnLoad(fade.gameObject);
+    }
 
     private  void OnTriggerEnter2D(Collider2D col)
     {
@@ -30,9 +39,7 @@ public class DoorStation : MonoBehaviour {
 
             if (Input.GetKeyDown("e") || Input.GetButtonDown("Submit"))
             {
-                //fade.gameObject.SetActive(true);
-
-                //fade.Fade(false, 10f);
+                
                 StartCoroutine(FadeThenLoad());
             }
         }
@@ -44,7 +51,10 @@ public class DoorStation : MonoBehaviour {
 
     private IEnumerator FadeThenLoad()
     {
-        yield return new WaitForSeconds(_delay);
+        source.Play();
+        fade.gameObject.SetActive(true);
+        fade.Fade(false, 30f);
+        yield return new WaitForSeconds(clip.length-1f);
         SceneManager.LoadScene(_nextLevel);
     }
 

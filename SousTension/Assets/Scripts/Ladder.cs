@@ -34,7 +34,12 @@ public class Ladder : MonoBehaviour {
                 //Debug.Log("FUUUUUUUU");
                 col.GetComponent<Rigidbody2D>().velocity = new Vector2(0, speed);
             }
-            else
+            else if (Input.GetAxis("Vertical") < 0)
+        {
+            //Debug.Log("FUUUUUUUU");
+            col.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed);
+        }
+        else
             {
                 col.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             }

@@ -46,11 +46,14 @@ namespace UnityStandardAssets._2D
 
             // Set the vertical animation
             m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
+
+         
         }
 
 
         public void Move(float move, bool crouch, bool jump)
         {
+        
             // If crouching, check to see if the character can stand up
             if (!crouch && m_Anim.GetBool("Crouch"))
             {
@@ -76,8 +79,16 @@ namespace UnityStandardAssets._2D
 
                 // Move the character
                 m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    m_MaxSpeed = 7f;
+                }
+                else
+                {
+                    m_MaxSpeed = 4f;
+                }
 
-               
+
 
                 // If the input is moving the player right and the player is facing left...
                 if (move > 0 && !m_FacingRight)

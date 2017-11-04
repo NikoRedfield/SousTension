@@ -16,12 +16,12 @@ public class AutoScroll : MonoBehaviour {
         if (Input.GetAxis("Vertical") > 0)
         {
             panel.verticalNormalizedPosition += 0.01f;
-            delay = 3;
+            delay = 2;
         }
         if (Input.GetAxis("Vertical") < 0)
         {
             panel.verticalNormalizedPosition -= 0.01f;
-            delay = 3;
+            delay = 2;
         }
         else
         {
