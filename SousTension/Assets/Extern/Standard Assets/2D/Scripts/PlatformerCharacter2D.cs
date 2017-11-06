@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets._2D
 {
@@ -79,7 +80,7 @@ namespace UnityStandardAssets._2D
 
                 // Move the character
                 m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
-                if (Input.GetKey(KeyCode.LeftShift))
+                if (CrossPlatformInputManager.GetButton("Run"))
                 {
                     m_MaxSpeed = 7f;
                 }
