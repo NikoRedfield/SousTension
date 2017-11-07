@@ -11,6 +11,8 @@ namespace UnityStandardAssets._2D
         private bool m_Jump;
         private bool crouch;
 
+        public GameObject ControlsUi;
+
         private void Awake()
         {
             m_Character = GetComponent<PlatformerCharacter2D>();
@@ -25,10 +27,24 @@ namespace UnityStandardAssets._2D
                 // Read the jump input in Update so button presses aren't missed.
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
-            if (CrossPlatformInputManager.GetButtonDown("Crouch"))
+            if (CrossPlatformInputManager.GetButtonDown("CrouchController"))
             {
                 crouch = !crouch;
             }
+            if (CrossPlatformInputManager.GetButton("Stand"))
+            {
+                crouch = false;
+            }
+            if (CrossPlatformInputManager.GetButtonDown("CrouchKey"))
+            {
+                crouch = true;
+            }
+                if (CrossPlatformInputManager.GetButtonDown("Select"))
+            {
+                Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
+                ControlsUi.SetActive(!ControlsUi.activeSelf);
+            }
+           
         }
 
       
@@ -36,8 +52,7 @@ namespace UnityStandardAssets._2D
         private void FixedUpdate()
         {
              // Read the inputs.
-            //crouch = CrossPlatformInputManager.GetButton("Crouch");
-           
+                    
             
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
             //float v = CrossPlatformInputManager.GetAxis("Vertical");

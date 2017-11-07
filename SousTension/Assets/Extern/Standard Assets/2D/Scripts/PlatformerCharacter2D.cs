@@ -82,11 +82,11 @@ namespace UnityStandardAssets._2D
                 m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
                 if (CrossPlatformInputManager.GetButton("Run"))
                 {
-                    m_MaxSpeed = 7f;
+                    m_MaxSpeed = 10f;
                 }
                 else
                 {
-                    m_MaxSpeed = 4f;
+                    m_MaxSpeed = 5f;
                 }
 
 

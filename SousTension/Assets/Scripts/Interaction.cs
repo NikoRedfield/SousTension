@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Interaction : MonoBehaviour {
 
     public GameObject objectToEnable;
     public FadeManager fade;
     public DialogueManager dialogue;
     public GameObject controllerButton;
+    public GameObject key;
     
 
     private bool interactionsEnabled = false;
+    private GameObject objectToActivate;
  
     
 
@@ -50,4 +53,9 @@ public class Interaction : MonoBehaviour {
        
 		
 	}
+
+    private void SwitchUi()
+    {
+       
+    }
 }
