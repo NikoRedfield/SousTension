@@ -9,17 +9,29 @@ public class Interaction : MonoBehaviour {
     public FadeManager fade;
     public DialogueManager dialogue;
     public GameObject controllerButton;
-    public GameObject key;
-    
+    public GameObject keyboardUI;
 
+    private ControllerStatus controller;
     private bool interactionsEnabled = false;
-    private GameObject objectToActivate;
- 
+    private GameObject displayedUI;
     
+    private int controllerState;
+
+
+    private void Start()
+    {
+        controller = this.GetComponent<ControllerStatus>();
+        displayedUI = controllerButton;
+        controllerState = controller.ControllerCheck();
+        SwitchUi();
+    }
+
 
     public void OnTriggerEnter2D(Collider2D col)
     {
         interactionsEnabled = true; //Enables interaction with character
+        controllerState = controller.ControllerCheck();
+        SwitchUi();
     }
 
     public void OnTriggerExit2D(Collider2D col)
@@ -33,7 +45,7 @@ public class Interaction : MonoBehaviour {
         if (interactionsEnabled)
         {
            
-            controllerButton.SetActive(!objectToEnable.activeSelf);       //Displays the interaction UI
+           displayedUI.SetActive(!objectToEnable.activeSelf);       //Displays the interaction UI
 
             if (Input.GetKeyDown("e") || Input.GetButtonDown("Submit"))
             {
@@ -48,7 +60,7 @@ public class Interaction : MonoBehaviour {
         }
         else
         {
-            controllerButton.SetActive(false);  //Disables the interaction UI
+            displayedUI.SetActive(false);  //Disables the interaction UI
         }
        
 		
@@ -56,6 +68,18 @@ public class Interaction : MonoBehaviour {
 
     private void SwitchUi()
     {
-       
+        switch (controllerState)
+        {
+            case 0:
+                displayedUI = keyboardUI;
+                break;
+            case 1:
+                displayedUI = controllerButton;
+                break;
+
+            default:
+                Debug.Log("Error on SwitchUI");
+                break;
+        }
     }
 }

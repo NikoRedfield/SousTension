@@ -9,13 +9,22 @@ public class DoorStation : MonoBehaviour {
     public FadeManager fade;
     public float _delay = 1f;
     public GameObject controllerButton;
+    public GameObject keyboardUI;
     public AudioClip clip;
 
     private bool canExit = false;
     private AudioSource source;
+    private ControllerStatus controller;
+    private GameObject displayedUI;
+    private int controllerState;
+
 
     private void Start()
     {
+        controller = this.GetComponent<ControllerStatus>();
+        displayedUI = controllerButton;
+        controllerState = controller.ControllerCheck();
+        SwitchUI();
         source = this.GetComponent<AudioSource>();
         source.clip = clip;
         //DontDestroyOnLoad(fade.gameObject);
@@ -24,6 +33,8 @@ public class DoorStation : MonoBehaviour {
     private  void OnTriggerEnter2D(Collider2D col)
     {
         canExit = true;
+        controllerState = controller.ControllerCheck();
+        SwitchUI();
     }
 
    private  void OnTriggerExit2D(Collider2D col)
@@ -35,7 +46,7 @@ public class DoorStation : MonoBehaviour {
     {
         if(canExit)
         {
-            controllerButton.SetActive(true);
+            displayedUI.SetActive(true);
 
             if (Input.GetKeyDown("e") || Input.GetButtonDown("Submit"))
             {
@@ -45,7 +56,7 @@ public class DoorStation : MonoBehaviour {
         }
         else
         {
-            controllerButton.SetActive(false);
+            displayedUI.SetActive(false);
         }
     }
 
@@ -56,6 +67,23 @@ public class DoorStation : MonoBehaviour {
         fade.Fade(false, 30f);
         yield return new WaitForSeconds(clip.length-1f);
         SceneManager.LoadScene(_nextLevel);
+    }
+
+    private void SwitchUI()
+    {
+        switch (controllerState)
+        {
+            case 0:
+                displayedUI = keyboardUI;
+                break;
+            case 1:
+                displayedUI = controllerButton;
+                break;
+
+            default:
+                Debug.Log("Error on SwitchUI");
+                break;
+        }
     }
 
 }

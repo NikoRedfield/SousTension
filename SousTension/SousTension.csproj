@@ -195,6 +195,7 @@
     <Compile Include="Assets\Scripts\Camera\StopCamera.cs" />
     <Compile Include="Assets\Scripts\Camera\SwitchCamera.cs" />
     <Compile Include="Assets\Scripts\ControllerCharacter.cs" />
+    <Compile Include="Assets\Scripts\ControllerStatus.cs" />
     <Compile Include="Assets\Scripts\Dialogue\AutoScroll.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Choice.cs" />
     <Compile Include="Assets\Scripts\Dialogue\ChoiceNarration.cs" />
@@ -204,6 +205,7 @@
     <Compile Include="Assets\Scripts\Dialogue\LaunchNarration.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Narration.cs" />
     <Compile Include="Assets\Scripts\DoorStation.cs" />
+    <Compile Include="Assets\Scripts\InputAuthorisation.cs" />
     <Compile Include="Assets\Scripts\Interaction.cs" />
     <Compile Include="Assets\Scripts\Kill.cs" />
     <Compile Include="Assets\Scripts\Ladder.cs" />

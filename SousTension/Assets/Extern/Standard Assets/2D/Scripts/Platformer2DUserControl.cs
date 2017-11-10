@@ -11,6 +11,8 @@ namespace UnityStandardAssets._2D
         private bool m_Jump;
         private bool crouch;
 
+        private bool authoriseInput = true;
+
         public GameObject ControlsUi;
 
         private void Awake()
@@ -52,13 +54,18 @@ namespace UnityStandardAssets._2D
         private void FixedUpdate()
         {
              // Read the inputs.
-                    
             
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
             //float v = CrossPlatformInputManager.GetAxis("Vertical");
             // Pass all parameters to the character control script.
             m_Character.Move(h, crouch, m_Jump);
             m_Jump = false;
+        }
+
+        public void SetAuthorisation(bool access)
+        {
+            authoriseInput = access;
+            Debug.Log("Access modified ! ");
         }
     }
 }
