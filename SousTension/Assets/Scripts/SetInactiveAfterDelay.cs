@@ -8,11 +8,11 @@ public class SetInactiveAfterDelay : MonoBehaviour {
 
     public bool setActive = false;
 
+    //Disables the gameObject after the stated delay
     public IEnumerator Start()
     {
         yield return new WaitForSeconds(delay);
         gameObject.SetActive(setActive);
-       
     }
 
 }

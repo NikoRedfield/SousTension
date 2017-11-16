@@ -67,6 +67,8 @@ public class Narration : MonoBehaviour
         StartCoroutine("PlayText");
        // mtext.text += currentDialogue.sentence;
        // mtext.text = mtext.text + "</color></size>\n\n";
+       currentTextArea = (GameObject)Instantiate(textArea);
+        currentTextArea.transform.SetParent(panel);
     }
 
     //Continuing the dialogue to the next Sequence
@@ -77,7 +79,11 @@ public class Narration : MonoBehaviour
            if ((Input.GetKeyDown("space") || Input.GetButtonDown("Submit")) && dover)
             {
                 dover = false;
+                currentTextArea = (GameObject)Instantiate(textArea);
+                currentTextArea.transform.SetParent(panel);
+                mtext = currentTextArea.GetComponent<Text>();
 
+                StopAllCoroutines();
                 fadeLayout.SetActive(false);
                 if (Qdialogues.Count == 0)
                 {
@@ -94,6 +100,7 @@ public class Narration : MonoBehaviour
                     mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
                 }
                // mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n";
+               mtext.text += "<size=16><color=white></color></size>";
                 StartCoroutine("PlayText"); 
             }
 
@@ -141,10 +148,8 @@ public class Narration : MonoBehaviour
         float delay = 0f;
         foreach (char c in currentDialogue.sentence)
         {
-            mtext.text += "<size=16><color=white>";
-            mtext.text += c;
-            mtext.text = mtext.text + "</color></size>";
-            if(!dover) {
+            mtext.text = mtext.text.Substring(0, mtext.text.Length - 15) + c + mtext.text.Substring(mtext.text.Length - 15);
+            if (!dover) {             
                 yield return new WaitForSeconds(delay);
             }
             if (Input.GetButtonDown("Submit") && !dover)
@@ -154,7 +159,6 @@ public class Narration : MonoBehaviour
         }
         mtext.text = mtext.text + "\n\n";
         dover = true;
-    }
-
+    }    
 
 }

@@ -64,6 +64,7 @@ public class ButtonManager : MonoBehaviour {
         StartCoroutine(PlaySoundThenQuit());
     }
 
+    //Load the main menu without any other FX
     public void PlayAgain()
     {
         SceneManager.LoadScene("Menu");

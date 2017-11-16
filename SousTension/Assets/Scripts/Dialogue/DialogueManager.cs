@@ -31,7 +31,7 @@ public class DialogueManager : MonoBehaviour {
     public GameObject portrait2;
 
     private bool dover = false;
-
+    private GameObject player;
 
     //Initialiazing Queue Of Dialogue
     /* public void Awake()
@@ -42,6 +42,10 @@ public class DialogueManager : MonoBehaviour {
          mtext = currentTextArea.GetComponent<Text>();
      }*/
 
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
 
     //Launching Dialogue
     public void StartDialogue()
@@ -151,8 +155,9 @@ public class DialogueManager : MonoBehaviour {
             Debug.Log("Ending Conversation...");    //Ending the dialogue
             dialogueUI.SetActive(false);
             fadeLayout.SetActive(true);
-            fadeLayout.GetComponent<FadeManager>().Fade(false, 2f);
+            //fadeLayout.GetComponent<FadeManager>().Fade(false, 2f);
             choiceEngaged = false;
+            player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().SetAuthorisation(true);
             if (isChoice)
             {
                 gameObject.SetActive(false);  

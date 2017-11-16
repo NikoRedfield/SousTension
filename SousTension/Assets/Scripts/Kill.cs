@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Kill : MonoBehaviour {
 
-    public AudioClip deathClip;
+    public AudioClip deathClip;  //Death Sound
     public FadeManager fade;
 
     private AudioSource source;
@@ -15,9 +15,10 @@ public class Kill : MonoBehaviour {
         source = GetComponent<AudioSource>();
 	}
 
+    //Kills the player
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player")    //If the player is in reach 
         {
             Debug.Log("Hit");
             collision.gameObject.transform.Rotate(new Vector3(45, 0, 0));
@@ -25,6 +26,7 @@ public class Kill : MonoBehaviour {
         }
     }
 
+    //Loads GameOver Scene
     private IEnumerator Death()
     {
         source.clip = deathClip;

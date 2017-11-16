@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class BasicQTE : MonoBehaviour {
 
-    public GameObject[] linkedObjects;
-    public string QTEinput = "Submit";
-    public int numberPressed = 1;
-    public GameObject QTEui;
-    public Image fillMeter;
+    public GameObject[] linkedObjects;  //Objects linked to the QTE
+    public string QTEinput = "Submit";  //Input used to interact 
+    public int numberPressed = 1;   //Number of Inputs necessary for validation
+    public GameObject QTEui;    //UI used 
+    public Image fillMeter;     
     public AudioClip mainSound;
     public AudioClip successSound;
 
-    private int valideInput = 0;
+    private int valideInput = 0;    //Current number of correct inputs
     private AudioSource source;
     private bool authoriseInput = false;
 
@@ -25,9 +25,10 @@ public class BasicQTE : MonoBehaviour {
 	}
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    //Display and authorise both UI and input listener
+    private void OnTriggerEnter2D(Collider2D collision) 
     {
-        if (valideInput < numberPressed)
+        if (valideInput < numberPressed)    //QTE not yet validated
         {
             authoriseInput = true;
             QTEui.SetActive(true);
@@ -36,13 +37,15 @@ public class BasicQTE : MonoBehaviour {
         }
     }
 
+    //Cancel both UI and inputs related to the QTE 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        authoriseInput = false;
+        authoriseInput = false;             
         QTEui.SetActive(false);
         fillMeter.gameObject.SetActive(false);
     }
 
+    //Listen to the Inputs
     private void Update()
     {
         if (authoriseInput && valideInput < numberPressed)
@@ -53,29 +56,31 @@ public class BasicQTE : MonoBehaviour {
         }
     }
 
+
     private void LaunchQTE()
     {
         //Debug.Log("launching qte");
-        if (Input.GetButtonDown(QTEinput))
+        if (Input.GetButtonDown(QTEinput))  //If the user input is the one asked by the QTE
             {
             if (!source.isPlaying)
             {
-                source.Play();
+                source.Play();  //Plays the sound of the QTE Interaction
             }
-            valideInput += 1;
-            fillMeter.fillAmount += (1/(float)numberPressed);
-            Debug.Log("Pressed");
+            valideInput += 1;   //Increase the number of correct inputs known
+            fillMeter.fillAmount += (1/(float)numberPressed); //Increase the fill meter
+           // Debug.Log("Pressed");
         }
-        if(valideInput == numberPressed)
+        if(valideInput == numberPressed)   //If the required number of inputs has been reached
             {
-                SuccessQTE();
+                SuccessQTE();   //Launch the success sequence
                 QTEui.SetActive(false);
             StartCoroutine(PlaySoundThenDisable());
            
-            authoriseInput = false;
+            authoriseInput = false;  //Deativate the input listener
             }
     }
 
+    //Activate all the objects linked to the QTE
     private void SuccessQTE()
     {
         foreach(GameObject objects in linkedObjects)
@@ -84,6 +89,7 @@ public class BasicQTE : MonoBehaviour {
         }
     }
 
+    //Success Feedback
     private IEnumerator PlaySoundThenDisable()
     {
         source.Stop();

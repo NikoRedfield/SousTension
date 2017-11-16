@@ -19,11 +19,7 @@ public class Choice : MonoBehaviour {
     private GameObject button2;
 
    
-   
-
-
-
-    public void LaunchChoice()
+   public void LaunchChoice()
     {
         EventSystem.current.SetSelectedGameObject(null);  //Release the item selected by the event system
 

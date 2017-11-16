@@ -5,17 +5,18 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour {
 
-    public GameObject objectToEnable;
+    public GameObject objectToEnable;       
     public FadeManager fade;
     public DialogueManager dialogue;
-    public GameObject controllerButton;
-    public GameObject keyboardUI;
+    public GameObject controllerButton;  //UI for controller device
+    public GameObject keyboardUI;   //UI for keyboard device
 
     private ControllerStatus controller;
     private bool interactionsEnabled = false;
-    private GameObject displayedUI;
+    private GameObject displayedUI; //UI to display
     
     private int controllerState;
+    private GameObject player;
 
 
     private void Start()
@@ -24,6 +25,7 @@ public class Interaction : MonoBehaviour {
         displayedUI = controllerButton;
         controllerState = controller.ControllerCheck();
         SwitchUi();
+        player = GameObject.FindWithTag("Player");
     }
 
 
@@ -42,7 +44,7 @@ public class Interaction : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (interactionsEnabled)
+        if (interactionsEnabled && player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().getAuthorisation())
         {
            
            displayedUI.SetActive(!objectToEnable.activeSelf);       //Displays the interaction UI
@@ -55,6 +57,8 @@ public class Interaction : MonoBehaviour {
                 }
                 fade.Fade(false, 2f);
                 objectToEnable.SetActive(true);  //Displays Dialogue UI
+                player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().SetAuthorisation(false);
+                Debug.Log("icic");
                 dialogue.StartDialogue();
             }
         }
@@ -66,6 +70,7 @@ public class Interaction : MonoBehaviour {
 		
 	}
 
+    //Checks what UI must be displayed on screen
     private void SwitchUi()
     {
         switch (controllerState)

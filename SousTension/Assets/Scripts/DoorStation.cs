@@ -5,18 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class DoorStation : MonoBehaviour {
 
-    public string _nextLevel = "";
+    public string _nextLevel = "";   //Next level to load
     public FadeManager fade;
-    public float _delay = 1f;
-    public GameObject controllerButton;
-    public GameObject keyboardUI;
-    public AudioClip clip;
+    public float _delay = 1f;   //Fade Delay
+    public GameObject controllerButton;  //Controller UI
+    public GameObject keyboardUI;       //Keyboard UI
+    public AudioClip clip;      //Door SFX
 
-    private bool canExit = false;
+    private bool canExit = false;   //Enable the player to reach the next level
     private AudioSource source;
-    private ControllerStatus controller;
-    private GameObject displayedUI;
+    private ControllerStatus controller;  //Check the used input device
+    private GameObject displayedUI; 
     private int controllerState;
+    private GameObject player;
 
 
     private void Start()
@@ -24,12 +25,13 @@ public class DoorStation : MonoBehaviour {
         controller = this.GetComponent<ControllerStatus>();
         displayedUI = controllerButton;
         controllerState = controller.ControllerCheck();
-        SwitchUI();
+        SwitchUI();     //Switch UI depending on the device used
         source = this.GetComponent<AudioSource>();
         source.clip = clip;
-        //DontDestroyOnLoad(fade.gameObject);
+        player = GameObject.FindWithTag("Player");
     }
 
+    //enables exit
     private  void OnTriggerEnter2D(Collider2D col)
     {
         canExit = true;
@@ -37,6 +39,7 @@ public class DoorStation : MonoBehaviour {
         SwitchUI();
     }
 
+    //disables exit
    private  void OnTriggerExit2D(Collider2D col)
     {
         canExit = false;
@@ -44,14 +47,14 @@ public class DoorStation : MonoBehaviour {
 
     private void Update()
     {
-        if(canExit)
+        if(canExit && player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().getAuthorisation())
         {
             displayedUI.SetActive(true);
 
             if (Input.GetKeyDown("e") || Input.GetButtonDown("Submit"))
             {
                 
-                StartCoroutine(FadeThenLoad());
+                StartCoroutine(FadeThenLoad()); //Launch EXIT
             }
         }
         else
@@ -60,6 +63,7 @@ public class DoorStation : MonoBehaviour {
         }
     }
 
+    //Exit the current level and load the next one
     private IEnumerator FadeThenLoad()
     {
         source.Play();
@@ -69,6 +73,7 @@ public class DoorStation : MonoBehaviour {
         SceneManager.LoadScene(_nextLevel);
     }
 
+    //Check what UI to display
     private void SwitchUI()
     {
         switch (controllerState)

@@ -9,6 +9,8 @@ public class LoadAfterTime : MonoBehaviour
 
     public float _delay = 5f;
 
+
+    //Load the given scene after the stated delay
     public IEnumerator Start()
     {
         yield return new WaitForSeconds(_delay);

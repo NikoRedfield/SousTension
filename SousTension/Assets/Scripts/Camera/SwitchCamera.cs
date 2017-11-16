@@ -6,7 +6,6 @@ using UnityEngine;
 public class SwitchCamera : MonoBehaviour {
 
     public Camera cam;
-  
 
     private CameraScroll auto;
     private CameraFollow2D follow;
@@ -19,6 +18,7 @@ public class SwitchCamera : MonoBehaviour {
         switched = false;
     }
 
+    //Switch the function mode for the camera
     void OnTriggerEnter2D(Collider2D col)
     {
         if (!switched)

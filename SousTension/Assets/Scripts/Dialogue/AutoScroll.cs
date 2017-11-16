@@ -13,12 +13,12 @@ public class AutoScroll : MonoBehaviour {
     
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetAxis("Vertical") > 0)
+        if (Input.GetAxis("Vertical") > 0)  //Scroll up
         {
             panel.verticalNormalizedPosition += 0.01f;
             delay = 2;
         }
-        if (Input.GetAxis("Vertical") < 0)
+        if (Input.GetAxis("Vertical") < 0)  //Scroll down
         {
             panel.verticalNormalizedPosition -= 0.01f;
             delay = 2;
@@ -26,7 +26,7 @@ public class AutoScroll : MonoBehaviour {
         else
         {
             timer += Time.deltaTime;
-            if (timer > delay)
+            if (timer > delay)  //Get back to the bottom
             {
                 panel.verticalNormalizedPosition = 0f;
                 timer = 0;

@@ -7,7 +7,8 @@ public class StopCamera : MonoBehaviour {
     public Camera cam;
 
     private bool stopped = false;
-
+    
+    //Center the camera on the player one last time
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!stopped)
@@ -18,6 +19,7 @@ public class StopCamera : MonoBehaviour {
         }
     }
 
+    //Stop any movement from the camera
     private void OnTriggerExit2D(Collider2D collision)
     {
         cam.GetComponent<CameraFollow2D>().enabled = false;
