@@ -87,6 +87,7 @@ public class DialogueManager : MonoBehaviour {
          mtext.text += "\n";
         mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
         //mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n\n";
+        mtext.text += "<size=16><color=white></color></size>";
         StartCoroutine("PlayText");
     }
 
@@ -123,6 +124,7 @@ public class DialogueManager : MonoBehaviour {
 
                 mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
                 // mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n\n";
+                mtext.text += "<size=16><color=white></color></size>";
                 StartCoroutine("PlayText");
             }
 
@@ -171,9 +173,7 @@ public class DialogueManager : MonoBehaviour {
         float delay = 0f;
         foreach (char c in currentDialogue.sentence)
         {
-            mtext.text += "<size=16><color=white>";
-            mtext.text += c;
-            mtext.text = mtext.text + "</color></size>";
+            mtext.text = mtext.text.Substring(0, mtext.text.Length - 15) + c + mtext.text.Substring(mtext.text.Length - 15);
             if (!dover)
             {
                 yield return new WaitForSeconds(delay);

@@ -63,8 +63,9 @@ public class Narration : MonoBehaviour
             mtext.text += "\n";
             mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
         }
+        mtext.text += "<size=16><color=white></color></size>";
         //mtext.text = mtext.text + "<size=16><color=white>   ";
-        StartCoroutine("PlayText");
+        StartCoroutine("PlayText"); 
        // mtext.text += currentDialogue.sentence;
        // mtext.text = mtext.text + "</color></size>\n\n";
        currentTextArea = (GameObject)Instantiate(textArea);
