@@ -133,14 +133,18 @@ public class Narration : MonoBehaviour
         {
             Debug.Log("Ending Conversation...");
             dialogueUI.SetActive(false);
+
+            StopAllCoroutines();
             fadeLayout.SetActive(true);
-            fadeLayout.GetComponent<FadeManager>().Fade(false, 2f);
+            //fadeLayout.GetComponent<FadeManager>().ChangeColor(Color.black, new Color(0, 0, 0, 0));
+            fadeLayout.GetComponent<FadeManager>().Fade(false, 10f);
             choiceEngaged = false;
             if (isChoice)
             {
                 gameObject.SetActive(false);
             }
             SceneManager.LoadScene("Dialogue2");
+           // StartCoroutine(FadeThenLoad());
         }
     }
 
@@ -160,6 +164,6 @@ public class Narration : MonoBehaviour
         }
         mtext.text = mtext.text + "\n\n";
         dover = true;
-    }    
+    }
 
 }

@@ -24,7 +24,7 @@ public class ButtonManager : MonoBehaviour {
         source = GetComponent<AudioSource>();
        
         source.clip = EnterSound;
-        DontDestroyOnLoad(fade);
+        //DontDestroyOnLoad(fade);
     }
 
 

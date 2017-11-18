@@ -353,6 +353,7 @@
     <Compile Include="Assets\Scripts\MonsterMovement.cs" />
     <Compile Include="Assets\Scripts\NotReady\FadeManager.cs" />
     <Compile Include="Assets\Scripts\Pause.cs" />
+    <Compile Include="Assets\Scripts\PlayMusicRandomly.cs" />
     <Compile Include="Assets\Scripts\RestrictPlayer.cs" />
     <Compile Include="Assets\Scripts\SetInactiveAfterDelay.cs" />
     <Compile Include="Assets\Scripts\StressLevel.cs" />
