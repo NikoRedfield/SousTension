@@ -64,12 +64,9 @@ public class Narration : MonoBehaviour
             mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
         }
         mtext.text += "<size=16><color=white></color></size>";
-        //mtext.text = mtext.text + "<size=16><color=white>   ";
         StartCoroutine("PlayText"); 
-       // mtext.text += currentDialogue.sentence;
-       // mtext.text = mtext.text + "</color></size>\n\n";
-       currentTextArea = (GameObject)Instantiate(textArea);
-        currentTextArea.transform.SetParent(panel);
+      // currentTextArea = (GameObject)Instantiate(textArea);
+       // currentTextArea.transform.SetParent(panel);
     }
 
     //Continuing the dialogue to the next Sequence
@@ -98,11 +95,17 @@ public class Narration : MonoBehaviour
 
                 if (currentDialogue.npcName != "")
                 {
-                    mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
+                    mtext.text = mtext.text + "\n<size=24><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>";
                 }
-               // mtext.text = mtext.text + "<size=16><color=white>   " + currentDialogue.sentence + "</color></size>\n\n";
-               mtext.text += "<size=16><color=white></color></size>";
-                StartCoroutine("PlayText"); 
+                if (currentDialogue.sentence != "")
+                {
+                    mtext.text += "\n\n<size=20><color=white></color></size>";
+                    StartCoroutine("PlayText");
+                }
+                else
+                {
+                    dover = true;
+                }
             }
 
 
@@ -162,7 +165,7 @@ public class Narration : MonoBehaviour
                 dover = true;
             }
         }
-        mtext.text = mtext.text + "\n\n";
+        mtext.text = mtext.text + "\n";
         dover = true;
     }
 
