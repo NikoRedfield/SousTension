@@ -19,6 +19,8 @@ namespace UnityStandardAssets._2D
         private GameObject ControlsUI;
         private ControllerStatus controller;
         private int controllerState;
+        private GameObject book;
+       
 
         private void Awake()
         {
@@ -29,6 +31,8 @@ namespace UnityStandardAssets._2D
             keyboardControlsUI = controlRootUI.transform.Find("KeyboardControls").gameObject; 
             gamepadControlsUI = controlRootUI.transform.Find("GamepadControls").gameObject;
             ControlsUI = keyboardControlsUI;
+            book = GameObject.Find("NoteBook").transform.Find("BookUI").gameObject;
+
 
             controller = GameObject.Find("Manager").GetComponent<ControllerStatus>();
         }
@@ -64,6 +68,11 @@ namespace UnityStandardAssets._2D
                         SelectControls();
                     }
                     ControlsUI.SetActive(!ControlsUI.activeSelf);
+                }
+                if (CrossPlatformInputManager.GetButtonDown("Book"))
+                {
+                    Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
+                    book.SetActive(!book.activeSelf);
                 }
             }                
         }

@@ -20,6 +20,8 @@ public class Narration : MonoBehaviour
     public RectTransform panel;
     public Narration followUpDialogue = null;
 
+    public GameObject fadePortrait1;
+
     private Queue<Dialogue> Qdialogues;
     private Dialogue currentDialogue;
 
@@ -32,6 +34,7 @@ public class Narration : MonoBehaviour
 
     private bool dover = false;
 
+    
 
     //Launching Dialogue
     public void StartDialogue()
@@ -61,9 +64,17 @@ public class Narration : MonoBehaviour
         if (currentDialogue.npcName != "")
         {
             mtext.text += "\n";
-            mtext.text = mtext.text + "<size=20><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
+            mtext.text = mtext.text + "<size=24><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
+            if(currentDialogue.npcName != "Théo :" || currentDialogue.npcName != "Théo (à lui-même) :")
+            {
+                fadePortrait1.SetActive(false);
+            }
+            else
+            {
+                fadePortrait1.SetActive(true);
+            }
         }
-        mtext.text += "<size=16><color=white></color></size>";
+        mtext.text += "<size=20><color=white></color></size>";
         StartCoroutine("PlayText"); 
       // currentTextArea = (GameObject)Instantiate(textArea);
        // currentTextArea.transform.SetParent(panel);
@@ -96,7 +107,18 @@ public class Narration : MonoBehaviour
                 if (currentDialogue.npcName != "")
                 {
                     mtext.text = mtext.text + "\n<size=24><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>";
+
+                    if (currentDialogue.npcName != "Théo :" && currentDialogue.npcName != "Théo (à lui-même) :")
+                    {
+                       fadePortrait1.SetActive(false);
+                        Debug.Log(currentDialogue.npcName);
+                    }
+                    else
+                    {
+                        fadePortrait1.SetActive(true);
+                    }
                 }
+
                 if (currentDialogue.sentence != "")
                 {
                     mtext.text += "\n\n<size=20><color=white></color></size>";

@@ -21,14 +21,14 @@ public class ChoiceNarration : MonoBehaviour
     private GameObject button1;
     private GameObject button2;
 
-    public Animator anim;
-    public Animator animChoice;
+    //public Animator anim;
+    //public Animator animChoice;
 
 
     void Start()
     {
-        anim.enabled = false;
-        animChoice.enabled = false;
+        //anim.enabled = false;
+        //animChoice.enabled = false;
     }
 
 
@@ -48,7 +48,9 @@ public class ChoiceNarration : MonoBehaviour
 
 
         button1.GetComponentInChildren<Text>().text = Choice1;
+        button1.GetComponentInChildren<Text>().fontSize = 20;
         button2.GetComponentInChildren<Text>().text = Choice2;
+        button2.GetComponentInChildren<Text>().fontSize = 20;
 
         button1.GetComponent<Button>().onClick.AddListener(MakeChoice1);
         button2.GetComponent<Button>().onClick.AddListener(MakeChoice2);
@@ -59,18 +61,18 @@ public class ChoiceNarration : MonoBehaviour
         // Highlight the button
         button1.GetComponent<Button>().OnSelect(new BaseEventData(EventSystem.current));
 
-        anim.enabled = true;
-        animChoice.enabled = true;
+       // anim.enabled = true;
+        //animChoice.enabled = true;
         
-        anim.Play("MoveBack");
-        animChoice.Play("MovePanel");
+        //anim.Play("MoveBack");
+        //animChoice.Play("MovePanel");
 
     }
 
     public void MakeChoice1()
     {
-        anim.Play("MoveLeft");
-        animChoice.Play("MovePanelBack");
+       // anim.Play("MoveLeft");
+        //animChoice.Play("MovePanelBack");
         Debug.Log("Choice1");
         dialogueChoice1.SetActive(true);
         dialogueChoice1.GetComponent<Narration>().StartDialogue();
@@ -81,8 +83,8 @@ public class ChoiceNarration : MonoBehaviour
 
     public void MakeChoice2()
     {
-        anim.Play("MoveLeft");
-        animChoice.Play("MovePanelBack");
+        //anim.Play("MoveLeft");
+        //animChoice.Play("MovePanelBack");
         Debug.Log("Choice2");
         dialogueChoice2.SetActive(true);
         dialogueChoice2.GetComponent<Narration>().StartDialogue();

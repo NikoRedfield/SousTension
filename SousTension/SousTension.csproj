@@ -354,9 +354,9 @@
     <Compile Include="Assets\Scripts\NotReady\FadeManager.cs" />
     <Compile Include="Assets\Scripts\Pause.cs" />
     <Compile Include="Assets\Scripts\PlayMusicRandomly.cs" />
-    <Compile Include="Assets\Scripts\RestrictPlayer.cs" />
     <Compile Include="Assets\Scripts\SetInactiveAfterDelay.cs" />
     <Compile Include="Assets\Scripts\StressLevel.cs" />
+    <Compile Include="Assets\Scripts\TimeManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Extern\2DLightAsset\Shaders\Gradient-NoTexture-Radial-SingleColor-ToTransparent-RegularUV-AlphaBlend.shader" />
