@@ -18,23 +18,25 @@ public class ChoiceNarration : MonoBehaviour
 
     public Narration followUpDialogue = null;
 
+    public int impactChoice1 = 0;
+    public int impactChoice2 = 0;
+    
     private GameObject button1;
     private GameObject button2;
 
-    //public Animator anim;
-    //public Animator animChoice;
-
+    private Slider smBar;
 
     void Start()
     {
-        //anim.enabled = false;
-        //animChoice.enabled = false;
+        smBar = GameObject.Find("SanteMentale").GetComponent<Slider>();
     }
 
 
 
     public void LaunchChoice()
     {
+        Debug.Log(PlayerData.santeMentale);
+
         EventSystem.current.SetSelectedGameObject(null);
 
         button1 = (GameObject)Instantiate(button);
@@ -78,6 +80,11 @@ public class ChoiceNarration : MonoBehaviour
         dialogueChoice1.GetComponent<Narration>().StartDialogue();
         button2.SetActive(false);
         button1.GetComponent<Button>().interactable = false;
+        
+        PlayerData.santeMentale += impactChoice1;
+        smBar.value = PlayerData.santeMentale;
+        Debug.Log(PlayerData.santeMentale);
+
         return;
     }
 
@@ -90,7 +97,14 @@ public class ChoiceNarration : MonoBehaviour
         dialogueChoice2.GetComponent<Narration>().StartDialogue();
         button1.SetActive(false);
         button2.GetComponent<Button>().interactable = false;
+
+        PlayerData.santeMentale += impactChoice2;
+        smBar.value = PlayerData.santeMentale;
+
+        Debug.Log(PlayerData.santeMentale);
+
         return;
 
     }
+
 }

@@ -37,6 +37,7 @@ public class DoorStation : MonoBehaviour {
         canExit = true;
         controllerState = controller.ControllerCheck();
         SwitchUI();
+        Debug.Log(PlayerData.santeMentale);
     }
 
     //disables exit

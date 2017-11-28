@@ -34,11 +34,13 @@ public class Narration : MonoBehaviour
 
     private bool dover = false;
 
-    
+    private GameObject portraitTheo;
 
     //Launching Dialogue
     public void StartDialogue()
     {
+        portraitTheo = GameObject.Find("PortraitTheo").transform.GetChild(0).gameObject;
+
         isLaunched = true;
 
         currentTextArea = (GameObject)Instantiate(textArea);
@@ -104,6 +106,9 @@ public class Narration : MonoBehaviour
                 }
                 currentDialogue = Qdialogues.Dequeue();
 
+                portraitTheo.SetActive(true);
+                fadePortrait1.SetActive(true);
+
                 if (currentDialogue.npcName != "")
                 {
                     mtext.text = mtext.text + "\n<size=24><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>";
@@ -111,10 +116,12 @@ public class Narration : MonoBehaviour
                     if (currentDialogue.npcName != "Théo :" && currentDialogue.npcName != "Théo (à lui-même) :")
                     {
                        fadePortrait1.SetActive(false);
+                        portraitTheo.SetActive(true);
                         Debug.Log(currentDialogue.npcName);
                     }
                     else
                     {
+                        portraitTheo.SetActive(false);
                         fadePortrait1.SetActive(true);
                     }
                 }

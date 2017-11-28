@@ -40,11 +40,11 @@ public class ButtonManager : MonoBehaviour {
     {
         button.interactable = false;
         deactivate.SetActive(false);
-        source.clip = FadeSound;
-        fade.gameObject.SetActive(true);
-        fade.Fade(false, 25f);
+        //source.clip = FadeSound;
+        //fade.gameObject.SetActive(true);
+       // fade.Fade(false, 25f);
         source.Play();
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);  //WaitForSeconds(5f)
        SceneManager.LoadScene(LevelToLoad);
        
     }

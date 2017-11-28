@@ -344,6 +344,7 @@
     <Compile Include="Assets\Scripts\Dialogue\DialogueTrigger.cs" />
     <Compile Include="Assets\Scripts\Dialogue\LaunchNarration.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Narration.cs" />
+    <Compile Include="Assets\Scripts\DisplayUIScene.cs" />
     <Compile Include="Assets\Scripts\DoorStation.cs" />
     <Compile Include="Assets\Scripts\InputAuthorisation.cs" />
     <Compile Include="Assets\Scripts\Interaction.cs" />
@@ -353,9 +354,10 @@
     <Compile Include="Assets\Scripts\MonsterMovement.cs" />
     <Compile Include="Assets\Scripts\NotReady\FadeManager.cs" />
     <Compile Include="Assets\Scripts\Pause.cs" />
+    <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\PlayMusicRandomly.cs" />
     <Compile Include="Assets\Scripts\SetInactiveAfterDelay.cs" />
-    <Compile Include="Assets\Scripts\StressLevel.cs" />
+    <Compile Include="Assets\Scripts\SkipToNextScene.cs" />
     <Compile Include="Assets\Scripts\TimeManager.cs" />
   </ItemGroup>
   <ItemGroup>
