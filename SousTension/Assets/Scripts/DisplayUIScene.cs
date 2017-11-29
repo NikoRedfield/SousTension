@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DisplayUIScene : MonoBehaviour {
 
@@ -26,6 +27,16 @@ public class DisplayUIScene : MonoBehaviour {
                 break;
         }
     }
-	
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Submit"))
+        {
+            keyboardControlsUI.SetActive(false);
+            gamepadControlsUI.SetActive(false);
+            SceneManager.LoadScene("Intro");
+        }
+    }
+
 
 }

@@ -21,6 +21,7 @@ public class Narration : MonoBehaviour
     public Narration followUpDialogue = null;
 
     public GameObject fadePortrait1;
+    public string NextScene;
 
     private Queue<Dialogue> Qdialogues;
     private Dialogue currentDialogue;
@@ -169,13 +170,17 @@ public class Narration : MonoBehaviour
             StopAllCoroutines();
             fadeLayout.SetActive(true);
             //fadeLayout.GetComponent<FadeManager>().ChangeColor(Color.black, new Color(0, 0, 0, 0));
-            fadeLayout.GetComponent<FadeManager>().Fade(false, 10f);
+            fadeLayout.GetComponent<FadeManager>().Fade(false, 30f);
             choiceEngaged = false;
             if (isChoice)
             {
                 gameObject.SetActive(false);
             }
-            SceneManager.LoadScene("Dialogue2");
+            if (NextScene != "")
+            {
+                // SceneManager.LoadScene(NextScene);
+                StartCoroutine(FadeThenLoad());
+            }
            // StartCoroutine(FadeThenLoad());
         }
     }
@@ -196,6 +201,12 @@ public class Narration : MonoBehaviour
         }
         mtext.text = mtext.text + "\n";
         dover = true;
+    }
+
+    IEnumerator FadeThenLoad()
+    {
+        yield return new WaitForSeconds(0);
+        SceneManager.LoadScene(NextScene);
     }
 
 }
