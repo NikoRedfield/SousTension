@@ -18,7 +18,7 @@ public class AutoScroll : MonoBehaviour {
             panel.verticalNormalizedPosition += 0.01f;
             delay = 2;
         }
-        if (Input.GetAxis("Vertical") < 0)  //Scroll down
+        if (Input.GetAxis("Vertical") < -0.2)  //Scroll down
         {
             panel.verticalNormalizedPosition -= 0.01f;
             delay = 2;

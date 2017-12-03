@@ -47,6 +47,8 @@ public class Choice : MonoBehaviour {
 
     }
 
+ 
+
     public void MakeChoice1() //Using the first button
     {
         Debug.Log("Choice1");

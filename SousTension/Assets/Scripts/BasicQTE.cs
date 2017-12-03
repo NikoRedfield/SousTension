@@ -72,7 +72,7 @@ public class BasicQTE : MonoBehaviour {
         }
         if(valideInput == numberPressed)   //If the required number of inputs has been reached
             {
-                SuccessQTE();   //Launch the success sequence
+                //SuccessQTE();   //Launch the success sequence
                 QTEui.SetActive(false);
             StartCoroutine(PlaySoundThenDisable());
            
@@ -96,6 +96,7 @@ public class BasicQTE : MonoBehaviour {
         source.clip = successSound;
         source.Play();
         yield return new WaitForSeconds(successSound.length);
+        SuccessQTE();
         fillMeter.gameObject.SetActive(false);
     }
 }
