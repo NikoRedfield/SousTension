@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class PlayerData {
 
-    public static int santeMentale = 80;
+    public static int santeMentale = 180;
 }

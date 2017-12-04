@@ -329,6 +329,7 @@
     <Compile Include="Assets\Scripts\Pause.cs" />
     <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\PlayMusicRandomly.cs" />
+    <Compile Include="Assets\Scripts\SanteMentale.cs" />
     <Compile Include="Assets\Scripts\SetInactiveAfterDelay.cs" />
     <Compile Include="Assets\Scripts\SkipToNextScene.cs" />
     <Compile Include="Assets\Scripts\TimeManager.cs" />

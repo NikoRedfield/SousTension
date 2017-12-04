@@ -32,15 +32,11 @@ public class CameraScroll : MonoBehaviour
     void Update()
     {
         // Movement
-        Vector3 movement = new Vector3(
-          speed.x * direction.x,
-          speed.y * direction.y,
-          0);
-
-       
+        Vector3 movement = new Vector3(speed.x * direction.x, 0 , 0);    //Move forward at the given speed
 
         movement *= Time.deltaTime;
         transform.Translate(movement);
+        transform.position= new Vector3(transform.position.x, player.position.y + offset.y, transform.position.z); // Link the camera to the y position of the player
 
         // Move the camera
         if (isLinkedToCamera)
