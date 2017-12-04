@@ -34,7 +34,7 @@ public class SanteMentale : MonoBehaviour {
 
     public void MentalHealthEvent()
     {
-        if (slider.value <= 40 && !changedTwice)
+        if (slider.value <= 30 && !changedTwice)
         {
             changedTwice= true;
             Monster.transform.localScale = new Vector3(Monster.transform.localScale.x * 2, Monster.transform.localScale.y * 2, Monster.transform.localScale.z);
@@ -43,8 +43,8 @@ public class SanteMentale : MonoBehaviour {
         if (slider.value <= 80 && !changedOnce)
         {
             changedOnce = true;
-           
-             Monster.transform.localScale = new Vector3(Monster.transform.localScale.x * 2, Monster.transform.localScale.y , Monster.transform.localScale.z);
+            diminution--;
+            Monster.transform.localScale = new Vector3(Monster.transform.localScale.x * 2, Monster.transform.localScale.y , Monster.transform.localScale.z);
             
             //Monster.transform.localScale = Vector3.Lerp(Monster.transform.localScale, new Vector3(Monster.transform.localScale.x * 2, Monster.transform.localScale.y * 2, Monster.transform.localScale.z), Time.deltaTime);
            

@@ -12,6 +12,7 @@ public class BasicQTE : MonoBehaviour {
     public Image fillMeter;     
     public AudioClip mainSound;
     public AudioClip successSound;
+    public bool linkedToMonster = false;
 
     private int valideInput = 0;    //Current number of correct inputs
     private AudioSource source;
@@ -74,6 +75,12 @@ public class BasicQTE : MonoBehaviour {
             {
                 //SuccessQTE();   //Launch the success sequence
                 QTEui.SetActive(false);
+            if (linkedToMonster)
+            {
+                GameObject.Find("Monster").transform.GetChild(0).gameObject.SetActive(false);
+                GameObject.Find("Main Camera").GetComponent<CameraFollow2D>().enabled = true;
+                GameObject.Find("Main Camera").GetComponent<CameraScroll>().enabled = false;
+            }
             StartCoroutine(PlaySoundThenDisable());
            
             authoriseInput = false;  //Deativate the input listener
