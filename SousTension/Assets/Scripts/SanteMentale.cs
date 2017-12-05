@@ -14,6 +14,8 @@ public class SanteMentale : MonoBehaviour {
     private GameObject cam;
     private bool changedOnce = false;
     private bool changedTwice = false;
+    private bool spawned = false;
+ 
 
 	// Use this for initialization
 	void Start () {
@@ -30,6 +32,7 @@ public class SanteMentale : MonoBehaviour {
             PlayerData.santeMentale -= diminution;
             slider.value = PlayerData.santeMentale;
         }
+            
 	}
 
     public void MentalHealthEvent()
@@ -37,25 +40,40 @@ public class SanteMentale : MonoBehaviour {
         if (slider.value <= 30 && !changedTwice)
         {
             changedTwice= true;
-            Monster.transform.localScale = new Vector3(Monster.transform.localScale.x * 2, Monster.transform.localScale.y * 2, Monster.transform.localScale.z);
+            Monster.transform.localScale = new Vector3(Monster.transform.localScale.x, Monster.transform.localScale.y * 2, Monster.transform.localScale.z);
+           // StartCoroutine(ScaleObject());
             return;
         }
         if (slider.value <= 80 && !changedOnce)
         {
             changedOnce = true;
             diminution--;
-            Monster.transform.localScale = new Vector3(Monster.transform.localScale.x * 2, Monster.transform.localScale.y , Monster.transform.localScale.z);
-            
+            Monster.transform.localScale = new Vector3(Monster.transform.localScale.x , Monster.transform.localScale.y , Monster.transform.localScale.z);
+            //StartCoroutine(ScaleObject());
             //Monster.transform.localScale = Vector3.Lerp(Monster.transform.localScale, new Vector3(Monster.transform.localScale.x * 2, Monster.transform.localScale.y * 2, Monster.transform.localScale.z), Time.deltaTime);
            
             return;
         }
-            if (slider.value <= 130)
+            if (slider.value <= 130 && !spawned)
         {
+            spawned = true;
             Monster.SetActive(true);
             cam.GetComponent<CameraFollow2D>().enabled = false;
             cam.GetComponent<CameraScroll>().enabled = true;
             return;
+        }
+    }
+
+    IEnumerator ScaleObject()
+    {
+        float scaleDuration = 2;                                //animation duration in seconds
+        Vector3 actualScale = Monster.transform.localScale;             // scale of the object at the begining of the animation
+        Vector3 targetScale = new Vector3(Monster.transform.localScale.x, Monster.transform.localScale.y *2, Monster.transform.localScale.z);     // scale of the object at the end of the animation
+
+        for (float t = 0; t < 1; t += Time.deltaTime / scaleDuration)
+        {
+            Monster.transform.localScale = Vector3.Lerp(actualScale, targetScale, t);
+            yield return null;
         }
     }
 }

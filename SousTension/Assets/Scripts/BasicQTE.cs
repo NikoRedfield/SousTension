@@ -102,8 +102,8 @@ public class BasicQTE : MonoBehaviour {
         source.Stop();
         source.clip = successSound;
         source.Play();
-        yield return new WaitForSeconds(successSound.length);
         SuccessQTE();
+        yield return new WaitForSeconds(successSound.length);
         fillMeter.gameObject.SetActive(false);
     }
 }

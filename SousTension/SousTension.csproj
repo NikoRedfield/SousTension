@@ -332,6 +332,7 @@
     <Compile Include="Assets\Scripts\SanteMentale.cs" />
     <Compile Include="Assets\Scripts\SetInactiveAfterDelay.cs" />
     <Compile Include="Assets\Scripts\SkipToNextScene.cs" />
+    <Compile Include="Assets\Scripts\SmoothScale.cs" />
     <Compile Include="Assets\Scripts\TimeManager.cs" />
   </ItemGroup>
   <ItemGroup>
