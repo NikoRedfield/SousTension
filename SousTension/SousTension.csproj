@@ -308,6 +308,7 @@
     <Compile Include="Assets\Scripts\Camera\StopCamera.cs" />
     <Compile Include="Assets\Scripts\Camera\SwitchCamera.cs" />
     <Compile Include="Assets\Scripts\ChangeSide.cs" />
+    <Compile Include="Assets\Scripts\ChoiceNotebook.cs" />
     <Compile Include="Assets\Scripts\ControllerStatus.cs" />
     <Compile Include="Assets\Scripts\Dialogue\AutoScroll.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Choice.cs" />
@@ -325,6 +326,8 @@
     <Compile Include="Assets\Scripts\Ladder.cs" />
     <Compile Include="Assets\Scripts\LoadAfterTime.cs" />
     <Compile Include="Assets\Scripts\MonsterMovement.cs" />
+    <Compile Include="Assets\Scripts\NavigateCharacter.cs" />
+    <Compile Include="Assets\Scripts\Notebook.cs" />
     <Compile Include="Assets\Scripts\NotReady\FadeManager.cs" />
     <Compile Include="Assets\Scripts\Pause.cs" />
     <Compile Include="Assets\Scripts\PlayerData.cs" />
