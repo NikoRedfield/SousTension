@@ -324,6 +324,7 @@
     <Compile Include="Assets\Scripts\Interaction.cs" />
     <Compile Include="Assets\Scripts\Kill.cs" />
     <Compile Include="Assets\Scripts\Ladder.cs" />
+    <Compile Include="Assets\Scripts\LastFocused.cs" />
     <Compile Include="Assets\Scripts\LoadAfterTime.cs" />
     <Compile Include="Assets\Scripts\MonsterMovement.cs" />
     <Compile Include="Assets\Scripts\NavigateCharacter.cs" />

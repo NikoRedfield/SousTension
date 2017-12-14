@@ -20,6 +20,8 @@ namespace UnityStandardAssets._2D
         private ControllerStatus controller;
         private int controllerState;
         private GameObject book;
+
+        private bool mAxis = false;
        
 
         private void Awake()
@@ -69,11 +71,25 @@ namespace UnityStandardAssets._2D
                     }
                     ControlsUI.SetActive(!ControlsUI.activeSelf);
                 }
-                if (CrossPlatformInputManager.GetButtonDown("Book"))
+                if (CrossPlatformInputManager.GetButtonDown("Book") )
                 {
                     Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
                     book.SetActive(!book.activeSelf);
                 }
+                if(CrossPlatformInputManager.GetAxis("BookAxis") > 0)
+                {
+                    if (!mAxis)
+                    {
+                        mAxis = true;
+                        Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
+                        book.SetActive(!book.activeSelf);
+                    }
+                }
+                if (CrossPlatformInputManager.GetAxis("BookAxis") == 0)
+                {
+                    mAxis = false;
+                }
+
             }                
         }
 
@@ -81,8 +97,9 @@ namespace UnityStandardAssets._2D
 
         private void FixedUpdate()
         {
+           
             // Read the inputs.
-                float h = CrossPlatformInputManager.GetAxis("Horizontal");
+            float h = CrossPlatformInputManager.GetAxis("Horizontal");
                 // Pass all parameters to the character control script.
                 m_Character.Move(h, crouch, m_Jump);
                 m_Jump = false;
