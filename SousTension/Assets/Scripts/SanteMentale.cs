@@ -15,6 +15,7 @@ public class SanteMentale : MonoBehaviour {
     private GameObject cam;
     private bool changedOnce = false;
     private bool changedTwice = false;
+    private bool changedThird = false;
     private bool spawned = false;
  
 
@@ -22,6 +23,7 @@ public class SanteMentale : MonoBehaviour {
 	void Start () {
         slider = this.GetComponent<Slider>();
         cam = GameObject.Find("Main Camera");
+        slider.value = PlayerData.santeMentale;
 	}
 	
 	// Update is called once per frame
@@ -38,30 +40,37 @@ public class SanteMentale : MonoBehaviour {
 
     public void MentalHealthEvent()
     {
-        if (slider.value <= 30 && !changedTwice && Monster != null)
+        if (slider.value <= 30 && !changedThird && Monster != null)
         {
-            changedTwice= true;
-            Monster.transform.localScale = new Vector3(Monster.transform.localScale.x, Monster.transform.localScale.y * 2, Monster.transform.localScale.z);
+            changedThird= true;
+            Monster.transform.localScale = new Vector3(Monster.transform.localScale.x *2, Monster.transform.localScale.y, Monster.transform.localScale.z);
            // StartCoroutine(ScaleObject());
             return;
         }
-        if (slider.value <= 80 && !changedOnce && Monster != null)
+        if (slider.value <= 45 && !changedTwice && Monster != null)
+        {
+            changedTwice = true;
+            Monster.transform.localScale = new Vector3(Monster.transform.localScale.x*2, Monster.transform.localScale.y, Monster.transform.localScale.z);
+            // StartCoroutine(ScaleObject());
+            return;
+        }
+        if (slider.value <= 60 && !changedOnce && Monster != null)
         {
             changedOnce = true;
+            Monster.SetActive(true);
+            cam.GetComponent<CameraFollow2D>().enabled = false;
+            cam.GetComponent<CameraScroll>().enabled = true;
             
-            Monster.transform.localScale = new Vector3(Monster.transform.localScale.x , Monster.transform.localScale.y , Monster.transform.localScale.z);
             //StartCoroutine(ScaleObject());
             //Monster.transform.localScale = Vector3.Lerp(Monster.transform.localScale, new Vector3(Monster.transform.localScale.x * 2, Monster.transform.localScale.y * 2, Monster.transform.localScale.z), Time.deltaTime);
            
             return;
         }
-            if (slider.value <= 130 && !spawned && Monster != null)
+            if (slider.value <= 150 && !spawned && Monster != null)
         {
             diminution = diminution2;
             spawned = true;
-            Monster.SetActive(true);
-            cam.GetComponent<CameraFollow2D>().enabled = false;
-            cam.GetComponent<CameraScroll>().enabled = true;
+          
             return;
         }
     }

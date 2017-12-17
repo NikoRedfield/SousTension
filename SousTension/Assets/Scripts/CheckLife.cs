@@ -30,6 +30,7 @@ public class CheckLife : MonoBehaviour {
         source.clip = deathClip;
         source.Play();
         fade.Fade(false, 30f);
+        PlayerData.santeMentale = 300;
         yield return new WaitForSeconds(source.clip.length - 3);
         SceneManager.LoadScene("GameOver");
     }
