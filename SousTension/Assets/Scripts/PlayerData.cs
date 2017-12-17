@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class PlayerData {
 
-    public static int santeMentale = 180;
+    public static int santeMentale = 280;
+    public static int caughtByMonster = 0;
 }

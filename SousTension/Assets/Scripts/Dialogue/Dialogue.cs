@@ -11,5 +11,6 @@ public class Dialogue {
     public string sentence;
     public Sprite portrait;
     public AudioClip clip;
+    public string indication;
 
 }

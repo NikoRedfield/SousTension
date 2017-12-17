@@ -22,9 +22,10 @@ public class Kill : MonoBehaviour {
         {
             Debug.Log("Hit");
             collision.gameObject.transform.Rotate(new Vector3(45, 0, 0));
-            StartCoroutine(Death());
+            StartCoroutine(BackStation());
         }
     }
+
 
     //Loads GameOver Scene
     private IEnumerator Death()
@@ -34,5 +35,17 @@ public class Kill : MonoBehaviour {
         fade.Fade(false, 30f);
         yield return new WaitForSeconds(source.clip.length-2);
         SceneManager.LoadScene("GameOver");
+    }
+
+    //Loads GameOver Scene
+    private IEnumerator BackStation()
+    {
+        source.clip = deathClip;
+        source.Play();
+        fade.Fade(false, 30f);
+        yield return new WaitForSeconds(source.clip.length - 2);
+        PlayerData.santeMentale = PlayerData.santeMentale / 2;
+        PlayerData.caughtByMonster++;
+        SceneManager.LoadScene("Station");
     }
 }

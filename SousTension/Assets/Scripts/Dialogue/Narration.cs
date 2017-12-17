@@ -39,6 +39,12 @@ public class Narration : MonoBehaviour
     private GameObject portraitTheo;
     private GameObject portraitTheoZero;
     private AudioSource source;
+
+    public Font nameFont;
+    public Font dialFont;
+    public string color = "yellow";
+
+    private IEnumerator coroutine;
     
 
     //Launching Dialogue
@@ -82,7 +88,24 @@ public class Narration : MonoBehaviour
         if (currentDialogue.npcName != "")
         {
             mtext.text += "\n";
-            mtext.text = mtext.text + "<size=24><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>\n\n";
+            mtext.font = nameFont;
+            if (currentDialogue.npcName != "Théo :")
+            {
+                mtext.text = mtext.text + "<size=24><color=" + color + "><b>   " + currentDialogue.npcName;
+            }
+            if(currentDialogue.npcName == "Théo :")
+            {
+                mtext.text = mtext.text + "<size=24><color=#e2d5e7><b>   " + currentDialogue.npcName;
+            }
+            if(currentDialogue.indication != "")
+            {
+                mtext.text += "<i>" + currentDialogue.indication + "</i>";
+            }
+            mtext.text += "</b></color></size>\n\n";
+            currentTextArea = (GameObject)Instantiate(textArea);
+            currentTextArea.transform.SetParent(panel);
+            mtext = currentTextArea.GetComponent<Text>();
+            mtext.font = dialFont;
             if(currentDialogue.npcName != "Théo :" || currentDialogue.npcName != "Théo (à lui-même) :")
             {
                 fadePortrait1.SetActive(false);
@@ -96,9 +119,15 @@ public class Narration : MonoBehaviour
                 portraitTheo.GetComponent<Image>().sprite = currentDialogue.portrait;
 
             }
+            mtext.text += "<size=20><color=white></color></size>";
+            coroutine = PlayText(15);
         }
-        mtext.text += "<size=20><color=white></color></size>";
-        StartCoroutine("PlayText"); 
+        if (currentDialogue.npcName == "")
+        {
+           mtext.text += "<size=20><color=white><i></i></color></size>";
+           coroutine = PlayText(19);
+        }
+        StartCoroutine(coroutine); 
       // currentTextArea = (GameObject)Instantiate(textArea);
        // currentTextArea.transform.SetParent(panel);
     }
@@ -142,8 +171,25 @@ public class Narration : MonoBehaviour
 
                 if (currentDialogue.npcName != "")
                 {
-                    mtext.text = mtext.text + "\n<size=24><b><color=yellow>   " + currentDialogue.npcName + "</color></b></size>";
 
+                    mtext.font = nameFont;
+                    if (currentDialogue.npcName != "Théo :")
+                    {
+                        mtext.text = mtext.text + "<size=24><color=" + color + "><b>   " + currentDialogue.npcName;
+                    }
+                    if (currentDialogue.npcName == "Théo :")
+                    {
+                        mtext.text = mtext.text + "<size=24><color=#e2d5e7><b>   " + currentDialogue.npcName;
+                    }
+                    if (currentDialogue.indication != "")
+                    {
+                        mtext.text += " <i>" + currentDialogue.indication + "</i>";
+                    }
+                    mtext.text += "</b></color></size>";
+                    currentTextArea = (GameObject)Instantiate(textArea);
+                    currentTextArea.transform.SetParent(panel);
+                    mtext = currentTextArea.GetComponent<Text>();
+                    mtext.font = dialFont;
                     if (currentDialogue.npcName != "Théo :" && currentDialogue.npcName != "Théo (à lui-même) :")
                     {
                        fadePortrait1.SetActive(false);
@@ -163,8 +209,18 @@ public class Narration : MonoBehaviour
 
                 if (currentDialogue.sentence != "")
                 {
-                    mtext.text += "\n\n<size=20><color=white></color></size>";
-                    StartCoroutine("PlayText");
+                    if(currentDialogue.npcName == "")
+                    {
+                        mtext.text += "\n<size=20><color=white><i></i></color></size>";
+                        coroutine = PlayText(19);
+                    }
+                    else
+                    {
+                        mtext.text += "\n<size=20><color=white></color></size>";
+                        coroutine = PlayText(15);
+                    }
+                   
+                    StartCoroutine(coroutine);
                 }
                 else
                 {
@@ -219,12 +275,12 @@ public class Narration : MonoBehaviour
         }
     }
 
-    IEnumerator PlayText()
+    IEnumerator PlayText(int i)
     {
         float delay = 0f;
         foreach (char c in currentDialogue.sentence)
         {
-            mtext.text = mtext.text.Substring(0, mtext.text.Length - 15) + c + mtext.text.Substring(mtext.text.Length - 15);
+            mtext.text = mtext.text.Substring(0, mtext.text.Length - i) + c + mtext.text.Substring(mtext.text.Length - i);
             if (!dover) {             
                 yield return new WaitForSeconds(delay);
             }

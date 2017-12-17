@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SanteMentale : MonoBehaviour {
 
     public int diminution = 0;
+    public int diminution2 = 0;
     public GameObject Monster;
 
     private Slider slider;
@@ -37,25 +38,26 @@ public class SanteMentale : MonoBehaviour {
 
     public void MentalHealthEvent()
     {
-        if (slider.value <= 30 && !changedTwice)
+        if (slider.value <= 30 && !changedTwice && Monster != null)
         {
             changedTwice= true;
             Monster.transform.localScale = new Vector3(Monster.transform.localScale.x, Monster.transform.localScale.y * 2, Monster.transform.localScale.z);
            // StartCoroutine(ScaleObject());
             return;
         }
-        if (slider.value <= 80 && !changedOnce)
+        if (slider.value <= 80 && !changedOnce && Monster != null)
         {
             changedOnce = true;
-            diminution--;
+            
             Monster.transform.localScale = new Vector3(Monster.transform.localScale.x , Monster.transform.localScale.y , Monster.transform.localScale.z);
             //StartCoroutine(ScaleObject());
             //Monster.transform.localScale = Vector3.Lerp(Monster.transform.localScale, new Vector3(Monster.transform.localScale.x * 2, Monster.transform.localScale.y * 2, Monster.transform.localScale.z), Time.deltaTime);
            
             return;
         }
-            if (slider.value <= 130 && !spawned)
+            if (slider.value <= 130 && !spawned && Monster != null)
         {
+            diminution = diminution2;
             spawned = true;
             Monster.SetActive(true);
             cam.GetComponent<CameraFollow2D>().enabled = false;

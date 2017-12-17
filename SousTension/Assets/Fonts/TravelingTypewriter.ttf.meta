@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: ff449bb8478e5ba4da5fa331118266a8
+timeCreated: 1513508726
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Traveling _Typewriter
+  fontNames:
+  - Traveling _Typewriter
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 82480ddf49f2a5745b5428893d37bf19, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

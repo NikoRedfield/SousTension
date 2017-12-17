@@ -308,6 +308,7 @@
     <Compile Include="Assets\Scripts\Camera\StopCamera.cs" />
     <Compile Include="Assets\Scripts\Camera\SwitchCamera.cs" />
     <Compile Include="Assets\Scripts\ChangeSide.cs" />
+    <Compile Include="Assets\Scripts\CheckLife.cs" />
     <Compile Include="Assets\Scripts\ChoiceNotebook.cs" />
     <Compile Include="Assets\Scripts\ControllerStatus.cs" />
     <Compile Include="Assets\Scripts\Dialogue\AutoScroll.cs" />
@@ -331,6 +332,7 @@
     <Compile Include="Assets\Scripts\Notebook.cs" />
     <Compile Include="Assets\Scripts\NotReady\FadeManager.cs" />
     <Compile Include="Assets\Scripts\Pause.cs" />
+    <Compile Include="Assets\Scripts\PlayAnimation.cs" />
     <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\PlayMusicRandomly.cs" />
     <Compile Include="Assets\Scripts\SanteMentale.cs" />
