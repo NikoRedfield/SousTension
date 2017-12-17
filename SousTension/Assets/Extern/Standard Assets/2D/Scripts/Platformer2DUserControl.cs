@@ -89,6 +89,10 @@ namespace UnityStandardAssets._2D
                 {
                     mAxis = false;
                 }
+                if(book.activeSelf || ControlsUI.activeSelf)
+                {
+                    Time.timeScale = 0;
+                }
 
             }                
         }

@@ -21,6 +21,7 @@ public class Narration : MonoBehaviour
     public Narration followUpDialogue = null;
 
     public GameObject fadePortrait1;
+    public GameObject portrait2;
     public string NextScene;
 
     private Queue<Dialogue> Qdialogues;
@@ -36,11 +37,16 @@ public class Narration : MonoBehaviour
     private bool dover = false;
 
     private GameObject portraitTheo;
+    private GameObject portraitTheoZero;
+    private AudioSource source;
+    
 
     //Launching Dialogue
     public void StartDialogue()
     {
-        portraitTheo = GameObject.Find("PortraitTheo").transform.GetChild(0).gameObject;
+        source = GameObject.Find("SFX_Manager").GetComponent<AudioSource>();
+        portraitTheoZero = GameObject.Find("PortraitTheo");
+        portraitTheo = portraitTheoZero.transform.GetChild(0).gameObject;
 
         isLaunched = true;
 
@@ -63,6 +69,15 @@ public class Narration : MonoBehaviour
 
         }
         currentDialogue = Qdialogues.Dequeue();
+        
+        if(currentDialogue.clip != null)
+        {
+            source.clip = currentDialogue.clip;
+            if (!source.isPlaying)
+            {
+                source.Play();
+            }
+        }
 
         if (currentDialogue.npcName != "")
         {
@@ -71,10 +86,15 @@ public class Narration : MonoBehaviour
             if(currentDialogue.npcName != "Théo :" || currentDialogue.npcName != "Théo (à lui-même) :")
             {
                 fadePortrait1.SetActive(false);
+                fadePortrait1.GetComponent<Image>().sprite = currentDialogue.portrait;
+                portrait2.GetComponent<Image>().sprite = currentDialogue.portrait;
             }
             else
             {
                 fadePortrait1.SetActive(true);
+                portraitTheoZero.GetComponent<Image>().sprite = currentDialogue.portrait;
+                portraitTheo.GetComponent<Image>().sprite = currentDialogue.portrait;
+
             }
         }
         mtext.text += "<size=20><color=white></color></size>";
@@ -106,6 +126,16 @@ public class Narration : MonoBehaviour
                     return;
                 }
                 currentDialogue = Qdialogues.Dequeue();
+                
+                if (currentDialogue.clip != null)
+                {
+                    source.Stop();
+                    source.clip = currentDialogue.clip;
+                    if (!source.isPlaying)
+                    {
+                        source.Play();
+                    }
+                }
 
                 portraitTheo.SetActive(true);
                 fadePortrait1.SetActive(true);
@@ -119,11 +149,15 @@ public class Narration : MonoBehaviour
                        fadePortrait1.SetActive(false);
                         portraitTheo.SetActive(true);
                         Debug.Log(currentDialogue.npcName);
+                        fadePortrait1.GetComponent<Image>().sprite = currentDialogue.portrait;
+                        portrait2.GetComponent<Image>().sprite = currentDialogue.portrait;
                     }
                     else
                     {
                         portraitTheo.SetActive(false);
                         fadePortrait1.SetActive(true);
+                        portraitTheoZero.GetComponent<Image>().sprite = currentDialogue.portrait;
+                        portraitTheo.GetComponent<Image>().sprite = currentDialogue.portrait;
                     }
                 }
 

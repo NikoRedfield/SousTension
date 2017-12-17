@@ -16,6 +16,7 @@ public class NavigateCharacter : MonoBehaviour {
     private int delay = 8;
     private int currentTime = 8;
     private bool check = false;
+    private int waitForSubmit = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -61,18 +62,26 @@ public class NavigateCharacter : MonoBehaviour {
                     DisplayData(currentIndex, currentIndex + 1);
                 }
             }
-            if (CrossPlatformInputManager.GetButtonDown("Cancel"))
+            if (CrossPlatformInputManager.GetButtonDown("Submit"))
             {
-                fiches.transform.GetChild(currentIndex).gameObject.SetActive(false);
-                currentIndex = 0;
-                story.SetActive(true);
-                Color postIt = GameObject.Find("StoryName").GetComponent<Image>().color;
-                postIt.a = 1f;
-                GameObject.Find("StoryName").GetComponent<Image>().color = postIt;
-                Color postIt2 = GameObject.Find("CodexName").GetComponent<Image>().color; 
-                postIt2.a =0.5f;
-                GameObject.Find("CodexName").GetComponent<Image>().color = postIt2;
+                if (waitForSubmit > 60)
+                {
+
+                    fiches.transform.GetChild(currentIndex).gameObject.SetActive(false);
+                    currentIndex = 0;
+                    codex.SetActive(true);
+                    Color postIt = GameObject.Find("StoryName").GetComponent<Image>().color;
+                    postIt.a = 0.5f;
+                    GameObject.Find("StoryName").GetComponent<Image>().color = postIt;
+                    Color postIt2 = GameObject.Find("CodexName").GetComponent<Image>().color;
+                    postIt2.a = 1f;
+                    GameObject.Find("CodexName").GetComponent<Image>().color = postIt2;
+                    codex.transform.GetChild(0).GetComponent<Button>().Select();
+                    codex.transform.GetChild(0).GetComponent<Button>().OnSelect(null);
+                    waitForSubmit = 0;
+                }
             }
+            waitForSubmit++;
         }
 	}
 

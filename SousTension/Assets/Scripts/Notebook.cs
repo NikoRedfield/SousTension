@@ -26,6 +26,7 @@ public class Notebook : MonoBehaviour {
         {
             SwitchSection();
         }
+      
 
 
 	}
@@ -37,6 +38,7 @@ public class Notebook : MonoBehaviour {
             story.gameObject.SetActive(false);
             codex.gameObject.SetActive(true);
             codex.transform.GetChild(0).GetComponent<Button>().Select();
+            codex.transform.GetChild(0).GetComponent<Button>().OnSelect(null);
             Color postIt = storyName.color;
             postIt.a = 0.5f;
             storyName.color = postIt;

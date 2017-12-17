@@ -62,6 +62,7 @@ public class Pause : MonoBehaviour {
             
             menuToDisplay.SetActive(true);
             menuToDisplay.transform.GetChild(2).GetComponent<Button>().Select();
+            menuToDisplay.transform.GetChild(2).GetComponent<Button>().OnSelect(null);
             Time.timeScale = 0;
             //Cursor.visible = true;
             //  Cursor.lockState = CursorLockMode.Confined;
@@ -106,6 +107,7 @@ public class Pause : MonoBehaviour {
             optionPanel.SetActive(false);
             optionScreen = false;
             menuToDisplay.transform.GetChild(2).GetComponent<Button>().Select();
+            menuToDisplay.transform.GetChild(2).GetComponent<Button>().OnSelect(null);
         }
         return;
     }
