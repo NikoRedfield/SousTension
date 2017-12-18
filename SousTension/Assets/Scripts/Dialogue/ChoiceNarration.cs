@@ -41,11 +41,11 @@ public class ChoiceNarration : MonoBehaviour
 
         button1 = (GameObject)Instantiate(button);
         button1.transform.SetParent(panel);
-        button1.GetComponent<RectTransform>().sizeDelta = new Vector2(150, 50);
+        button1.GetComponent<RectTransform>().sizeDelta = new Vector2(380, 20);
 
         button2 = (GameObject)Instantiate(button);
         button2.transform.SetParent(panel);
-        button2.GetComponent<RectTransform>().sizeDelta = new Vector2(150, 50);
+        button2.GetComponent<RectTransform>().sizeDelta = new Vector2(380, 50);
 
 
 
