@@ -8,6 +8,7 @@ public class CameraScroll : MonoBehaviour
 
     public Transform player;
     public Vector3 offset;
+    public bool right;
 
     /// <summary>
     /// Scrolling speed
@@ -31,17 +32,32 @@ public class CameraScroll : MonoBehaviour
 
     void Update()
     {
-        // Movement
-        Vector3 movement = new Vector3(speed.x * direction.x, 0 , 0);    //Move forward at the given speed
-
-        movement *= Time.deltaTime;
-        transform.Translate(movement);
-        transform.position= new Vector3(transform.position.x, player.position.y + offset.y, transform.position.z); // Link the camera to the y position of the player
-
-        // Move the camera
-        if (isLinkedToCamera)
+        if (right)
         {
-            Camera.main.transform.Translate(movement);
+            Vector3 movementR = new Vector3(speed.x * -direction.x, 0, 0);    //Move forward at the given speed
+
+            movementR *= Time.deltaTime;
+            transform.Translate(movementR);
+            transform.position = new Vector3(transform.position.x, player.position.y + offset.y, transform.position.z); // Link the camera to the y position of the player
+            if (isLinkedToCamera)
+            {
+                Camera.main.transform.Translate(movementR);
+            }
         }
+        if (!right)
+        {
+            // Movement
+            Vector3 movement = new Vector3(speed.x * direction.x, 0, 0);    //Move forward at the given speed
+
+            movement *= Time.deltaTime;
+            transform.Translate(movement);
+            transform.position = new Vector3(transform.position.x, player.position.y + offset.y, transform.position.z); // Link the camera to the y position of the player
+                                                                                                                        // Move the camera
+            if (isLinkedToCamera)
+            {
+                Camera.main.transform.Translate(movement);
+            }
+        }
+       
     }
 }

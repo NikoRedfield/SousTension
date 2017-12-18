@@ -89,11 +89,11 @@ public class Narration : MonoBehaviour
         {
             mtext.text += "\n";
             mtext.font = nameFont;
-            if (currentDialogue.npcName != "Théo :")
+            if (currentDialogue.npcName != "Theo :")
             {
                 mtext.text = mtext.text + "<size=24><color=" + color + "><b>   " + currentDialogue.npcName;
             }
-            if(currentDialogue.npcName == "Théo :")
+            if(currentDialogue.npcName == "Theo :")
             {
                 mtext.text = mtext.text + "<size=24><color=#e2d5e7><b>   " + currentDialogue.npcName;
             }
@@ -106,7 +106,7 @@ public class Narration : MonoBehaviour
             currentTextArea.transform.SetParent(panel);
             mtext = currentTextArea.GetComponent<Text>();
             mtext.font = dialFont;
-            if(currentDialogue.npcName != "Théo :" || currentDialogue.npcName != "Théo (à lui-même) :")
+            if(currentDialogue.npcName != "Theo :" || currentDialogue.npcName != "Théo (à lui-même) :")
             {
                 fadePortrait1.SetActive(false);
                 fadePortrait1.GetComponent<Image>().sprite = currentDialogue.portrait;
@@ -173,11 +173,11 @@ public class Narration : MonoBehaviour
                 {
 
                     mtext.font = nameFont;
-                    if (currentDialogue.npcName != "Théo :")
+                    if (currentDialogue.npcName != "Theo :")
                     {
                         mtext.text = mtext.text + "<size=24><color=" + color + "><b>   " + currentDialogue.npcName;
                     }
-                    if (currentDialogue.npcName == "Théo :")
+                    if (currentDialogue.npcName == "Theo :")
                     {
                         mtext.text = mtext.text + "<size=24><color=#e2d5e7><b>   " + currentDialogue.npcName;
                     }
@@ -190,7 +190,7 @@ public class Narration : MonoBehaviour
                     currentTextArea.transform.SetParent(panel);
                     mtext = currentTextArea.GetComponent<Text>();
                     mtext.font = dialFont;
-                    if (currentDialogue.npcName != "Théo :" && currentDialogue.npcName != "Théo (à lui-même) :")
+                    if (currentDialogue.npcName != "Theo :" && currentDialogue.npcName != "Théo (à lui-même) :")
                     {
                        fadePortrait1.SetActive(false);
                         portraitTheo.SetActive(true);

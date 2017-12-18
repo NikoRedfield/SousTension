@@ -8,6 +8,9 @@ public class ChangeSide : MonoBehaviour {
     public GameObject sideB;
     public FadeManager fade;
     public int diminution = 0;
+    public GameObject monstre;
+
+   
 
     
 
@@ -18,6 +21,15 @@ public class ChangeSide : MonoBehaviour {
         sideB.SetActive(true);
         GameObject.Find("SanteMentale").GetComponent<SanteMentale>().diminution = diminution;
 	}
-	
+
+    private void Update()
+    {
+        if(sideB.activeSelf && monstre.activeSelf)
+        {
+            monstre.GetComponent<MonsterMovement>().StuckToCameraRight = true;
+            GameObject.Find("Main Camera").GetComponent<CameraScroll>().right = true;
+        }
+    }
+
 
 }

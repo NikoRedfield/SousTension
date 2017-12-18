@@ -7,6 +7,7 @@ public class MonsterMovement : MonoBehaviour
 
     public int speed = 1;
     public bool StuckToCamera = true;
+    public bool StuckToCameraRight = false;
 
     // Update is called once per frame
     void Update()
@@ -15,6 +16,13 @@ public class MonsterMovement : MonoBehaviour
         {
             Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
             pos.x = Mathf.Clamp01(pos.x);
+            pos.y = Mathf.Clamp01(pos.y);
+            transform.position = Camera.main.ViewportToWorldPoint(pos);
+        }
+        if (StuckToCameraRight)
+        {
+            Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+            pos.x = Mathf.Clamp01(pos.x + Screen.width);
             pos.y = Mathf.Clamp01(pos.y);
             transform.position = Camera.main.ViewportToWorldPoint(pos);
         }
