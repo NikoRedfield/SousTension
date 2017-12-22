@@ -335,6 +335,7 @@
     <Compile Include="Assets\Scripts\PlayAnimation.cs" />
     <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\PlayMusicRandomly.cs" />
+    <Compile Include="Assets\Scripts\RespawnHole.cs" />
     <Compile Include="Assets\Scripts\SanteMentale.cs" />
     <Compile Include="Assets\Scripts\SetInactiveAfterDelay.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />

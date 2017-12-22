@@ -8,7 +8,8 @@ public class BasicQTE : MonoBehaviour {
     public GameObject[] linkedObjects;  //Objects linked to the QTE
     public string QTEinput = "Submit";  //Input used to interact 
     public int numberPressed = 1;   //Number of Inputs necessary for validation
-    public GameObject QTEui;    //UI used 
+    public GameObject controllerButton;    //Controlelr UI used 
+    public GameObject keyboardButton; //Keyboard UI used
     public Image fillMeter;     
     public AudioClip mainSound;
     public AudioClip successSound;
@@ -17,9 +18,17 @@ public class BasicQTE : MonoBehaviour {
     private int valideInput = 0;    //Current number of correct inputs
     private AudioSource source;
     private bool authoriseInput = false;
+    private ControllerStatus controller;  //Check the used input device
+    private GameObject displayedUI;
+    private int controllerState;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+        controller = this.GetComponent<ControllerStatus>();
+        displayedUI = controllerButton;
+        controllerState = controller.ControllerCheck();
+        SwitchUI();     //Switch UI depending on the device used
+
         // valideInput = 0;
         source = this.GetComponent<AudioSource>();
         source.clip = mainSound;
@@ -31,8 +40,10 @@ public class BasicQTE : MonoBehaviour {
     {
         if (valideInput < numberPressed)    //QTE not yet validated
         {
+            controllerState = controller.ControllerCheck();
+            SwitchUI();
             authoriseInput = true;
-            QTEui.SetActive(true);
+            displayedUI.SetActive(true);
             fillMeter.gameObject.SetActive(true);
             fillMeter.fillAmount = 0;
         }
@@ -42,7 +53,7 @@ public class BasicQTE : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D collision)
     {
         authoriseInput = false;             
-        QTEui.SetActive(false);
+        displayedUI.SetActive(false);
         fillMeter.gameObject.SetActive(false);
     }
 
@@ -51,7 +62,7 @@ public class BasicQTE : MonoBehaviour {
     {
         if (authoriseInput && valideInput < numberPressed)
         {
-            QTEui.SetActive(true);
+            displayedUI.SetActive(true);
             fillMeter.gameObject.SetActive(true);
             LaunchQTE();
         }
@@ -74,7 +85,7 @@ public class BasicQTE : MonoBehaviour {
         if(valideInput == numberPressed)   //If the required number of inputs has been reached
             {
                 //SuccessQTE();   //Launch the success sequence
-                QTEui.SetActive(false);
+               displayedUI.SetActive(false);
             if (linkedToMonster)
             {
                 GameObject.Find("Monster").transform.GetChild(0).gameObject.SetActive(false);
@@ -105,5 +116,23 @@ public class BasicQTE : MonoBehaviour {
         SuccessQTE();
         yield return new WaitForSeconds(successSound.length);
         fillMeter.gameObject.SetActive(false);
+    }
+
+    //Check what UI to display
+    private void SwitchUI()
+    {
+        switch (controllerState)
+        {
+            case 0:
+                displayedUI = keyboardButton;
+                break;
+            case 1:
+                displayedUI = controllerButton;
+                break;
+
+            default:
+                Debug.Log("Error on SwitchUI");
+                break;
+        }
     }
 }

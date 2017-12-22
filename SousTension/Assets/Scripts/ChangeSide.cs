@@ -20,6 +20,10 @@ public class ChangeSide : MonoBehaviour {
         sideA.SetActive(false);
         sideB.SetActive(true);
         GameObject.Find("SanteMentale").GetComponent<SanteMentale>().diminution = diminution;
+        if (monstre.activeSelf)
+        {
+            PlayerData.santeMentale = 180;
+        }
 	}
 
     private void Update()

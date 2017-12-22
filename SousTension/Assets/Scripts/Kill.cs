@@ -44,7 +44,7 @@ public class Kill : MonoBehaviour {
         source.Play();
         fade.Fade(false, 30f);
         yield return new WaitForSeconds(source.clip.length - 2);
-        PlayerData.santeMentale = PlayerData.santeMentale / 2;
+        PlayerData.santeMentale = 240;
         PlayerData.caughtByMonster++;
         SceneManager.LoadScene("Station");
     }
