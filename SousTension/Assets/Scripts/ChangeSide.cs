@@ -22,9 +22,13 @@ public class ChangeSide : MonoBehaviour {
         GameObject.Find("SanteMentale").GetComponent<SanteMentale>().diminution = diminution;
         if (monstre.activeSelf)
         {
-            PlayerData.santeMentale = 180;
+            PlayerData.santeMentale = 180; //180
         }
-	}
+        monstre.SetActive(false);
+        GameObject.Find("HUD").transform.GetChild(2).GetComponent<SanteMentale>().ResetTriggers();
+        GameObject.Find("Main Camera").GetComponent<CameraScroll>().enabled = false;
+        GameObject.Find("Main Camera").GetComponent<CameraFollow2D>().enabled = true;
+    }
 
     private void Update()
     {
@@ -32,6 +36,10 @@ public class ChangeSide : MonoBehaviour {
         {
             monstre.GetComponent<MonsterMovement>().StuckToCameraRight = true;
             GameObject.Find("Main Camera").GetComponent<CameraScroll>().right = true;
+            GameObject.Find("Main Camera").GetComponent<CameraScroll>().enabled = true;
+            GameObject.Find("Main Camera").GetComponent<CameraScroll>().offset.y = 4;
+            GameObject.Find("Main Camera").GetComponent<CameraScroll>().offset.z = -20;
+            GameObject.Find("Main Camera").GetComponent<CameraFollow2D>().enabled = false;
         }
     }
 

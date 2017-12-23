@@ -87,4 +87,12 @@ public class SanteMentale : MonoBehaviour {
             yield return null;
         }
     }
+
+    public void ResetTriggers()
+    {
+        spawned = false;
+        changedOnce = false;
+        changedTwice = false;
+        changedThird = false;
+    }
 }
