@@ -21,7 +21,7 @@ namespace UnityStandardAssets._2D
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 
-       
+        private bool running = false;
 
         private void Awake()
         {
@@ -32,6 +32,13 @@ namespace UnityStandardAssets._2D
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
         }
 
+        private void Update()
+        {
+            if (CrossPlatformInputManager.GetButtonDown("Run"))
+            {
+                running = !running;
+            }
+        }
 
         private void FixedUpdate()
         {
@@ -85,7 +92,10 @@ namespace UnityStandardAssets._2D
 
                     // Move the character
                     m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, m_Rigidbody2D.velocity.y);
-                    if (CrossPlatformInputManager.GetButton("Run"))
+
+                   
+
+                    if (running)
                     {
                         m_MaxSpeed = 10f;
                     }

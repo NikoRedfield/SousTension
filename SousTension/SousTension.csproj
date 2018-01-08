@@ -321,6 +321,7 @@
     <Compile Include="Assets\Scripts\Dialogue\Narration.cs" />
     <Compile Include="Assets\Scripts\DisplayUIScene.cs" />
     <Compile Include="Assets\Scripts\DoorStation.cs" />
+    <Compile Include="Assets\Scripts\HelpLadder.cs" />
     <Compile Include="Assets\Scripts\InputAuthorisation.cs" />
     <Compile Include="Assets\Scripts\Interaction.cs" />
     <Compile Include="Assets\Scripts\Kill.cs" />
