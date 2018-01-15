@@ -328,7 +328,9 @@
     <Compile Include="Assets\Scripts\Ladder.cs" />
     <Compile Include="Assets\Scripts\LastFocused.cs" />
     <Compile Include="Assets\Scripts\LoadAfterTime.cs" />
+    <Compile Include="Assets\Scripts\Lungs.cs" />
     <Compile Include="Assets\Scripts\MonsterMovement.cs" />
+    <Compile Include="Assets\Scripts\MusicTone.cs" />
     <Compile Include="Assets\Scripts\NavigateCharacter.cs" />
     <Compile Include="Assets\Scripts\Notebook.cs" />
     <Compile Include="Assets\Scripts\NotReady\FadeManager.cs" />

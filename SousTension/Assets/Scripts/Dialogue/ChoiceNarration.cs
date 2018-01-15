@@ -20,15 +20,21 @@ public class ChoiceNarration : MonoBehaviour
 
     public int impactChoice1 = 0;
     public int impactChoice2 = 0;
+
+    public AudioSource trackChoice1;
+    public AudioSource trackChoice2;
     
     private GameObject button1;
     private GameObject button2;
 
     private Slider smBar;
 
+    private MusicTone audioManager;
+
     void Start()
     {
         smBar = GameObject.Find("SanteMentale").GetComponent<Slider>();
+        audioManager = GameObject.Find("ToneManager").GetComponent<MusicTone>();
     }
 
 
@@ -85,6 +91,12 @@ public class ChoiceNarration : MonoBehaviour
         smBar.value = PlayerData.santeMentale;
         Debug.Log(PlayerData.santeMentale);
 
+        if (trackChoice1 != null)
+        {
+            Debug.Log("Track1");
+            audioManager.SwitchAudio(trackChoice1);
+        }
+
         return;
     }
 
@@ -102,6 +114,11 @@ public class ChoiceNarration : MonoBehaviour
         smBar.value = PlayerData.santeMentale;
 
         Debug.Log(PlayerData.santeMentale);
+        if (trackChoice2 != null)
+        {
+            audioManager.SwitchAudio(trackChoice2);
+            Debug.Log("Track2");
+        }
 
         return;
 

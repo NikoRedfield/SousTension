@@ -10,7 +10,6 @@ public class Pause : MonoBehaviour {
     public GameObject menuToDisplay;    //UI to display for the pause menu
     public GameObject optionPanel;
 
-
     private bool isActive = false;  //Checks if the pause is already active
     private string mainMenuScene = "Menu";
     private GameObject player;
