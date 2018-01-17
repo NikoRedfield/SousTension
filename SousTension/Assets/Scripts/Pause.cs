@@ -80,6 +80,7 @@ public class Pause : MonoBehaviour {
     //Load the main menu scene
     public void MainMenu()
     {
+        PlayerData.santeMentale = 300;
         Time.timeScale = 1;
         SceneManager.LoadScene(mainMenuScene);
     }

@@ -329,6 +329,7 @@
     <Compile Include="Assets\Scripts\LastFocused.cs" />
     <Compile Include="Assets\Scripts\LoadAfterTime.cs" />
     <Compile Include="Assets\Scripts\Lungs.cs" />
+    <Compile Include="Assets\Scripts\Lungs2.cs" />
     <Compile Include="Assets\Scripts\MonsterMovement.cs" />
     <Compile Include="Assets\Scripts\MusicTone.cs" />
     <Compile Include="Assets\Scripts\NavigateCharacter.cs" />
@@ -338,6 +339,7 @@
     <Compile Include="Assets\Scripts\PlayAnimation.cs" />
     <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\PlayMusicRandomly.cs" />
+    <Compile Include="Assets\Scripts\QTE_Feu.cs" />
     <Compile Include="Assets\Scripts\RespawnHole.cs" />
     <Compile Include="Assets\Scripts\SanteMentale.cs" />
     <Compile Include="Assets\Scripts\SetInactiveAfterDelay.cs" />
