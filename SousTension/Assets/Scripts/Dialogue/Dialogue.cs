@@ -12,5 +12,6 @@ public class Dialogue {
     public Sprite portrait;
     public AudioClip clip;
     public string indication;
+    public int spacingIndication = 0;
 
 }

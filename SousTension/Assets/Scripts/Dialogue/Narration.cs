@@ -24,6 +24,8 @@ public class Narration : MonoBehaviour
     public GameObject portrait2;
     public string NextScene;
 
+    public ScrollRect scroll;
+
     private Queue<Dialogue> Qdialogues;
     private Dialogue currentDialogue;
 
@@ -42,7 +44,7 @@ public class Narration : MonoBehaviour
 
     public Font nameFont;
     public Font dialFont;
-    public string color = "yellow";
+    public string color = "#ffb83c";
 
     private IEnumerator coroutine;
     
@@ -91,14 +93,15 @@ public class Narration : MonoBehaviour
             mtext.font = nameFont;
             if (currentDialogue.npcName != "Theo :")
             {
-                mtext.text = mtext.text + "<size=24><color=" + color + "><b>   " + currentDialogue.npcName;
+                mtext.text = mtext.text + "<size=24><color=" + PickNPCcolor(currentDialogue.npcName) + "><b>   " + currentDialogue.npcName;
             }
             if(currentDialogue.npcName == "Theo :")
             {
-                mtext.text = mtext.text + "<size=24><color=#e2d5e7><b>   " + currentDialogue.npcName;
+                mtext.text = mtext.text + "<size=24><color=#6db5ff><b>   " + currentDialogue.npcName;
             }
             if(currentDialogue.indication != "")
             {
+                mtext.font = dialFont;
                 mtext.text += "<i>" + currentDialogue.indication + "</i>";
             }
             mtext.text += "</b></color></size>\n\n";
@@ -139,6 +142,7 @@ public class Narration : MonoBehaviour
         {
            if ((Input.GetKeyDown("space") || Input.GetButtonDown("Submit")) && dover)
             {
+                
                 dover = false;
                 currentTextArea = (GameObject)Instantiate(textArea);
                 currentTextArea.transform.SetParent(panel);
@@ -175,17 +179,26 @@ public class Narration : MonoBehaviour
                     mtext.font = nameFont;
                     if (currentDialogue.npcName != "Theo :")
                     {
-                        mtext.text = mtext.text + "<size=24><color=" + color + "><b>   " + currentDialogue.npcName;
+                        mtext.text = mtext.text + "<size=24><color=" + PickNPCcolor(currentDialogue.npcName) + "><b>   " + currentDialogue.npcName;
                     }
                     if (currentDialogue.npcName == "Theo :")
                     {
-                        mtext.text = mtext.text + "<size=24><color=#e2d5e7><b>   " + currentDialogue.npcName;
+                        mtext.text = mtext.text + "<size=24><color=#6db5ff><b>   " + currentDialogue.npcName;
                     }
+                   
+                    mtext.text += "</b></color></size>";
+
                     if (currentDialogue.indication != "")
                     {
-                        mtext.text += " <i>" + currentDialogue.indication + "</i>";
+                        GameObject oldText = currentTextArea;
+                        currentTextArea = (GameObject)Instantiate(textArea);
+                        currentTextArea.transform.SetParent(oldText.transform);
+                        currentTextArea.transform.position = new Vector3(currentTextArea.transform.position.x + currentDialogue.spacingIndication, currentTextArea.transform.position.y, currentTextArea.transform.position.z);
+                        mtext = currentTextArea.GetComponent<Text>();
+                        mtext.font = dialFont;
+                        mtext.text += "<size=20><color=" + PickNPCcolor(currentDialogue.npcName)+ "><i>" + currentDialogue.indication + "</i></color></size>";
                     }
-                    mtext.text += "</b></color></size>";
+
                     currentTextArea = (GameObject)Instantiate(textArea);
                     currentTextArea.transform.SetParent(panel);
                     mtext = currentTextArea.GetComponent<Text>();
@@ -238,7 +251,9 @@ public class Narration : MonoBehaviour
         if (hasChoice && dialogueUI.activeSelf)
         {
             choiceEngaged = true;
-
+            portraitTheo.SetActive(false);
+            fadePortrait1.SetActive(true);
+            
             choice.LaunchChoice();
             return;
         }
@@ -297,6 +312,27 @@ public class Narration : MonoBehaviour
     {
         yield return new WaitForSeconds(0);
         SceneManager.LoadScene(NextScene);
+    }
+
+    private string PickNPCcolor(string name)
+    {
+        switch (name)
+        {
+            case "Leanne :":
+                return "#ffb83c";
+            case "Enrique :":
+                return "#0da156";
+            case "Franck :":
+                return "#cd4414";
+            case "SDF :":
+                return "#782cd5";
+            case "Theo :":
+                return "#6db5ff";
+
+            default:
+                return "npc error color name";
+        }
+
     }
 
 }

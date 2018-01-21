@@ -14,6 +14,7 @@ public class ChoiceNarration : MonoBehaviour
     public GameObject dialogueChoice2;
     
     public GameObject button;
+    public GameObject button_second;
     public RectTransform panel;
 
     public Narration followUpDialogue = null;
@@ -47,18 +48,20 @@ public class ChoiceNarration : MonoBehaviour
 
         button1 = (GameObject)Instantiate(button);
         button1.transform.SetParent(panel);
-        button1.GetComponent<RectTransform>().sizeDelta = new Vector2(380, 20);
+        button1.GetComponent<RectTransform>().sizeDelta = new Vector2(535, 155);
 
-        button2 = (GameObject)Instantiate(button);
+        button2 = (GameObject)Instantiate(button_second);
         button2.transform.SetParent(panel);
-        button2.GetComponent<RectTransform>().sizeDelta = new Vector2(380, 50);
+        button2.GetComponent<RectTransform>().sizeDelta = new Vector2(535, 155);
 
 
 
         button1.GetComponentInChildren<Text>().text = Choice1;
         button1.GetComponentInChildren<Text>().fontSize = 20;
+        button1.GetComponentInChildren<Text>().color = Color.white;
         button2.GetComponentInChildren<Text>().text = Choice2;
         button2.GetComponentInChildren<Text>().fontSize = 20;
+        button2.GetComponentInChildren<Text>().color = Color.white;
 
         button1.GetComponent<Button>().onClick.AddListener(MakeChoice1);
         button2.GetComponent<Button>().onClick.AddListener(MakeChoice2);
