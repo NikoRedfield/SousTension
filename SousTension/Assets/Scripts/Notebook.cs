@@ -40,22 +40,22 @@ public class Notebook : MonoBehaviour {
             codex.transform.GetChild(0).GetComponent<Button>().Select();
             codex.transform.GetChild(0).GetComponent<Button>().OnSelect(null);
             Color postIt = storyName.color;
-           // postIt.a = 0.5f;
-          //  storyName.color = postIt;
+            postIt.a = 0f;
+            storyName.color = postIt;
             Color postIt2 = codexName.color;
-           // postIt2.a = 1;
-           // codexName.color = postIt2;
+            postIt2.a = 0.4f;
+            codexName.color = postIt2;
         }
         else
         {
             story.gameObject.SetActive(true);
             codex.gameObject.SetActive(false);
             Color postIt = codexName.color;
-         //   postIt.a = 0.5f;
-         //   codexName.color = postIt;
+            postIt.a = 0f;
+            codexName.color = postIt;
             Color postIt2 = storyName.color;
-         //   postIt2.a = 1;
-         //   storyName.color = postIt2;
+            postIt2.a = 0.4f;
+           storyName.color = postIt2;
         }
     }
 

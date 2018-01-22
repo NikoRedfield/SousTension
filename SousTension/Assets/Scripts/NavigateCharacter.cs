@@ -70,12 +70,12 @@ public class NavigateCharacter : MonoBehaviour {
                     fiches.transform.GetChild(currentIndex).gameObject.SetActive(false);
                     currentIndex = 0;
                     codex.SetActive(true);
-                   // Color postIt = GameObject.Find("StoryName").GetComponent<Image>().color;
-                   // postIt.a = 0.5f;
-                   // GameObject.Find("StoryName").GetComponent<Image>().color = postIt;
-                  //  Color postIt2 = GameObject.Find("CodexName").GetComponent<Image>().color;
-                   // postIt2.a = 1f;
-                 //   GameObject.Find("CodexName").GetComponent<Image>().color = postIt2;
+                    Color postIt = GameObject.Find("StoryName").GetComponent<Image>().color;
+                    postIt.a = 0f;//0.5f;
+                    GameObject.Find("StoryName").GetComponent<Image>().color = postIt;
+                    Color postIt2 = GameObject.Find("CodexName").GetComponent<Image>().color;
+                    postIt2.a = 0.4f;
+                    GameObject.Find("CodexName").GetComponent<Image>().color = postIt2;
                     codex.transform.GetChild(0).GetComponent<Button>().Select();
                     codex.transform.GetChild(0).GetComponent<Button>().OnSelect(null);
                     waitForSubmit = 0;

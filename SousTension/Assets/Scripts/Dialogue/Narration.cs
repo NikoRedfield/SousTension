@@ -129,6 +129,9 @@ public class Narration : MonoBehaviour
         {
            mtext.text += "<size=20><color=white><i></i></color></size>";
            coroutine = PlayText(19);
+            portraitTheo.SetActive(true);
+            fadePortrait1.SetActive(true);
+
         }
         StartCoroutine(coroutine); 
       // currentTextArea = (GameObject)Instantiate(textArea);
