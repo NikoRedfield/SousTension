@@ -52,7 +52,8 @@ public class DoorStation : MonoBehaviour {
         {
             displayedUI.SetActive(true);
 
-            if (Input.GetKeyDown("e") || Input.GetButtonDown("Submit"))
+            if(Input.GetAxis("Vertical") > 0)
+            //if (Input.GetKeyDown("e") || Input.GetButtonDown("Submit"))
             {
                 
                 StartCoroutine(FadeThenLoad()); //Launch EXIT

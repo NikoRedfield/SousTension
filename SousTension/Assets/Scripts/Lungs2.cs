@@ -18,6 +18,7 @@ public class Lungs2 : MonoBehaviour
     private bool begin;
     private int targetRelax;
     private int bonus;
+    private int timer;
 
 
 
@@ -29,6 +30,7 @@ public class Lungs2 : MonoBehaviour
         begin = false;
         targetRelax = 60;
         bonus = 30;
+        timer = 20;
     }
 
 
@@ -36,10 +38,17 @@ public class Lungs2 : MonoBehaviour
     {
         if (!lungs.activeSelf)
         {
-            if (Input.GetButtonDown("Lungs1"))// && Input.GetButtonDown("Lungs2") && !begin)
+            if ((Input.GetButton("Lungs1") && Input.GetButtonDown("Lungs2")) || (Input.GetAxis("Lungs3") > 0 && Input.GetAxis("Lungs4") > 0) && timer == 0)  //&& !begin)
             {
                 lungs.SetActive(true);
                 Time.timeScale = 0;
+            }
+            else
+            {
+                if (timer > 0)
+                {
+                    timer--;
+                }
             }
         }
         else
@@ -63,7 +72,7 @@ public class Lungs2 : MonoBehaviour
         if (!TestLungs())
         {
             Debug.Log("!TestLungs()");
-            if (Input.GetButton("Lungs1") && Input.GetButton("Lungs2"))
+            if ((Input.GetButton("Lungs1") && Input.GetButton("Lungs2")) || (Input.GetAxis("Lungs3") > 0 && Input.GetAxis("Lungs4") > 0))
             {
                 cTimes++;
                 DisplayLungs();
@@ -140,5 +149,6 @@ public class Lungs2 : MonoBehaviour
         cTimes = 0;
         air.fillAmount = 0;
         Time.timeScale = 1;
+        timer = 20;
     }
 }
