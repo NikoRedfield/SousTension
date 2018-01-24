@@ -16,7 +16,7 @@ public class AutoScroll : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(delay2);
+        //Debug.Log(delay2);
         if (Input.GetAxis("Vertical") > 0.2)  //Scroll up
         {
 
