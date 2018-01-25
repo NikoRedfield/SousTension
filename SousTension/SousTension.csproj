@@ -312,6 +312,7 @@
     <Compile Include="Assets\Scripts\CheckLife.cs" />
     <Compile Include="Assets\Scripts\ChoiceNotebook.cs" />
     <Compile Include="Assets\Scripts\ControllerStatus.cs" />
+    <Compile Include="Assets\Scripts\DebugCommands.cs" />
     <Compile Include="Assets\Scripts\Dialogue\AutoScroll.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Choice.cs" />
     <Compile Include="Assets\Scripts\Dialogue\ChoiceNarration.cs" />
@@ -343,7 +344,9 @@
     <Compile Include="Assets\Scripts\PlayMusicRandomly.cs" />
     <Compile Include="Assets\Scripts\QTE_Feu.cs" />
     <Compile Include="Assets\Scripts\RespawnHole.cs" />
-    <Compile Include="Assets\Scripts\SanteMentale.cs" />
+    <Compile Include="Assets\Scripts\SanteMentale\Bulle.cs" />
+    <Compile Include="Assets\Scripts\SanteMentale\Hole.cs" />
+    <Compile Include="Assets\Scripts\SanteMentale\SanteMentale.cs" />
     <Compile Include="Assets\Scripts\SetInactiveAfterDelay.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\Scripts\SkipToNextScene.cs" />

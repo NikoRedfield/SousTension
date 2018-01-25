@@ -10,6 +10,7 @@ public class Notebook : MonoBehaviour {
     private GameObject codex;
     private Image storyName;
     private Image codexName;
+    private int delay = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -22,14 +23,27 @@ public class Notebook : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (CrossPlatformInputManager.GetButtonDown("Jump") && CheckListen())
+        if (CrossPlatformInputManager.GetAxisRaw("Vertical") != 0 && CheckListen())
         {
-            SwitchSection();
+            if(delay > 6)
+            {
+                SwitchSection();
+                delay = 0;
+            }
+            else
+            {
+                delay++;
+            }
         }
-      
+        if (CrossPlatformInputManager.GetAxisRaw("Horizontal") != 0 && CheckListen())
+        {
+
+        }
 
 
-	}
+
+
+    }
 
     void SwitchSection()
     {

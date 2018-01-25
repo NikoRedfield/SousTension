@@ -6,6 +6,8 @@ namespace UnityStandardAssets._2D
 {
     public class PlatformerCharacter2D : MonoBehaviour
     {
+        public GameObject canvasBoard;
+
         [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
         [SerializeField] private float m_JumpForce = 400f;                  // Amount of force added when the player jumps.
         [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;  // Amount of maxSpeed applied to crouching movement. 1 = 100%
@@ -145,6 +147,12 @@ namespace UnityStandardAssets._2D
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
+            if(canvasBoard != null)
+            {
+                Vector3 theScaleCanvas = canvasBoard.transform.localScale;
+                theScaleCanvas.x *= -1;
+                canvasBoard.transform.localScale = theScaleCanvas;
+            }
         }
     }
 }
