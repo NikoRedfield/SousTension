@@ -94,7 +94,11 @@ namespace UnityStandardAssets._2D
                     Time.timeScale = 0;
                 }
 
-            }                
+            }
+            else
+            {
+                m_Character.Move(0,false,false);
+            }
         }
 
       
