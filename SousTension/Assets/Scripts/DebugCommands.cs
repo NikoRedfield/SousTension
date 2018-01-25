@@ -11,9 +11,21 @@ public class DebugCommands : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("p"))
+        if (Input.GetKeyDown("1"))
         {
-            PlayerData.santeMentale = 150;
+            PlayerData.santeMentale = (int) PlayerData.santeMentale * 80 /100;
         }
-	}
+        if (Input.GetKeyDown("2"))
+        {
+            PlayerData.santeMentale = (int)PlayerData.santeMentale * 60 / 100;
+        }
+        if (Input.GetKeyDown("3"))
+        {
+            PlayerData.santeMentale = (int)PlayerData.santeMentale * 40 / 100;
+        }
+        if (Input.GetKeyDown("4"))
+        {
+            PlayerData.santeMentale = (int)PlayerData.santeMentale * 20 / 100;
+        }
+    }
 }
