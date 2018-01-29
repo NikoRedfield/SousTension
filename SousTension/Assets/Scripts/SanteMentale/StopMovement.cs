@@ -33,9 +33,19 @@ public class StopMovement : MonoBehaviour {
     
     IEnumerator StopPlayer()
     {
-       player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        if (player.GetComponent<UnityStandardAssets._2D.PlatformerCharacter2D>().IsFaceRight())
+        {
+            player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().backSpeed = -1;
+        }
+        else
+        {
+            player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().backSpeed = 1;
+        }
+            player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().SetAuthorisation(false);
-        yield return new WaitForSecondsRealtime(0.5f);
+        player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().backward = true;
+        yield return new WaitForSecondsRealtime(2);
+
         player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().SetAuthorisation(true);
     }
     
@@ -45,7 +55,7 @@ public class StopMovement : MonoBehaviour {
     {
         if (PlayerData.santeMentale < 180)
         {
-            frequence = PlayerData.santeMentale + 90;
+            frequence = PlayerData.santeMentale * 10;
         }
         else
         {

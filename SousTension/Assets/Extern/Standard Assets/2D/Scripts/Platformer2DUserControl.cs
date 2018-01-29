@@ -7,6 +7,9 @@ namespace UnityStandardAssets._2D
     [RequireComponent(typeof (PlatformerCharacter2D))]
     public class Platformer2DUserControl : MonoBehaviour
     {
+        public bool backward = true;
+        public int backSpeed = -1;
+
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
         private bool crouch;
@@ -97,7 +100,16 @@ namespace UnityStandardAssets._2D
             }
             else
             {
-                m_Character.Move(0,false,false);
+                if (backward)
+                {
+                   
+                        m_Character.Move(backSpeed, false, false);                    
+                }
+                else
+                {
+                    m_Character.Move(0, false, false);
+                }
+                
             }
         }
 
@@ -105,12 +117,15 @@ namespace UnityStandardAssets._2D
 
         private void FixedUpdate()
         {
-           
-            // Read the inputs.
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
+            if (authoriseInput)
+            {
+                // Read the inputs.
+                float h = CrossPlatformInputManager.GetAxis("Horizontal");
                 // Pass all parameters to the character control script.
                 m_Character.Move(h, crouch, m_Jump);
                 m_Jump = false;
+            }
+         
             
         }
 

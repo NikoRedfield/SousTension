@@ -73,7 +73,7 @@ public class Bulle : MonoBehaviour {
     {
         if(PlayerData.santeMentale < 270)
         {
-            frequence = PlayerData.santeMentale + 50;// / 5;
+            frequence = PlayerData.santeMentale * 10 + 50;// / 5;
             if(frequence < 0)
             {
                 frequence = 5;

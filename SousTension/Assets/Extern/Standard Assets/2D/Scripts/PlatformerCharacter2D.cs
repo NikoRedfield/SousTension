@@ -66,7 +66,7 @@ namespace UnityStandardAssets._2D
         public void Move(float move, bool crouch, bool jump)
         {
 
-            if (gameObject.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().getAuthorisation())
+            if (gameObject.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().getAuthorisation() || gameObject.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().backward)
             {
 
                 // If crouching, check to see if the character can stand up
@@ -130,15 +130,16 @@ namespace UnityStandardAssets._2D
                     m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
                 }
             }
+            /*
             else
             {
                 m_Anim.SetFloat("Speed", 0);
                 m_Rigidbody2D.velocity = new Vector2(0, m_Rigidbody2D.velocity.y);
-            }
+            }*/
         }
 
 
-        private void Flip()
+        public void Flip()
         {
             // Switch the way the player is labelled as facing.
             m_FacingRight = !m_FacingRight;
@@ -153,6 +154,11 @@ namespace UnityStandardAssets._2D
                 theScaleCanvas.x *= -1;
                 canvasBoard.transform.localScale = theScaleCanvas;
             }
+        }
+
+        public bool IsFaceRight()
+        {
+            return m_FacingRight;
         }
     }
 }
