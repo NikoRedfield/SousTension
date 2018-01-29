@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DebugCommands : MonoBehaviour {
 
+    private int maxSanteMentale = 300;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -13,19 +15,19 @@ public class DebugCommands : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown("1"))
         {
-            PlayerData.santeMentale = (int) PlayerData.santeMentale * 80 /100;
+            PlayerData.santeMentale = (int) maxSanteMentale * 80 /100;
         }
         if (Input.GetKeyDown("2"))
         {
-            PlayerData.santeMentale = (int)PlayerData.santeMentale * 60 / 100;
+            PlayerData.santeMentale = (int) maxSanteMentale * 60 / 100;
         }
         if (Input.GetKeyDown("3"))
         {
-            PlayerData.santeMentale = (int)PlayerData.santeMentale * 40 / 100;
+            PlayerData.santeMentale = (int) maxSanteMentale * 40 / 100;
         }
         if (Input.GetKeyDown("4"))
         {
-            PlayerData.santeMentale = (int)PlayerData.santeMentale * 20 / 100;
+            PlayerData.santeMentale = (int) maxSanteMentale * 20 / 100;
         }
     }
 }

@@ -17,14 +17,16 @@ public class NavigateCharacter : MonoBehaviour {
     private int currentTime = 8;
     private bool check = false;
     private int waitForSubmit = 0;
+    private GameObject controls;
 
 	// Use this for initialization
 	void Start () {
         fiches = GameObject.Find("FichesPersonnage");
         fichesCount = fiches.transform.childCount;
-        story = GameObject.Find("BookUI").transform.GetChild(0).gameObject;
-        codex = GameObject.Find("BookUI").transform.GetChild(1).gameObject;
-    
+        story = GameObject.Find("BookUI").transform.GetChild(1).gameObject;
+        codex = GameObject.Find("BookUI").transform.GetChild(2).gameObject;
+        controls = GameObject.Find("BookUI").transform.GetChild(0).gameObject;
+
     }
 	
 	// Update is called once per frame
@@ -62,11 +64,11 @@ public class NavigateCharacter : MonoBehaviour {
                     DisplayData(currentIndex, currentIndex + 1);
                 }
             }
-            if (CrossPlatformInputManager.GetButtonDown("Submit"))
+            if (CrossPlatformInputManager.GetButtonDown("SelectBook"))
             {
                 if (waitForSubmit > 60)
                 {
-
+                    controls.SetActive(true);
                     fiches.transform.GetChild(currentIndex).gameObject.SetActive(false);
                     currentIndex = 0;
                     codex.SetActive(true);

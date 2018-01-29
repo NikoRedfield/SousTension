@@ -61,7 +61,7 @@ namespace UnityStandardAssets._2D
                 {
                     crouch = true;
                 }
-                if (CrossPlatformInputManager.GetButtonDown("Select"))
+                if (CrossPlatformInputManager.GetButtonDown("Select") && !book.activeSelf)
                 {
                     Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
                     // Boolean used to prevent error from switching input device while displaying Controls UI
