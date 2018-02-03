@@ -36,27 +36,30 @@ public class Lungs2 : MonoBehaviour
 
     void Update()
     {
-        if (!lungs.activeSelf)
+        if (PlayerData.santeMentale > 15)
         {
-            if ((Input.GetButton("Lungs1") && Input.GetButtonDown("Lungs2")) || (Input.GetAxis("Lungs3") > 0 && Input.GetAxis("Lungs4") > 0) && timer == 0)  //&& !begin)
+            if (!lungs.activeSelf)
             {
-                lungs.SetActive(true);
-                Time.timeScale = 0;
+                if ((Input.GetButton("Lungs1") && Input.GetButtonDown("Lungs2")) || (Input.GetAxis("Lungs3") > 0 && Input.GetAxis("Lungs4") > 0) && timer == 0)  //&& !begin)
+                {
+                    lungs.SetActive(true);
+                    Time.timeScale = 0;
+                }
+                else
+                {
+                    if (timer > 0)
+                    {
+                        timer--;
+                    }
+                }
             }
             else
             {
-                if (timer > 0)
+                Breath();
+                if (Input.GetButtonDown("Cancel"))
                 {
-                    timer--;
+                    Reset();
                 }
-            }
-        }
-        else
-        {
-            Breath();
-            if (Input.GetButtonDown("Cancel"))
-            {
-                Reset();
             }
         }
     }
