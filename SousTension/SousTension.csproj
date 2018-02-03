@@ -332,7 +332,9 @@
     <Compile Include="Assets\Scripts\LoadOnEnter.cs" />
     <Compile Include="Assets\Scripts\Lungs.cs" />
     <Compile Include="Assets\Scripts\Lungs2.cs" />
+    <Compile Include="Assets\Scripts\MonsterLocalMovement.cs" />
     <Compile Include="Assets\Scripts\MonsterMovement.cs" />
+    <Compile Include="Assets\Scripts\MonsterSpawn.cs" />
     <Compile Include="Assets\Scripts\MusicTone.cs" />
     <Compile Include="Assets\Scripts\NavigateCharacter.cs" />
     <Compile Include="Assets\Scripts\Notebook.cs" />
@@ -346,6 +348,7 @@
     <Compile Include="Assets\Scripts\SanteMentale\Bulle.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\DebugCommands.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\Hole.cs" />
+    <Compile Include="Assets\Scripts\SanteMentale\MonsterNewForm.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\SanteMentale.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\SoundMentale.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\StopMovement.cs" />

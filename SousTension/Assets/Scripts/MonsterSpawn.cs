@@ -1,0 +1,66 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MonsterSpawn : MonoBehaviour {
+
+    public GameObject monster;
+    public float spawnTime = 1f;
+    public Vector3 spawnPoint;
+    public Quaternion spawnRotation;
+
+    private Rigidbody2D rigi;
+    private float angle = 0f;
+    private float posX, posY;
+    private float signeX = 1f;
+    private float signeY = 1f; // Variable valant 1 ou -1 et permettant de changer le cadran dans lequel spawn le monstre
+    private float rayon = 5f;
+    private GameObject player;
+    private Vector3 playerPos;
+
+    // Var Spawn Rect
+    private float leftSpawn;
+    private float rightSpawn;
+
+
+    // Use this for initialization
+    void Start () {
+        player = GameObject.FindWithTag("Player");
+        InvokeRepeating("SpawnCircle", spawnTime, spawnTime);
+
+    }
+
+    void SpawnCircle()
+    {
+        playerPos = player.transform.position;
+        angle = Random.value * (Mathf.PI / 2);
+        Debug.Log(angle);
+        if (Random.value < 0.5f)
+            signeX = -1f;
+        if (Random.value < 0.5f)
+            signeY = -1f;
+        posX = Mathf.Cos(angle) * rayon * signeX + playerPos.x;
+        posY = Mathf.Sin(angle) * rayon * signeY + playerPos.y;
+        spawnPoint = new Vector3(posX, posY, 0);
+        spawnRotation = Quaternion.Euler(0, 0, 0);
+        // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
+        Instantiate(monster, spawnPoint, spawnRotation);
+    }
+    void SpawnRect()
+    {
+        playerPos = player.transform.position;
+        leftSpawn = player.transform.position.x - 10f;
+        rightSpawn = player.transform.position.x + 10f;
+      
+        if (Random.value < 0.5f)
+            
+        if (Random.value < 0.5f)
+            
+        posX = Mathf.Cos(angle) * rayon * signeX + playerPos.x;
+        posY = Mathf.Sin(angle) * rayon * signeY + playerPos.y;
+        spawnPoint = new Vector3(posX, posY, 0);
+        spawnRotation = Quaternion.Euler(0, 0, 0);
+        // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
+        Instantiate(monster, spawnPoint, spawnRotation);
+    }
+}

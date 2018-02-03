@@ -25,7 +25,7 @@ public class ChangeSide : MonoBehaviour {
             PlayerData.santeMentale = 180; //180
         }
         monstre.SetActive(false);
-        GameObject.Find("HUD").transform.GetChild(2).GetComponent<SanteMentale>().ResetTriggers();
+       //GameObject.Find("HUD").transform.GetChild(2).GetComponent<SanteMentale>().ResetTriggers();
         GameObject.Find("Main Camera").GetComponent<CameraScroll>().enabled = false;
         GameObject.Find("Main Camera").GetComponent<CameraFollow2D>().enabled = true;
     }

@@ -43,10 +43,11 @@ public class SoundMentale : MonoBehaviour {
 
     void CheckSanteMentale()
     {
-        if (PlayerData.santeMentale < 130)
+        if (PlayerData.santeMentale < 130 && PlayerData.santeMentale > 20)
         {
-            frequence = PlayerData.santeMentale + 50;
+            frequence = PlayerData.santeMentale + 200;
         }
+      
         else
         {
             frequence = 0;

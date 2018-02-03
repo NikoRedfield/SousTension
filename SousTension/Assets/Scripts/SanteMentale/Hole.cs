@@ -104,10 +104,10 @@ public class Hole : MonoBehaviour {
     {
         if (PlayerData.santeMentale < 130)
         {
-            frequence = PlayerData.santeMentale + 10;// / 5;
-            if (frequence < 0)
+            frequence = PlayerData.santeMentale * 10;// / 5;
+            if (frequence <= 0)
             {
-                frequence = 5;
+                frequence = 600;
             }
         }
         else

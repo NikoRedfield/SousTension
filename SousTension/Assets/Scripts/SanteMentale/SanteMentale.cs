@@ -37,7 +37,7 @@ public class SanteMentale : MonoBehaviour {
         }
             
 	}
-
+/*
     public void MentalHealthEvent()
     {
         if (slider.value <= 30 && !changedThird && Monster != null)
@@ -94,5 +94,5 @@ public class SanteMentale : MonoBehaviour {
         changedOnce = false;
         changedTwice = false;
         changedThird = false;
-    }
+    }*/
 }

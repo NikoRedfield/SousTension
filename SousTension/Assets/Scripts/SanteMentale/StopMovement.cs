@@ -44,7 +44,7 @@ public class StopMovement : MonoBehaviour {
             player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().SetAuthorisation(false);
         player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().backward = true;
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(0.5f);
         player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().SetAuthorisation(true);
         Input.ResetInputAxes();
 
@@ -54,13 +54,31 @@ public class StopMovement : MonoBehaviour {
 
     void CheckSanteMentale()
     {
-        if (PlayerData.santeMentale < 180)
+        if (PlayerData.santeMentale < 180 && PlayerData.santeMentale > 20)
         {
-            frequence = PlayerData.santeMentale * 10;
+            Debug.Log("movement " + frequence);
+            frequence = PlayerData.santeMentale * 7;
         }
         else
         {
-            frequence = 0;
+            if (PlayerData.santeMentale < 20 && PlayerData.santeMentale > 0)
+            {
+                frequence = PlayerData.santeMentale * 40;
+            }
+
+            else
+            {
+                if (PlayerData.santeMentale <= 0)
+                {
+                    frequence = 700;
+                }
+                else
+                {
+                    frequence = 0;
+                }
+            }
         }
+       
+     
     }
 }

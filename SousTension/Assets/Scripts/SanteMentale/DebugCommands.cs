@@ -29,5 +29,9 @@ public class DebugCommands : MonoBehaviour {
         {
             PlayerData.santeMentale = (int) maxSanteMentale * 20 / 100;
         }
+        if (Input.GetKeyDown("5"))
+        {
+            PlayerData.santeMentale = (int)maxSanteMentale * 8 / 100;
+        }
     }
 }

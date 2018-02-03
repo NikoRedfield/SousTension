@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class Lungs2 : MonoBehaviour
 {
 
-    public GameObject lungs;
-    public GameObject lung1;
+    public GameObject lungs; //Main UI
+    public GameObject lung1; //MiniLung on the side when success
     public GameObject lung2;
     public GameObject lung3;
-    public Image air;
+    public Image air; //Radial bar
 
-    private int times;
-    private int cTimes;
+    private int times; //times required
+    private int cTimes; //current times
     private int relax;
     private bool begin;
     private int targetRelax;
@@ -36,7 +36,7 @@ public class Lungs2 : MonoBehaviour
 
     void Update()
     {
-        if (PlayerData.santeMentale > 15)
+        if (PlayerData.santeMentale > 15)  //Restrain the availability of the breathing feature to sm > 15
         {
             if (!lungs.activeSelf)
             {

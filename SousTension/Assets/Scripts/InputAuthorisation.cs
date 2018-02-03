@@ -20,6 +20,7 @@ public class InputAuthorisation : MonoBehaviour {
         player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().SetAuthorisation(authorisation);
 	}
 
+    //Decides wether to block or not the access to the player's commands
     private bool CheckObjects()
     {
         foreach(GameObject element in objectsToTest)

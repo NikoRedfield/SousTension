@@ -22,7 +22,15 @@ public class Kill : MonoBehaviour {
         {
             Debug.Log("Hit");
             collision.gameObject.transform.Rotate(new Vector3(45, 0, 0));
-            StartCoroutine(BackStation());
+            if(PlayerData.caughtByMonster >= 1)
+            {
+                StartCoroutine(Death());
+            }
+            else
+            {
+                StartCoroutine(BackStation());
+            }
+          
         }
     }
 

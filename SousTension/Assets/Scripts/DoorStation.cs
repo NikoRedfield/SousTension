@@ -34,16 +34,22 @@ public class DoorStation : MonoBehaviour {
     //enables exit
     private  void OnTriggerEnter2D(Collider2D col)
     {
-        canExit = true;
-        controllerState = controller.ControllerCheck();
-        SwitchUI();
-        Debug.Log(PlayerData.santeMentale);
+        if(col.tag == "Player")
+        {
+            canExit = true;
+            controllerState = controller.ControllerCheck();
+            SwitchUI();
+            Debug.Log(PlayerData.santeMentale);
+        }
     }
 
     //disables exit
    private  void OnTriggerExit2D(Collider2D col)
     {
-        canExit = false;
+        if (col.tag == "Player")
+        {
+            canExit = false;
+        }
     }
 
     private void Update()
