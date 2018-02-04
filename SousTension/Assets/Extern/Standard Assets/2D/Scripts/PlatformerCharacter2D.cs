@@ -130,12 +130,12 @@ namespace UnityStandardAssets._2D
                     m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
                 }
             }
-            /*
+            
             else
             {
                 m_Anim.SetFloat("Speed", 0);
                 m_Rigidbody2D.velocity = new Vector2(0, m_Rigidbody2D.velocity.y);
-            }*/
+            }
         }
 
 

@@ -108,6 +108,7 @@ namespace UnityStandardAssets._2D
                 else
                 {
                     m_Character.Move(0, false, false);
+                    Debug.Log("Stop!");
                 }
                 
             }

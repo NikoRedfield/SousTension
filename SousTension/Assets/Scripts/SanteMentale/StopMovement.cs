@@ -47,6 +47,7 @@ public class StopMovement : MonoBehaviour {
         yield return new WaitForSecondsRealtime(0.5f);
         player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().SetAuthorisation(true);
         Input.ResetInputAxes();
+        player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().backward = false;
 
     }
     

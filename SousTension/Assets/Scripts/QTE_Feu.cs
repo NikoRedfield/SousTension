@@ -46,8 +46,10 @@ public class QTE_Feu : MonoBehaviour {
         if (!over)
         {
             begin = true;
+            player.GetComponent<Platformer2DUserControl>().backward = false;
             player.GetComponent<Platformer2DUserControl>().SetAuthorisation(false);
-           // Time.timeScale = 0;
+            player.GetComponent<PlatformerCharacter2D>().Move(0, false, false);
+            Debug.Log("!over : " + player.GetComponent<Platformer2DUserControl>().backward);
         }        
     }
 
@@ -145,7 +147,6 @@ public class QTE_Feu : MonoBehaviour {
         UI.SetActive(false);
         player.GetComponent<Platformer2DUserControl>().SetAuthorisation(true);
         over = true;
-       // Time.timeScale = 1;
     }
 
     //Check what UI to display
