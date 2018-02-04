@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,12 +21,12 @@ public class MonsterSpawn : MonoBehaviour {
     // Var Spawn Rect
     private float leftSpawn;
     private float rightSpawn;
-
-
+    private float verticalSpawn;
+    public float eloignement = 11f  ;
     // Use this for initialization
     void Start () {
         player = GameObject.FindWithTag("Player");
-        InvokeRepeating("SpawnCircle", spawnTime, spawnTime);
+        InvokeRepeating("SpawnRect", spawnTime, spawnTime);
 
     }
 
@@ -49,17 +49,21 @@ public class MonsterSpawn : MonoBehaviour {
     void SpawnRect()
     {
         playerPos = player.transform.position;
-        leftSpawn = player.transform.position.x - 10f;
-        rightSpawn = player.transform.position.x + 10f;
-      
+        leftSpawn = player.transform.position.x - eloignement + 0.5f;
+        rightSpawn = player.transform.position.x + eloignement + 1f;
+        verticalSpawn = Random.Range(-6f, 3f);
         if (Random.value < 0.5f)
-            
+        {
+            posX = leftSpawn  ;
+            spawnRotation = Quaternion.Euler(0, 0, 0);
+        }
         if (Random.value < 0.5f)
-            
-        posX = Mathf.Cos(angle) * rayon * signeX + playerPos.x;
-        posY = Mathf.Sin(angle) * rayon * signeY + playerPos.y;
+        {
+            posX = rightSpawn ;
+            spawnRotation = Quaternion.Euler(0, 180, 0);
+        }
+        posY = verticalSpawn ;
         spawnPoint = new Vector3(posX, posY, 0);
-        spawnRotation = Quaternion.Euler(0, 0, 0);
         // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
         Instantiate(monster, spawnPoint, spawnRotation);
     }

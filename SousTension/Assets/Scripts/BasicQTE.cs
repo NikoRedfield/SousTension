@@ -38,23 +38,30 @@ public class BasicQTE : MonoBehaviour {
     //Display and authorise both UI and input listener
     private void OnTriggerEnter2D(Collider2D collision) 
     {
-        if (valideInput < numberPressed)    //QTE not yet validated
+        if(collision.tag == "Player")
         {
-            controllerState = controller.ControllerCheck();
-            SwitchUI();
-            authoriseInput = true;
-            displayedUI.SetActive(true);
-            fillMeter.gameObject.SetActive(true);
-            fillMeter.fillAmount = 0;
+            if (valideInput < numberPressed)    //QTE not yet validated
+            {
+                controllerState = controller.ControllerCheck();
+                SwitchUI();
+                authoriseInput = true;
+                displayedUI.SetActive(true);
+                fillMeter.gameObject.SetActive(true);
+                fillMeter.fillAmount = 0;
+            }
         }
+   
     }
 
     //Cancel both UI and inputs related to the QTE 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        authoriseInput = false;             
-        displayedUI.SetActive(false);
-        fillMeter.gameObject.SetActive(false);
+        if (collision.tag == "Player")
+        {
+            authoriseInput = false;
+            displayedUI.SetActive(false);
+            fillMeter.gameObject.SetActive(false);
+        }
     }
 
     //Listen to the Inputs
