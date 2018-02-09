@@ -11,6 +11,9 @@ public class Lungs2 : MonoBehaviour
     public GameObject lung2;
     public GameObject lung3;
     public Image air; //Radial bar
+    public GameObject UIkeyboard;
+    public GameObject UIcontroller;
+    
 
     private int times; //times required
     private int cTimes; //current times
@@ -19,6 +22,9 @@ public class Lungs2 : MonoBehaviour
     private int targetRelax;
     private int bonus;
     private int timer;
+    private GameObject UItoDisplay;
+    private ControllerStatus controller;
+    private int controllerState;
 
 
 
@@ -31,18 +37,24 @@ public class Lungs2 : MonoBehaviour
         targetRelax = 60;
         bonus = 30;
         timer = 20;
+        controller = this.GetComponent<ControllerStatus>();
+        controllerState = controller.ControllerCheck();
+        SwitchUI();
     }
 
 
     void Update()
     {
+
         if (PlayerData.santeMentale > 15)  //Restrain the availability of the breathing feature to sm > 15
         {
             if (!lungs.activeSelf)
             {
                 if ((Input.GetButton("Lungs1") && Input.GetButtonDown("Lungs2")) || (Input.GetAxis("Lungs3") > 0 && Input.GetAxis("Lungs4") > 0) && timer == 0)  //&& !begin)
                 {
+                    SwitchUI();
                     lungs.SetActive(true);
+                    air.gameObject.SetActive(true);
                     Time.timeScale = 0;
                 }
                 else
@@ -70,16 +82,20 @@ public class Lungs2 : MonoBehaviour
     {
         if (TestLungs())
         {
-            air.fillAmount += 0.01f;  
+            air.fillAmount += 0.01f;
+            lungs.transform.localScale = new Vector3(lungs.transform.localScale.x + 0.003f, lungs.transform.localScale.y + 0.003f, lungs.transform.localScale.z);
         }
         if (!TestLungs())
         {
+            UItoDisplay.SetActive(true);
             Debug.Log("!TestLungs()");
             if ((Input.GetButton("Lungs1") && Input.GetButton("Lungs2")) || (Input.GetAxis("Lungs3") > 0 && Input.GetAxis("Lungs4") > 0))
             {
                 cTimes++;
                 DisplayLungs();
                 air.fillAmount = 0;
+                UItoDisplay.SetActive(false);
+                lungs.transform.localScale = new Vector3(0.5f, 0.5f, lungs.transform.localScale.z);
                 if (cTimes == times)
                 {
                     Win();
@@ -118,8 +134,10 @@ public class Lungs2 : MonoBehaviour
     void Failed()
     {
         air.fillAmount = 0;
-        begin = false;
+        lungs.transform.localScale = new Vector3(0.5f, 0.5f, lungs.transform.localScale.z);
+       begin = false;
         relax = 0;
+        UItoDisplay.SetActive(false);
         Debug.Log("Failed");
     }
 
@@ -144,6 +162,8 @@ public class Lungs2 : MonoBehaviour
 
     private void Reset()
     {
+        air.gameObject.SetActive(true);
+        lungs.transform.localScale = new Vector3(0.5f, 0.5f, lungs.transform.localScale.z);
         lungs.SetActive(false);
         lung1.SetActive(false);
         lung2.SetActive(false);
@@ -153,5 +173,23 @@ public class Lungs2 : MonoBehaviour
         air.fillAmount = 0;
         Time.timeScale = 1;
         timer = 20;
+    }
+
+    //Check what UI to display
+    private void SwitchUI()
+    {
+        switch (controllerState)
+        {
+            case 0:
+                UItoDisplay = UIkeyboard;
+                break;
+            case 1:
+                UItoDisplay = UIcontroller;
+                break;
+
+            default:
+                Debug.Log("Error on SwitchUI");
+                break;
+        }
     }
 }

@@ -350,6 +350,7 @@
     <Compile Include="Assets\Scripts\SanteMentale\Hole.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\MonsterNewForm.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\SanteMentale.cs" />
+    <Compile Include="Assets\Scripts\SanteMentale\Shadow.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\SoundMentale.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\StopMovement.cs" />
     <Compile Include="Assets\Scripts\SetInactiveAfterDelay.cs" />

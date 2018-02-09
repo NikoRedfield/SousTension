@@ -28,8 +28,8 @@ public class Notebook : MonoBehaviour {
         codex = this.transform.GetChild(2).gameObject;
         FadeL = codex.transform.GetChild(4).gameObject;
         FadeR = codex.transform.GetChild(3).gameObject;
-        FadeR2 = story.transform.GetChild(1).gameObject;
-        FadeL2 = story.transform.GetChild(2).gameObject;
+        FadeR2 = story.transform.GetChild(4).gameObject;
+        FadeL2 = story.transform.GetChild(5).gameObject;
         codex.transform.GetChild(0).GetComponent<Button>().interactable = false;
         codex.transform.GetChild(2).GetComponent<Button>().interactable = false;
         EventSystem.current.SetSelectedGameObject(null);

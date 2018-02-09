@@ -14,6 +14,8 @@ public class BasicQTE : MonoBehaviour {
     public AudioClip mainSound;
     public AudioClip successSound;
     public bool linkedToMonster = false;
+    public Sprite[] Buttons;
+    public Sprite[] Keys;
 
     private int valideInput = 0;    //Current number of correct inputs
     private AudioSource source;
@@ -21,6 +23,7 @@ public class BasicQTE : MonoBehaviour {
     private ControllerStatus controller;  //Check the used input device
     private GameObject displayedUI;
     private int controllerState;
+    private int spriteIndex = 0;
 
     // Use this for initialization
     void Start () {
@@ -44,6 +47,7 @@ public class BasicQTE : MonoBehaviour {
             {
                 controllerState = controller.ControllerCheck();
                 SwitchUI();
+                InvokeRepeating("AnimateUI", 0, 0.1f);
                 authoriseInput = true;
                 displayedUI.SetActive(true);
                 fillMeter.gameObject.SetActive(true);
@@ -58,6 +62,7 @@ public class BasicQTE : MonoBehaviour {
     {
         if (collision.tag == "Player")
         {
+            CancelInvoke();
             authoriseInput = false;
             displayedUI.SetActive(false);
             fillMeter.gameObject.SetActive(false);
@@ -78,6 +83,7 @@ public class BasicQTE : MonoBehaviour {
 
     private void LaunchQTE()
     {
+        
         //Debug.Log("launching qte");
         if (Input.GetButtonDown(QTEinput))  //If the user input is the one asked by the QTE
             {
@@ -108,6 +114,7 @@ public class BasicQTE : MonoBehaviour {
     //Activate all the objects linked to the QTE
     private void SuccessQTE()
     {
+        CancelInvoke();
         foreach(GameObject objects in linkedObjects)
         {
             objects.SetActive(true);
@@ -141,5 +148,36 @@ public class BasicQTE : MonoBehaviour {
                 Debug.Log("Error on SwitchUI");
                 break;
         }
+    }
+
+    void AnimateUI()
+    {
+        displayedUI.SetActive(true);
+        Debug.Log("entered coroutine");
+        if (displayedUI.Equals(keyboardButton))
+        {
+            displayedUI.GetComponent<Image>().sprite = Keys[spriteIndex];
+            spriteIndex++;
+            if(spriteIndex > 2)
+            {
+                spriteIndex = 0;
+            }
+            Debug.Log("Sprite : "+ spriteIndex);
+            
+        }
+        else
+        {
+            displayedUI.GetComponent<Image>().sprite = Buttons[spriteIndex];
+            spriteIndex++;
+            if (spriteIndex > 2)
+            {
+                spriteIndex = 0;
+            }
+            Debug.Log("Sprite : " + spriteIndex);
+
+        }
+      
+
+
     }
 }
