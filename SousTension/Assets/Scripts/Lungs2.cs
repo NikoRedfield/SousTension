@@ -52,6 +52,7 @@ public class Lungs2 : MonoBehaviour
             {
                 if ((Input.GetButton("Lungs1") && Input.GetButtonDown("Lungs2")) || (Input.GetAxis("Lungs3") > 0 && Input.GetAxis("Lungs4") > 0) && timer == 0)  //&& !begin)
                 {
+                    controllerState = controller.ControllerCheck();
                     SwitchUI();
                     lungs.SetActive(true);
                     air.gameObject.SetActive(true);
@@ -126,6 +127,7 @@ public class Lungs2 : MonoBehaviour
 
     void Win()
     {
+       
         Debug.Log("win");
         PlayerData.santeMentale += bonus;
         Reset();
@@ -162,6 +164,7 @@ public class Lungs2 : MonoBehaviour
 
     private void Reset()
     {
+        
         air.gameObject.SetActive(true);
         lungs.transform.localScale = new Vector3(0.5f, 0.5f, lungs.transform.localScale.z);
         lungs.SetActive(false);

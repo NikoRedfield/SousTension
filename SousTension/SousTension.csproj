@@ -348,6 +348,7 @@
     <Compile Include="Assets\Scripts\SanteMentale\Bulle.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\DebugCommands.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\Hole.cs" />
+    <Compile Include="Assets\Scripts\SanteMentale\MonsterInsta.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\MonsterNewForm.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\SanteMentale.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\Shadow.cs" />

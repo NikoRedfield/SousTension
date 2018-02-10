@@ -82,8 +82,11 @@ public class MonsterNewForm : MonoBehaviour {
     {
         if (ReachedFinalForm())
         {
-            finalForm = true;
-            Attack();
+            if(Time.timeSinceLevelLoad >= 4)
+            {
+                finalForm = true;
+                Attack();
+            }
 
         }
         else
