@@ -7,10 +7,14 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class Notebook : MonoBehaviour {
 
-    private GameObject story;
+    public GameObject fichesPerso;
+    public GameObject fichesEvts;
+    public GameObject fichesEnquete;
+
+    //private GameObject story;
     private GameObject codex;
-    private Image storyName;
-    private Image codexName;
+  //  private Image storyName;
+   // private Image codexName;
     private int delay = 0;
     private GameObject FadeL;
     private GameObject FadeR;
@@ -22,14 +26,14 @@ public class Notebook : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        storyName = GameObject.Find("StoryName").GetComponent<Image>();
-        codexName = GameObject.Find("CodexName").GetComponent<Image>();
-        story = this.transform.GetChild(1).gameObject;
-        codex = this.transform.GetChild(2).gameObject;
+       // storyName = GameObject.Find("StoryName").GetComponent<Image>();
+     //   codexName = GameObject.Find("CodexName").GetComponent<Image>();
+       // story = this.transform.GetChild(1).gameObject;
+        codex = this.transform.GetChild(1).gameObject;
         FadeL = codex.transform.GetChild(4).gameObject;
         FadeR = codex.transform.GetChild(3).gameObject;
-        FadeR2 = story.transform.GetChild(4).gameObject;
-        FadeL2 = story.transform.GetChild(5).gameObject;
+      //  FadeR2 = story.transform.GetChild(4).gameObject;
+        //FadeL2 = story.transform.GetChild(5).gameObject;
         codex.transform.GetChild(0).GetComponent<Button>().interactable = false;
         codex.transform.GetChild(2).GetComponent<Button>().interactable = false;
         EventSystem.current.SetSelectedGameObject(null);
@@ -43,6 +47,7 @@ public class Notebook : MonoBehaviour {
 	void Update () {
         controllerState = controller.ControllerCheck();
         SwitchUI();
+        /*
         if (CrossPlatformInputManager.GetAxisRaw("Vertical") != 0 && CheckListen())
         {
             if(delay > 6)
@@ -58,7 +63,7 @@ public class Notebook : MonoBehaviour {
             {
                 delay++;
             }
-        }
+        }*/
         if (CrossPlatformInputManager.GetAxisRaw("Horizontal") != 0 && CheckListen())
         {
             if (delay > 6)
@@ -76,7 +81,7 @@ public class Notebook : MonoBehaviour {
 
 
     }
-
+    /*
     void SwitchSection()
     {
         if (story.gameObject.activeSelf)
@@ -85,25 +90,25 @@ public class Notebook : MonoBehaviour {
             codex.gameObject.SetActive(true);
             codex.transform.GetChild(0).GetComponent<Button>().Select();
             codex.transform.GetChild(0).GetComponent<Button>().OnSelect(null);
-            Color postIt = storyName.color;
-            postIt.a = 0f;
-            storyName.color = postIt;
-            Color postIt2 = codexName.color;
-            postIt2.a = 0.4f;
-            codexName.color = postIt2;
+           // Color postIt = storyName.color;
+            //postIt.a = 0f;
+            //storyName.color = postIt;
+            //Color postIt2 = codexName.color;
+          //  postIt2.a = 0.4f;
+            //codexName.color = postIt2;
         }
         else
         {
             story.gameObject.SetActive(true);
             codex.gameObject.SetActive(false);
-            Color postIt = codexName.color;
+            /*Color postIt = codexName.color;
             postIt.a = 0f;
             codexName.color = postIt;
             Color postIt2 = storyName.color;
             postIt2.a = 0.4f;
            storyName.color = postIt2;
         }
-    }
+    }*/
 
     private void SwitchSectionHorizontale()
     {
@@ -145,22 +150,48 @@ public class Notebook : MonoBehaviour {
 
     public void DisplayCharacters()
     {
-        GameObject.Find("FichesPersonnage").transform.GetChild(0).gameObject.SetActive(true);
+        fichesPerso.SetActive(true);
+        fichesPerso.transform.GetChild(0).gameObject.SetActive(true);
         controls.SetActive(false);
 
-        if (story.gameObject.activeSelf)
+      /*  if (story.gameObject.activeSelf)
         {
             story.gameObject.SetActive(false);
         }
         else
-        {
+        {*/
             codex.gameObject.SetActive(false);
+        //}
+    }
+
+    public void DisplayEvts()
+    {
+        fichesEvts.SetActive(true);
+        fichesEvts.transform.GetChild(0).gameObject.SetActive(true);
+        controls.SetActive(false);
+
+       /* if (story.gameObject.activeSelf)
+        {
+            story.gameObject.SetActive(false);
         }
+        else
+        {*/
+            codex.gameObject.SetActive(false);
+        //}
+    }
+
+    public void DisplayEnquete()
+    {
+        fichesEnquete.SetActive(true);
+        fichesEnquete.transform.GetChild(0).gameObject.SetActive(true);
+        controls.SetActive(false);
+        codex.gameObject.SetActive(false);
+ 
     }
 
     bool CheckListen()
     {
-        if (!story.gameObject.activeSelf && !codex.gameObject.activeSelf)
+        if (/*!story.gameObject.activeSelf && */!codex.gameObject.activeSelf)
         {
             return false;
         }

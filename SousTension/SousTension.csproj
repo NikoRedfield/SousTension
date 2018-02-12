@@ -338,6 +338,8 @@
     <Compile Include="Assets\Scripts\MonsterSpawn.cs" />
     <Compile Include="Assets\Scripts\MusicTone.cs" />
     <Compile Include="Assets\Scripts\NavigateCharacter.cs" />
+    <Compile Include="Assets\Scripts\NavigateEnquete.cs" />
+    <Compile Include="Assets\Scripts\NavigateEvts.cs" />
     <Compile Include="Assets\Scripts\Notebook.cs" />
     <Compile Include="Assets\Scripts\NotReady\FadeManager.cs" />
     <Compile Include="Assets\Scripts\Pause.cs" />

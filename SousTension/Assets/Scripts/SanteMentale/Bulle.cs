@@ -7,6 +7,7 @@ public class Bulle : MonoBehaviour {
 
     public GameObject bulle;
     public string[] mtexts;
+    public Sprite[] mBulles;
 
     public double pallier1 = 0.75;
     public double pallier2 = 0.65;
@@ -65,6 +66,7 @@ public class Bulle : MonoBehaviour {
     {
         begun = true;
         bulle.SetActive(true);
+        bulle.GetComponent<Image>().sprite = mBulles[(int)Random.Range(0, mBulles.Length)];
         randText = (int)Random.Range(0, mtexts.Length);
         bulle.GetComponentInChildren<Text>().text = mtexts[randText];     
     }

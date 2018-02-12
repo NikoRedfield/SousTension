@@ -14,6 +14,7 @@ public class Lungs2 : MonoBehaviour
     public GameObject UIkeyboard;
     public GameObject UIcontroller;
     public AudioClip BreathingSound;
+    public int restrictedUse = 1;
     
 
     private int times; //times required
@@ -27,6 +28,8 @@ public class Lungs2 : MonoBehaviour
     private ControllerStatus controller;
     private int controllerState;
     private AudioSource source;
+    private int currentTimesUsed;
+    
 
 
 
@@ -44,13 +47,14 @@ public class Lungs2 : MonoBehaviour
         controller = this.GetComponent<ControllerStatus>();
         controllerState = controller.ControllerCheck();
         SwitchUI();
+        currentTimesUsed = 0;
     }
 
 
     void Update()
     {
 
-        if (PlayerData.santeMentale > 15)  //Restrain the availability of the breathing feature to sm > 15
+        if (PlayerData.santeMentale > 15 && currentTimesUsed < restrictedUse)  //Restrain the availability of the breathing feature to sm > 15
         {
             if (!lungs.activeSelf)
             {
@@ -137,6 +141,7 @@ public class Lungs2 : MonoBehaviour
         Debug.Log("win");
         PlayerData.santeMentale += bonus;
         Reset();
+        currentTimesUsed++;
     }
 
     void Failed()
@@ -183,6 +188,7 @@ public class Lungs2 : MonoBehaviour
         air.fillAmount = 0;
         Time.timeScale = 1;
         timer = 20;
+        air.gameObject.SetActive(false);
     }
 
     //Check what UI to display

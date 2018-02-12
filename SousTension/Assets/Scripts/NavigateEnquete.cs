@@ -4,16 +4,16 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.UI;
 
-public class NavigateCharacter : MonoBehaviour {
+public class NavigateEnquete : MonoBehaviour {
 
-    public GameObject fichesEnquetes;
-    public GameObject ficheEvts;
+    public GameObject fichesPerso;
+    public GameObject fichesEvts;
 
     private float h;
     private int fichesCount;
     private int currentIndex = 0;
-   
-    private GameObject story;
+   // private GameObject fiches;
+  //  private GameObject story;
     private GameObject codex;
     private int delay = 8;
     private int currentTime = 8;
@@ -23,8 +23,8 @@ public class NavigateCharacter : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        fichesCount = this.transform.childCount;
-        //story = GameObject.Find("BookUI").transform.GetChild(1).gameObject;
+       fichesCount = this.transform.childCount;
+       // story = GameObject.Find("BookUI").transform.GetChild(1).gameObject;
         codex = GameObject.Find("BookUI").transform.GetChild(1).gameObject;
         controls = GameObject.Find("BookUI").transform.GetChild(0).gameObject;
 
@@ -33,7 +33,7 @@ public class NavigateCharacter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
        
-        if (!codex.activeSelf && !ficheEvts.activeSelf && !fichesEnquetes.activeSelf)
+        if (!codex.activeSelf && !fichesEvts.activeSelf && !fichesPerso.activeSelf)
         {
             h = CrossPlatformInputManager.GetAxis("Arrows");
             if (Input.GetKeyDown(KeyCode.RightArrow) && currentIndex < fichesCount - 1)
@@ -73,7 +73,7 @@ public class NavigateCharacter : MonoBehaviour {
                     this.transform.GetChild(currentIndex).gameObject.SetActive(false);
                     currentIndex = 0;
                     codex.SetActive(true);
-                    /*Color postIt = GameObject.Find("StoryName").GetComponent<Image>().color;
+                   /* Color postIt = GameObject.Find("StoryName").GetComponent<Image>().color;
                     postIt.a = 0f;//0.5f;
                     GameObject.Find("StoryName").GetComponent<Image>().color = postIt;
                     Color postIt2 = GameObject.Find("CodexName").GetComponent<Image>().color;
@@ -92,7 +92,7 @@ public class NavigateCharacter : MonoBehaviour {
     //Display fiches[i] and disable fiches[j]
     void DisplayData(int i, int j)
     {
-        this.transform.GetChild(i).gameObject.SetActive(true);
+       this.transform.GetChild(i).gameObject.SetActive(true);
         this.transform.GetChild(j).gameObject.SetActive(false);
     }
 

@@ -20,12 +20,12 @@ public class SwitchDisplayUI : MonoBehaviour {
         controllerState = controller.ControllerCheck();
         SwitchUI();     //Switch UI depending on the device used
     }
-	/*
+	
 	// Update is called once per frame
 	void Update () {
         controllerState = controller.ControllerCheck();
         SwitchUI();     //Switch UI depending on the device used
-    }*/
+    }
 
     //Check what UI to display
     private void SwitchUI()
