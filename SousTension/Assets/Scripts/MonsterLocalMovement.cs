@@ -28,9 +28,7 @@ public class MonsterLocalMovement : MonoBehaviour
     private bool mooveMonster = false;
     private bool updateSize = false;
 
-    //CheckSanteMentale
-    public int santeMentalePallier1 = 200;
-    public int santeMentalePallier2 = 100;
+   
 
     private void Awake()
     {
@@ -128,23 +126,29 @@ public class MonsterLocalMovement : MonoBehaviour
 
     void CheckSanteMentale()
     {
-        if (PlayerData.santeMentale >= santeMentalePallier1)
+        if (PlayerData.santeMentale <= PlayerData.maxSanteMentale * 0.19 && PlayerData.santeMentale >= PlayerData.maxSanteMentale * 0.13)
         {
             offsetMin = 0f;
             offsetMax = 4f;
             speed = 5f;
+            Debug.Log("Speed1");
         }
-        else if (PlayerData.santeMentale < santeMentalePallier1 && PlayerData.santeMentale >= santeMentalePallier2)
+        else
         {
-            offsetMin = 2f;
-            offsetMax = 6f;
-            speed = 8f;
-        }
-        else if (PlayerData.santeMentale < santeMentalePallier2)
-        {
-            offsetMin = 4f;
-            offsetMax = 8f;
-            speed = 12f;
+            if (PlayerData.santeMentale <= PlayerData.maxSanteMentale * 0.12 && PlayerData.santeMentale >= PlayerData.maxSanteMentale * 0.07)
+            {
+                offsetMin = 2f;
+                offsetMax = 6f;
+                speed = 8f;
+                Debug.Log("Speed2");
+            }
+            else
+            {
+                offsetMin = 4f;
+                offsetMax = 8f;
+                speed = 12f;
+                Debug.Log("Speed3");
+            }
         }
     }
 

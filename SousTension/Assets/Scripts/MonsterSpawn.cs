@@ -17,17 +17,34 @@ public class MonsterSpawn : MonoBehaviour {
     private float rayon = 5f;
     private GameObject player;
     private Vector3 playerPos;
+    private bool started = false;
 
     // Var Spawn Rect
     private float leftSpawn;
     private float rightSpawn;
     private float verticalSpawn;
     public float eloignement = 11f  ;
+
     // Use this for initialization
     void Start () {
         player = GameObject.FindWithTag("Player");
-        InvokeRepeating("SpawnRect", spawnTime, spawnTime);
+    }
 
+    private void Update()
+    {
+        if(PlayerData.santeMentale <= PlayerData.maxSanteMentale * 0.19)
+        {
+            if (!started)
+            {
+                started = true;
+                InvokeRepeating("SpawnRect", spawnTime, spawnTime);
+            } 
+        }
+        else
+        {
+            CancelInvoke();
+            started = false;
+        }
     }
 
     void SpawnCircle()
