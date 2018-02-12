@@ -57,7 +57,7 @@ public class Shadow : MonoBehaviour {
     {
         if(PlayerData.santeMentale <= PlayerData.maxSanteMentale * 24 / 100 && PlayerData.santeMentale >= PlayerData.maxSanteMentale * 10 / 100)
         {
-            frequence = 560;
+            frequence = 480;
         }
         if (PlayerData.santeMentale <= PlayerData.maxSanteMentale * 9 / 100 && PlayerData.santeMentale >= PlayerData.maxSanteMentale * 5 / 100)
         {

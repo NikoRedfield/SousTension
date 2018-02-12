@@ -55,27 +55,33 @@ public class StopMovement : MonoBehaviour {
 
     void CheckSanteMentale()
     {
-        if (PlayerData.santeMentale < 180 && PlayerData.santeMentale > 20)
+        if (PlayerData.santeMentale < PlayerData.maxSanteMentale * 0.75 && PlayerData.santeMentale > PlayerData.maxSanteMentale * 0.65)
         {
             Debug.Log("movement " + frequence);
-            frequence = PlayerData.santeMentale * 7;
+            frequence = 600;
+            return;
+            //frequence = PlayerData.santeMentale * 7;
         }
         else
         {
-            if (PlayerData.santeMentale < 20 && PlayerData.santeMentale > 0)
+            if (PlayerData.santeMentale < PlayerData.maxSanteMentale * 0.64 && PlayerData.santeMentale > PlayerData.maxSanteMentale * 0.55)
             {
-                frequence = PlayerData.santeMentale * 40;
+                //frequence = PlayerData.santeMentale * 40;
+                frequence = 300;
+                return;
             }
 
             else
             {
-                if (PlayerData.santeMentale <= 0)
+                if (PlayerData.santeMentale < PlayerData.maxSanteMentale * 0.54 && PlayerData.santeMentale > PlayerData.maxSanteMentale * 0.51)
                 {
-                    frequence = 700;
+                    frequence = 180;
+                    return;
                 }
                 else
                 {
                     frequence = 0;
+                    return;
                 }
             }
         }

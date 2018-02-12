@@ -62,8 +62,8 @@ public class MonsterLocalMovement : MonoBehaviour
             Destroy(gameObject); // 5 	sec
         if (mooveMonster)
             transform.position = Vector3.MoveTowards(transform.position, wantedPos, speed * Time.deltaTime);
-        if (updateSize)
-            this.transform.localScale = new Vector3(newX, newY, newZ);
+       // if (updateSize)
+            //this.transform.localScale = new Vector3(newX, newY, newZ);
     }
 
     void ResizeMonster()
@@ -75,8 +75,9 @@ public class MonsterLocalMovement : MonoBehaviour
             newY = newY * facteur;
             newZ = newZ * facteur;
             updateSize = true;
-
+            this.transform.localScale = new Vector3(newX, newY, newZ);
         }
+       
     }
 
     //void movemonster()

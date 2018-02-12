@@ -24,7 +24,7 @@ public class MonsterNewForm : MonoBehaviour {
         Debug.Log("Required SM for monster: " + requiredSM);
         engaged = false;
         cam = GameObject.Find("Main Camera");
-        monsterFinalSize = 7;
+        monsterFinalSize = 5;
         monsterInitSize = 0;
 	}
 	
@@ -75,6 +75,7 @@ public class MonsterNewForm : MonoBehaviour {
         monster.SetActive(true);
         source.clip = clipCrescendo;
         source.Play();
+        source.volume = 1;
     }
 
     //Growing the monster and the volume of the supensfull music
@@ -82,17 +83,16 @@ public class MonsterNewForm : MonoBehaviour {
     {
         if (ReachedFinalForm())
         {
-            if(Time.timeSinceLevelLoad >= 4)
-            {
+         
                 finalForm = true;
                 Attack();
-            }
+            
 
         }
         else
         {
-            monster.transform.localScale = new Vector3(monster.transform.localScale.x + 0.01f, monster.transform.localScale.y, monster.transform.localScale.z);
-            source.volume += 0.002f;
+            monster.transform.localScale = new Vector3(monster.transform.localScale.x + 0.014f, monster.transform.localScale.y, monster.transform.localScale.z);
+            source.volume = 1; ;//0.002f;
         }
     }
 
@@ -110,10 +110,10 @@ public class MonsterNewForm : MonoBehaviour {
 
     IEnumerator SwitchAudio()
     {
-        source.Stop();
-        source.clip = breakSFX;
-        source.Play();
-        yield return new WaitForSeconds(breakSFX.length - 2f);
+       // source.Stop();
+       // source.clip = breakSFX;
+       // source.Play();
+        yield return new WaitForSeconds(0);//breakSFX.length - 2f);
         source.clip = monsterTheme;
         source.Play();
         source.loop = true;

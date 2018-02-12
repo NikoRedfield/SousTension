@@ -49,6 +49,13 @@ public class Hole : MonoBehaviour {
                 
             }
         }
+        else
+        {
+            if (begun)
+            {
+                CheckOver();
+            }
+        }
     }
 
     void Regresse()
@@ -102,14 +109,17 @@ public class Hole : MonoBehaviour {
 
     void CheckSanteMentale()
     {
-        if (PlayerData.santeMentale < 130)
+        if (PlayerData.santeMentale <= (int)PlayerData.maxSanteMentale * 0.5 && PlayerData.santeMentale >= PlayerData.maxSanteMentale * 0.3)
         {
-            frequence = PlayerData.santeMentale * 10;// / 5;
-            if (frequence <= 0)
-            {
-                frequence = 600;
-            }
+            frequence = 600;
+            return;
         }
+        if (PlayerData.santeMentale <= (int)PlayerData.maxSanteMentale * 0.29 && PlayerData.santeMentale >= (int)PlayerData.maxSanteMentale * 0.25)
+        {
+            frequence = 420;
+            return;
+        }
+      
         else
         {
             frequence = 0;

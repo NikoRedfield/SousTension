@@ -43,13 +43,24 @@ public class SoundMentale : MonoBehaviour {
 
     void CheckSanteMentale()
     {
-        if (PlayerData.santeMentale < 130 && PlayerData.santeMentale > 20)
+        if (PlayerData.santeMentale <= (int)PlayerData.maxSanteMentale * 0.50 && PlayerData.santeMentale >= PlayerData.maxSanteMentale * 0.35)
         {
-            frequence = PlayerData.santeMentale + 200;
+            frequence = 900;
+            return;
         }
-      
+        if (PlayerData.santeMentale <= (int)PlayerData.maxSanteMentale * 0.34 && PlayerData.santeMentale >= (int)PlayerData.maxSanteMentale * 0.25)
+        {
+            frequence = 600;
+            return;
+        }
+        if (PlayerData.santeMentale <= PlayerData.maxSanteMentale * 0.24 && PlayerData.santeMentale >= (int)PlayerData.maxSanteMentale * 0.05)
+        {
+            frequence = 420;
+            return;
+        }
         else
         {
+            // Debug.Log("0 bulle");
             frequence = 0;
         }
     }

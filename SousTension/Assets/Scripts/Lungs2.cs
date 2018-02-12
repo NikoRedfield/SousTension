@@ -13,6 +13,7 @@ public class Lungs2 : MonoBehaviour
     public Image air; //Radial bar
     public GameObject UIkeyboard;
     public GameObject UIcontroller;
+    public AudioClip BreathingSound;
     
 
     private int times; //times required
@@ -25,11 +26,14 @@ public class Lungs2 : MonoBehaviour
     private GameObject UItoDisplay;
     private ControllerStatus controller;
     private int controllerState;
+    private AudioSource source;
 
 
 
     void Start()
     {
+        source = this.GetComponent<AudioSource>();
+        source.clip = BreathingSound;
         times = 3;
         cTimes = 0;
         relax = 0;
@@ -55,6 +59,7 @@ public class Lungs2 : MonoBehaviour
                     controllerState = controller.ControllerCheck();
                     SwitchUI();
                     lungs.SetActive(true);
+                    source.Play();
                     air.gameObject.SetActive(true);
                     Time.timeScale = 0;
                 }
@@ -72,6 +77,7 @@ public class Lungs2 : MonoBehaviour
                 if (Input.GetButtonDown("Cancel"))
                 {
                     Reset();
+                    
                 }
             }
         }
@@ -164,7 +170,7 @@ public class Lungs2 : MonoBehaviour
 
     private void Reset()
     {
-        
+        source.Stop();
         air.gameObject.SetActive(true);
         lungs.transform.localScale = new Vector3(0.5f, 0.5f, lungs.transform.localScale.z);
         lungs.SetActive(false);

@@ -16,6 +16,8 @@ public class BasicQTE : MonoBehaviour {
     public bool linkedToMonster = false;
     public Sprite[] Buttons;
     public Sprite[] Keys;
+    public Sprite disjoncteurClosed;
+    public Sprite disjoncteurOpen;
 
     private int valideInput = 0;    //Current number of correct inputs
     private AudioSource source;
@@ -45,6 +47,7 @@ public class BasicQTE : MonoBehaviour {
         {
             if (valideInput < numberPressed)    //QTE not yet validated
             {
+                this.GetComponent<SpriteRenderer>().sprite = disjoncteurOpen;
                 controllerState = controller.ControllerCheck();
                 SwitchUI();
                 InvokeRepeating("AnimateUI", 0, 0.1f);
@@ -62,6 +65,11 @@ public class BasicQTE : MonoBehaviour {
     {
         if (collision.tag == "Player")
         {
+            if(valideInput < numberPressed)
+            {
+                valideInput = 0;
+            }
+            this.GetComponent<SpriteRenderer>().sprite = disjoncteurClosed;
             CancelInvoke();
             authoriseInput = false;
             displayedUI.SetActive(false);
@@ -114,6 +122,7 @@ public class BasicQTE : MonoBehaviour {
     //Activate all the objects linked to the QTE
     private void SuccessQTE()
     {
+        this.GetComponent<SpriteRenderer>().sprite = disjoncteurClosed;
         CancelInvoke();
         foreach(GameObject objects in linkedObjects)
         {

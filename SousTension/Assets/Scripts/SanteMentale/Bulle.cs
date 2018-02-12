@@ -44,6 +44,13 @@ public class Bulle : MonoBehaviour {
                 CheckOver();
             }
         }
+        else
+        {
+            if (begun)
+            {
+                CheckOver();
+            }
+        }
 	}
 
 
@@ -71,16 +78,24 @@ public class Bulle : MonoBehaviour {
 
     void CheckSanteMentale()
     {
-        if(PlayerData.santeMentale < 270)
+        if(PlayerData.santeMentale <= (int)PlayerData.maxSanteMentale * 0.75 && PlayerData.santeMentale >= PlayerData.maxSanteMentale * 0.65)
         {
-            frequence = PlayerData.santeMentale * 10 + 50;// / 5;
-            if(frequence < 0)
-            {
-                frequence = 5;
-            }
+            frequence = 600;
+            return;
+        }
+        if (PlayerData.santeMentale <= (int)PlayerData.maxSanteMentale * 0.64 && PlayerData.santeMentale >= (int)PlayerData.maxSanteMentale * 0.55)
+        {
+            frequence = 300;
+            return;
+        }
+        if (PlayerData.santeMentale <= PlayerData.maxSanteMentale * 0.54 && PlayerData.santeMentale >= (int)PlayerData.maxSanteMentale * 0.51)
+        {
+            frequence = 180;
+            return;
         }
         else
         {
+           // Debug.Log("0 bulle");
             frequence = 0;
         }
     }
