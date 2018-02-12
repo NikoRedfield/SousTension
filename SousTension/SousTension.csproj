@@ -326,6 +326,7 @@
     <Compile Include="Assets\Scripts\InputAuthorisation.cs" />
     <Compile Include="Assets\Scripts\Interaction.cs" />
     <Compile Include="Assets\Scripts\Kill.cs" />
+    <Compile Include="Assets\Scripts\KillLocal.cs" />
     <Compile Include="Assets\Scripts\Ladder.cs" />
     <Compile Include="Assets\Scripts\LastFocused.cs" />
     <Compile Include="Assets\Scripts\LoadAfterTime.cs" />
@@ -353,6 +354,10 @@
     <Compile Include="Assets\Scripts\SanteMentale\PlayBeastIncoming.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\SanteMentale.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\Shadow.cs" />
+    <Compile Include="Assets\Scripts\SanteMentale\SMlocal\Hole1.cs" />
+    <Compile Include="Assets\Scripts\SanteMentale\SMlocal\PlayBeastIncoming1.cs" />
+    <Compile Include="Assets\Scripts\SanteMentale\SMlocal\SoundMentale1.cs" />
+    <Compile Include="Assets\Scripts\SanteMentale\SMlocal\StopMovement1.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\SoundMentale.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\StopMovement.cs" />
     <Compile Include="Assets\Scripts\SetInactiveAfterDelay.cs" />

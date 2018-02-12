@@ -8,6 +8,13 @@ public class Bulle : MonoBehaviour {
     public GameObject bulle;
     public string[] mtexts;
 
+    public double pallier1 = 0.75;
+    public double pallier2 = 0.65;
+    public double pallier3 = 0.64;
+    public double pallier4 = 0.55;
+    public double pallier5 = 0.54;
+    public double pallier6 = 0.51;
+
     private bool authorise;
     private bool begun;
     private int delay;
@@ -78,17 +85,17 @@ public class Bulle : MonoBehaviour {
 
     void CheckSanteMentale()
     {
-        if(PlayerData.santeMentale <= (int)PlayerData.maxSanteMentale * 0.75 && PlayerData.santeMentale >= PlayerData.maxSanteMentale * 0.65)
+        if(PlayerData.santeMentale <= (int)PlayerData.maxSanteMentale * pallier1 && PlayerData.santeMentale >= PlayerData.maxSanteMentale * pallier2)
         {
             frequence = 600;
             return;
         }
-        if (PlayerData.santeMentale <= (int)PlayerData.maxSanteMentale * 0.64 && PlayerData.santeMentale >= (int)PlayerData.maxSanteMentale * 0.55)
+        if (PlayerData.santeMentale <= (int)PlayerData.maxSanteMentale * pallier3 && PlayerData.santeMentale >= (int)PlayerData.maxSanteMentale * pallier4)
         {
             frequence = 300;
             return;
         }
-        if (PlayerData.santeMentale <= PlayerData.maxSanteMentale * 0.54 && PlayerData.santeMentale >= (int)PlayerData.maxSanteMentale * 0.51)
+        if (PlayerData.santeMentale <= PlayerData.maxSanteMentale * pallier5 && PlayerData.santeMentale >= (int)PlayerData.maxSanteMentale * pallier6)
         {
             frequence = 180;
             return;

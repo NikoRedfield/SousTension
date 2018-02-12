@@ -17,10 +17,10 @@ public class CheckLife : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(PlayerData.santeMentale <= -100)
+		/*if(PlayerData.santeMentale <= -100)
         {
             StartCoroutine(Death());
-        }
+        }*/
 	}
 
 
