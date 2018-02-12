@@ -74,7 +74,7 @@ public class Lungs2 : MonoBehaviour
             else
             {
                 Breath();
-                if (Input.GetButtonDown("Cancel"))
+                if (Input.GetButtonDown("Cancel")|| Input.GetAxisRaw("Horizontal") != 0)
                 {
                     Reset();
                     
@@ -170,6 +170,7 @@ public class Lungs2 : MonoBehaviour
 
     private void Reset()
     {
+        UItoDisplay.SetActive(false);
         source.Stop();
         air.gameObject.SetActive(true);
         lungs.transform.localScale = new Vector3(0.5f, 0.5f, lungs.transform.localScale.z);

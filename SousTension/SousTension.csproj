@@ -359,6 +359,7 @@
     <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\Scripts\SkipToNextScene.cs" />
     <Compile Include="Assets\Scripts\SmoothScale.cs" />
+    <Compile Include="Assets\Scripts\SwitchDisplayUI.cs" />
     <Compile Include="Assets\Scripts\TimeManager.cs" />
   </ItemGroup>
   <ItemGroup>
