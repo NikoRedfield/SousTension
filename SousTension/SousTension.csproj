@@ -321,6 +321,7 @@
     <Compile Include="Assets\Scripts\Dialogue\DialogueTrigger.cs" />
     <Compile Include="Assets\Scripts\Dialogue\LaunchNarration.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Narration.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\NarrationinGame.cs" />
     <Compile Include="Assets\Scripts\Dialogue\QTE_Dialogue.cs" />
     <Compile Include="Assets\Scripts\DisplayUIScene.cs" />
     <Compile Include="Assets\Scripts\DoorStation.cs" />

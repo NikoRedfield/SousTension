@@ -290,17 +290,25 @@ public class Narration : MonoBehaviour
             StopAllCoroutines();
             fadeLayout.SetActive(true);
             //fadeLayout.GetComponent<FadeManager>().ChangeColor(Color.black, new Color(0, 0, 0, 0));
+            if (NextScene.Equals("backingame"))
+            {
+                dialogueUI.transform.parent.gameObject.SetActive(false);
+                fadeLayout.GetComponent<FadeManager>().Fade(false, 2f);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().SetAuthorisation(true);
+                return;
+            }
             fadeLayout.GetComponent<FadeManager>().Fade(false, 30f);
             choiceEngaged = false;
             if (isChoice)
             {
                 gameObject.SetActive(false);
             }
-            if (NextScene != "")
+            if (NextScene != "" && NextScene != "backingame")
             {
                 // SceneManager.LoadScene(NextScene);
                 StartCoroutine(FadeThenLoad());
             }
+           
            // StartCoroutine(FadeThenLoad());
         }
     }

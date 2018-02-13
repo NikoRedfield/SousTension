@@ -7,7 +7,7 @@ public class Interaction : MonoBehaviour {
 
     public GameObject objectToEnable;       
     public FadeManager fade;
-    public DialogueManager dialogue;
+    public Narration dialogue;
     public GameObject controllerButton;  //UI for controller device
     public GameObject keyboardUI;   //UI for keyboard device
 
@@ -17,6 +17,7 @@ public class Interaction : MonoBehaviour {
     
     private int controllerState;
     private GameObject player;
+    private bool alreadyTold = false;
 
 
     private void Start()
@@ -44,7 +45,7 @@ public class Interaction : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (interactionsEnabled && player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().getAuthorisation())
+        if (interactionsEnabled && !alreadyTold)// && player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().getAuthorisation())
         {
            
            displayedUI.SetActive(!objectToEnable.activeSelf);       //Displays the interaction UI
@@ -57,14 +58,19 @@ public class Interaction : MonoBehaviour {
                 }
                 fade.Fade(false, 2f);
                 objectToEnable.SetActive(true);  //Displays Dialogue UI
+               player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().backward = false;
                 player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().SetAuthorisation(false);
+                player.GetComponent<UnityStandardAssets._2D.PlatformerCharacter2D>().Move(0, false, false);
                 Debug.Log("icic");
                 dialogue.StartDialogue();
+                alreadyTold = true;
             }
         }
         else
         {
             displayedUI.SetActive(false);  //Disables the interaction UI
+           // objectToEnable.SetActive(false);
+
         }
        
 		
