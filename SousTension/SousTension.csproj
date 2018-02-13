@@ -372,6 +372,7 @@
     <Compile Include="Assets\Scripts\SwitchDisplayUI.cs" />
     <Compile Include="Assets\Scripts\TimeManager.cs" />
     <Compile Include="Assets\Scripts\TutoBreath.cs" />
+    <Compile Include="Assets\Scripts\UI\AnimatedArrow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Extern\2DLightAsset\Shaders\Gradient-NoTexture-Radial-SingleColor-ToTransparent-RegularUV-AlphaBlend.shader" />
