@@ -320,6 +320,7 @@
     <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueTrigger.cs" />
     <Compile Include="Assets\Scripts\Dialogue\LaunchNarration.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\LaunchNarrationKey.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Narration.cs" />
     <Compile Include="Assets\Scripts\Dialogue\NarrationinGame.cs" />
     <Compile Include="Assets\Scripts\Dialogue\QTE_Dialogue.cs" />
