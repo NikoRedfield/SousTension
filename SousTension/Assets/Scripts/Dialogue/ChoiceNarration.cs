@@ -34,7 +34,7 @@ public class ChoiceNarration : MonoBehaviour
 
     void Start()
     {
-        smBar = GameObject.Find("SanteMentale").GetComponent<Slider>();
+        //smBar = GameObject.Find("SanteMentale").GetComponent<Slider>();
         audioManager = GameObject.Find("ToneManager").GetComponent<MusicTone>();
     }
 
@@ -91,7 +91,7 @@ public class ChoiceNarration : MonoBehaviour
         button1.GetComponent<Button>().interactable = false;
         
         PlayerData.santeMentale += impactChoice1;
-        smBar.value = PlayerData.santeMentale;
+       // smBar.value = PlayerData.santeMentale;
         Debug.Log(PlayerData.santeMentale);
         Debug.Log("current lvl :" + audioManager.GetCurrentLVL());
          audioManager.SwitchAudio(soundImpact1);
@@ -111,7 +111,7 @@ public class ChoiceNarration : MonoBehaviour
         button2.GetComponent<Button>().interactable = false;
 
         PlayerData.santeMentale += impactChoice2;
-        smBar.value = PlayerData.santeMentale;
+        //smBar.value = PlayerData.santeMentale;
 
         Debug.Log(PlayerData.santeMentale);
         audioManager.SwitchAudio(soundImpact2);

@@ -7,4 +7,5 @@ public class PlayerData {
     public static int maxSanteMentale = 300;
     public static int santeMentale = 300;
     public static int caughtByMonster = 0;
+    public static bool TutoBreath = false;
 }

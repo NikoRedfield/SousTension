@@ -47,7 +47,8 @@ public class Narration : MonoBehaviour
     public string color = "#ffb83c";
 
     private IEnumerator coroutine;
-    
+
+    public GameObject SpecialQTE;
 
     //Launching Dialogue
     public void StartDialogue()
@@ -109,14 +110,18 @@ public class Narration : MonoBehaviour
             currentTextArea.transform.SetParent(panel);
             mtext = currentTextArea.GetComponent<Text>();
             mtext.font = dialFont;
-            if(currentDialogue.npcName != "Theo :" || currentDialogue.npcName != "Théo (à lui-même) :")
+            if(currentDialogue.npcName != "Theo :" && currentDialogue.npcName != "Théo (à lui-même) :")
             {
                 fadePortrait1.SetActive(false);
+                portraitTheo.SetActive(true);
+                Debug.Log(currentDialogue.npcName);
                 fadePortrait1.GetComponent<Image>().sprite = currentDialogue.portrait;
                 portrait2.GetComponent<Image>().sprite = currentDialogue.portrait;
             }
             else
             {
+
+                portraitTheo.SetActive(false);
                 fadePortrait1.SetActive(true);
                 portraitTheoZero.GetComponent<Image>().sprite = currentDialogue.portrait;
                 portraitTheo.GetComponent<Image>().sprite = currentDialogue.portrait;
@@ -260,6 +265,13 @@ public class Narration : MonoBehaviour
             choice.LaunchChoice();
             return;
         }
+
+        if(SpecialQTE != null)
+        {
+            SpecialQTE.SetActive(true);
+            return;
+        }
+
         if (followUpDialogue != null)
         {
             followUpDialogue.StartDialogue();

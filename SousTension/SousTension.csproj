@@ -312,6 +312,7 @@
     <Compile Include="Assets\Scripts\CheckLife.cs" />
     <Compile Include="Assets\Scripts\ChoiceNotebook.cs" />
     <Compile Include="Assets\Scripts\ControllerStatus.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\ActiveBreathTuto.cs" />
     <Compile Include="Assets\Scripts\Dialogue\AutoScroll.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Choice.cs" />
     <Compile Include="Assets\Scripts\Dialogue\ChoiceNarration.cs" />
@@ -320,6 +321,7 @@
     <Compile Include="Assets\Scripts\Dialogue\DialogueTrigger.cs" />
     <Compile Include="Assets\Scripts\Dialogue\LaunchNarration.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Narration.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\QTE_Dialogue.cs" />
     <Compile Include="Assets\Scripts\DisplayUIScene.cs" />
     <Compile Include="Assets\Scripts\DoorStation.cs" />
     <Compile Include="Assets\Scripts\HelpLadder.cs" />
@@ -368,6 +370,7 @@
     <Compile Include="Assets\Scripts\SmoothScale.cs" />
     <Compile Include="Assets\Scripts\SwitchDisplayUI.cs" />
     <Compile Include="Assets\Scripts\TimeManager.cs" />
+    <Compile Include="Assets\Scripts\TutoBreath.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Extern\2DLightAsset\Shaders\Gradient-NoTexture-Radial-SingleColor-ToTransparent-RegularUV-AlphaBlend.shader" />
