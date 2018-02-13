@@ -268,6 +268,8 @@ public class Narration : MonoBehaviour
 
         if(SpecialQTE != null)
         {
+            fadePortrait1.SetActive(true);
+            portraitTheo.SetActive(true);
             SpecialQTE.SetActive(true);
             return;
         }
