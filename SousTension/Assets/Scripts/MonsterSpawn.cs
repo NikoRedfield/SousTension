@@ -79,7 +79,7 @@ public class MonsterSpawn : MonoBehaviour {
             posX = rightSpawn ;
             spawnRotation = Quaternion.Euler(0, 180, 0);
         }
-        posY = verticalSpawn ;
+        posY = verticalSpawn + player.transform.position.y;
         spawnPoint = new Vector3(posX, posY, 0);
         // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
         Instantiate(monster, spawnPoint, spawnRotation);

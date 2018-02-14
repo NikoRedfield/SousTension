@@ -100,10 +100,13 @@ namespace UnityStandardAssets._2D
                     if (running)
                     {
                         m_MaxSpeed = 10f;
+                        PlayerData.sprint--;
+                        Debug.Log("Sprint: " + PlayerData.sprint);
                     }
                     else
                     {
                         m_MaxSpeed = 5f;
+                        PlayerData.sprint++;
                     }
 
 

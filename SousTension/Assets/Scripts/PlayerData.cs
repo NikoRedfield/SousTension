@@ -11,4 +11,6 @@ public class PlayerData {
     public static bool TutoBreath = false;
 
     public static bool hasKey = false;
+
+    public static int sprint = 200;
 }
