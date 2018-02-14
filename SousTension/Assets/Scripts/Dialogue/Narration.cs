@@ -305,6 +305,20 @@ public class Narration : MonoBehaviour
             {
                 gameObject.SetActive(false);
             }
+            if (NextScene.Equals("Bonus"))
+            {
+                if(PlayerData.santeMentale >= PlayerData.maxSanteMentale * 0.5)
+                {
+                    StartCoroutine(FadeThenLoad());
+                    return;
+                }
+                else
+                {
+                    NextScene = "End";
+                    StartCoroutine(FadeThenLoad());
+                    return;
+                }
+            }
             if (NextScene != "" && NextScene != "backingame")
             {
                 // SceneManager.LoadScene(NextScene);
