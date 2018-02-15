@@ -78,8 +78,18 @@ public class Narration : MonoBehaviour
 
         }
         currentDialogue = Qdialogues.Dequeue();
-        
-        if(currentDialogue.clip != null)
+
+
+        if (currentDialogue.On) //portrait2.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("MoveBack"))
+        {
+            portrait2.GetComponent<Animator>().Play("MoveBack");
+        }
+        if (currentDialogue.Off)
+        {
+            portrait2.GetComponent<Animator>().Play("MoveLeft");
+        }
+
+        if (currentDialogue.clip != null)
         {
             source.clip = currentDialogue.clip;
             if (!source.isPlaying)
@@ -117,6 +127,8 @@ public class Narration : MonoBehaviour
                 Debug.Log(currentDialogue.npcName);
                 fadePortrait1.GetComponent<Image>().sprite = currentDialogue.portrait;
                 portrait2.GetComponent<Image>().sprite = currentDialogue.portrait;
+
+              
             }
             else
             {
@@ -178,6 +190,16 @@ public class Narration : MonoBehaviour
                     }
                 }
 
+                /*ici*/
+                if (currentDialogue.On) //portrait2.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("MoveBack"))
+                {
+                    portrait2.GetComponent<Animator>().Play("MoveBack");
+                }
+                if (currentDialogue.Off)
+                {
+                    portrait2.GetComponent<Animator>().Play("MoveLeft");
+                }
+
                 portraitTheo.SetActive(true);
                 fadePortrait1.SetActive(true);
 
@@ -218,6 +240,9 @@ public class Narration : MonoBehaviour
                         Debug.Log(currentDialogue.npcName);
                         fadePortrait1.GetComponent<Image>().sprite = currentDialogue.portrait;
                         portrait2.GetComponent<Image>().sprite = currentDialogue.portrait;
+
+                 
+                        
                     }
                     else
                     {

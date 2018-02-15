@@ -13,5 +13,7 @@ public class Dialogue {
     public AudioClip clip;
     public string indication;
     public int spacingIndication = 0;
+    public bool On = false;
+    public bool Off = false;
 
 }

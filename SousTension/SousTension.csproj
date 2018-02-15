@@ -368,6 +368,9 @@
     <Compile Include="Assets\Scripts\SanteMentale\StopMovement.cs" />
     <Compile Include="Assets\Scripts\SetInactiveAfterDelay.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
+    <Compile Include="Assets\Scripts\ShadowPNJ\MoveShadow.cs" />
+    <Compile Include="Assets\Scripts\ShadowPNJ\PNJmovement.cs" />
+    <Compile Include="Assets\Scripts\ShadowPNJ\SpawnPNJ.cs" />
     <Compile Include="Assets\Scripts\SkipToNextScene.cs" />
     <Compile Include="Assets\Scripts\SmoothScale.cs" />
     <Compile Include="Assets\Scripts\SwitchDisplayUI.cs" />
@@ -375,6 +378,7 @@
     <Compile Include="Assets\Scripts\TutoBreath.cs" />
     <Compile Include="Assets\Scripts\UI\AnimatedArrow.cs" />
     <Compile Include="Assets\Scripts\UI\Key.cs" />
+    <Compile Include="Assets\Scripts\UI\sangScript.cs" />
     <Compile Include="Assets\Scripts\UI\YouPicked.cs" />
   </ItemGroup>
   <ItemGroup>
