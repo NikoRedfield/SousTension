@@ -78,6 +78,7 @@ public class DoorStation : MonoBehaviour {
         fade.gameObject.SetActive(true);
         fade.Fade(false, 30f);
         yield return new WaitForSeconds(clip.length-1f);
+        PlayerData.previousScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(_nextLevel);
     }
 

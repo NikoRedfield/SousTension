@@ -30,6 +30,7 @@ public class LoadOnEnter : MonoBehaviour {
         fade.gameObject.SetActive(true);
         fade.Fade(false, 30f);
         yield return new WaitForSeconds(clip.length - 2f);
+        PlayerData.previousScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(nextLevel);
     }
 }

@@ -312,6 +312,7 @@
     <Compile Include="Assets\Scripts\CheckLife.cs" />
     <Compile Include="Assets\Scripts\ChoiceNotebook.cs" />
     <Compile Include="Assets\Scripts\ControllerStatus.cs" />
+    <Compile Include="Assets\Scripts\Deus.cs" />
     <Compile Include="Assets\Scripts\Dialogue\ActiveBreathTuto.cs" />
     <Compile Include="Assets\Scripts\Dialogue\AutoScroll.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Choice.cs" />
