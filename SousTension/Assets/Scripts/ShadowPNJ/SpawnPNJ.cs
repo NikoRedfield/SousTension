@@ -14,7 +14,7 @@ public class SpawnPNJ : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        InvokeRepeating("SpawnShadows", 1, 4);
+        InvokeRepeating("SpawnShadows", 0, 1);
 	}
 	
 	// Update is called once per frame
@@ -25,9 +25,9 @@ public class SpawnPNJ : MonoBehaviour {
             CancelInvoke();
             stop = true;
         }
-        if (nbPNJ < maxPNJ / 2 && stop)
+        if (nbPNJ < maxPNJ && stop)
         {
-            InvokeRepeating("SpawnShadows", 1, 4);
+            InvokeRepeating("SpawnShadows", 0, 1);
             stop = false;
         }
         
@@ -35,8 +35,21 @@ public class SpawnPNJ : MonoBehaviour {
 
     void SpawnShadows()
     {
-        Vector3 spawnPos = new Vector3(Random.Range(min, max), -3f, 0);
-        Quaternion spawnRotation = Quaternion.Euler(0, 0, 0);
-        Instantiate(shadow, spawnPos,spawnRotation);
+        int randSpawn = Random.Range(0, 2);
+        if(randSpawn < 1)
+        {
+            Vector3 spawnPos = new Vector3(min, -3f, 0);
+            Quaternion spawnRotation = Quaternion.Euler(0, 0, 0);
+            GameObject pnj = Instantiate(shadow, spawnPos, spawnRotation);
+            pnj.GetComponent<MoveShadow>().SetLeft(false);
+        }
+        else
+        {
+            Vector3 spawnPos = new Vector3(max, -3f, 0);
+            Quaternion spawnRotation = Quaternion.Euler(0, 0, 0);
+            GameObject pnj = Instantiate(shadow, spawnPos, spawnRotation);
+            pnj.GetComponent<MoveShadow>().SetLeft(true);
+        }
+       
     }
 }

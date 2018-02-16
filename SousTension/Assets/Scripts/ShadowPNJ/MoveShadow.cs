@@ -8,11 +8,11 @@ public class MoveShadow : MonoBehaviour {
     public int max;
 
     private bool left;
-    
+   
 
 	// Use this for initialization
 	void Start () {
-        left = true;
+       
 	}
 	
 	// Update is called once per frame
@@ -21,7 +21,8 @@ public class MoveShadow : MonoBehaviour {
         {
             if(this.transform.position.x < min)
             {
-                left = false;
+                this.GetComponent<UnityStandardAssets._2D.PNJmovement>().Move(0, false, false);
+                Destroy(this.gameObject);
             }
             else
             {
@@ -32,7 +33,8 @@ public class MoveShadow : MonoBehaviour {
         {
             if (this.transform.position.x > max)
             {
-                left = true;
+                this.GetComponent<UnityStandardAssets._2D.PNJmovement>().Move(0, false, false);
+                Destroy(this.gameObject);
             }
             else
             {
