@@ -341,10 +341,11 @@
     <Compile Include="Assets\Scripts\MonsterMovement.cs" />
     <Compile Include="Assets\Scripts\MonsterSpawn.cs" />
     <Compile Include="Assets\Scripts\MusicTone.cs" />
-    <Compile Include="Assets\Scripts\NavigateCharacter.cs" />
-    <Compile Include="Assets\Scripts\NavigateEnquete.cs" />
-    <Compile Include="Assets\Scripts\NavigateEvts.cs" />
-    <Compile Include="Assets\Scripts\Notebook.cs" />
+    <Compile Include="Assets\Scripts\Notebook\EnqueteChoice.cs" />
+    <Compile Include="Assets\Scripts\Notebook\NavigateCharacter.cs" />
+    <Compile Include="Assets\Scripts\Notebook\NavigateEnquete.cs" />
+    <Compile Include="Assets\Scripts\Notebook\NavigateEvts.cs" />
+    <Compile Include="Assets\Scripts\Notebook\Notebook.cs" />
     <Compile Include="Assets\Scripts\NotReady\FadeManager.cs" />
     <Compile Include="Assets\Scripts\Pause.cs" />
     <Compile Include="Assets\Scripts\PlayAnimation.cs" />
@@ -377,6 +378,7 @@
     <Compile Include="Assets\Scripts\TimeManager.cs" />
     <Compile Include="Assets\Scripts\TutoBreath.cs" />
     <Compile Include="Assets\Scripts\UI\AnimatedArrow.cs" />
+    <Compile Include="Assets\Scripts\UI\Journal.cs" />
     <Compile Include="Assets\Scripts\UI\Key.cs" />
     <Compile Include="Assets\Scripts\UI\sangScript.cs" />
     <Compile Include="Assets\Scripts\UI\YouPicked.cs" />

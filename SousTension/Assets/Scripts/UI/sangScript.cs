@@ -31,6 +31,7 @@ public class sangScript : MonoBehaviour {
             toLeft = true;
             Debug.Log("Collision detectee");
             moveBox();
+            PlayerData.Esang = true;
         }
     }
 

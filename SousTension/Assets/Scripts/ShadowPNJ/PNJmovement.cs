@@ -47,7 +47,7 @@ namespace UnityStandardAssets._2D
                 if (colliders[i].gameObject != gameObject)
                     m_Grounded = true;
             }
-            m_Anim.SetBool("Ground", m_Grounded);
+            m_Anim.SetBool("Ground", true);
 
             // Set the vertical animation
            // m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
