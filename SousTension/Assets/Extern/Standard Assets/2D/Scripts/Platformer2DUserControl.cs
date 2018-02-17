@@ -25,7 +25,8 @@ namespace UnityStandardAssets._2D
         private GameObject book;
 
         private bool mAxis = false;
-       
+
+        
 
         private void Awake()
         {
@@ -157,6 +158,10 @@ namespace UnityStandardAssets._2D
                     break;
             }
         }
+
+       
+
+        
      
     }
 }

@@ -375,6 +375,7 @@
     <Compile Include="Assets\Scripts\ShadowPNJ\SpawnPNJ.cs" />
     <Compile Include="Assets\Scripts\SkipToNextScene.cs" />
     <Compile Include="Assets\Scripts\SmoothScale.cs" />
+    <Compile Include="Assets\Scripts\Sprint.cs" />
     <Compile Include="Assets\Scripts\SwitchDisplayUI.cs" />
     <Compile Include="Assets\Scripts\TimeManager.cs" />
     <Compile Include="Assets\Scripts\TutoBreath.cs" />

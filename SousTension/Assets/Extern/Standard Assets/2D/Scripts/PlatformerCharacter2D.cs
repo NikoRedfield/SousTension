@@ -25,6 +25,8 @@ namespace UnityStandardAssets._2D
 
         private bool running = false;
 
+        private float pastPosition = 0;
+
         private void Awake()
         {
             // Setting up references.
@@ -100,13 +102,13 @@ namespace UnityStandardAssets._2D
                     if (running)
                     {
                         m_MaxSpeed = 10f;
-                        PlayerData.sprint--;
-                        Debug.Log("Sprint: " + PlayerData.sprint);
+                       // PlayerData.sprint--;
+                       // Debug.Log("Sprint: " + PlayerData.sprint);
                     }
                     else
                     {
                         m_MaxSpeed = 5f;
-                        PlayerData.sprint++;
+                        //PlayerData.sprint++;
                     }
 
 
@@ -162,6 +164,33 @@ namespace UnityStandardAssets._2D
         public bool IsFaceRight()
         {
             return m_FacingRight;
+        }
+
+        public bool IsMoving()
+        {
+            if (pastPosition == 0)
+            {
+                pastPosition = this.transform.position.x;
+            }
+            if (this.transform.position.x != pastPosition)
+            {
+                pastPosition = this.transform.position.x;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsSprinting()
+        {
+            return this.running;
+        }
+
+        public void SetSprint(bool value)
+        {
+            this.running = value;
         }
     }
 }
