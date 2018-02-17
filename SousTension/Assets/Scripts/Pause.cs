@@ -53,9 +53,11 @@ public class Pause : MonoBehaviour {
     {
         isActive = !isActive;
       
-        player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().SetAuthorisation(!isActive);
-      
-        
+        if(player != null)
+        {
+            player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().SetAuthorisation(!isActive);
+        }
+              
         if (isActive)
         {
             
