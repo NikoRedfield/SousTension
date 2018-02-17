@@ -348,6 +348,7 @@
     <Compile Include="Assets\Scripts\Notebook\NavigateEnquete.cs" />
     <Compile Include="Assets\Scripts\Notebook\NavigateEvts.cs" />
     <Compile Include="Assets\Scripts\Notebook\Notebook.cs" />
+    <Compile Include="Assets\Scripts\Notebook\RightArrowAppear.cs" />
     <Compile Include="Assets\Scripts\NotReady\FadeManager.cs" />
     <Compile Include="Assets\Scripts\Pause.cs" />
     <Compile Include="Assets\Scripts\PlayAnimation.cs" />
