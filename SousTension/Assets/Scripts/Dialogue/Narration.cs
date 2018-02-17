@@ -339,7 +339,7 @@ public class Narration : MonoBehaviour
                 }
                 else
                 {
-                    NextScene = "End";
+                    NextScene = "Conclusion";
                     StartCoroutine(FadeThenLoad());
                     return;
                 }

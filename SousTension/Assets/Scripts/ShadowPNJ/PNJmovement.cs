@@ -56,45 +56,27 @@ namespace UnityStandardAssets._2D
         }
 
 
-        public void Move(float move, bool crouch, bool jump)
+        public void Move(float move, bool crouch, bool jump, bool left)
         {
-   
-
-                    // The Speed animator parameter is set to the absolute value of the horizontal input.
-                    m_Anim.SetFloat("Speed", Mathf.Abs(move));
-
-                    // Move the character
-                   this.transform.position = new Vector3(this.transform.position.x + (move / 10), -3, this.transform.position.z);
-
-
-            /*
-                    if (running)
+                    m_Anim.SetFloat("Speed", move);
+                    if (!left)
                     {
-                        m_MaxSpeed = 10f;
-                       
-                    }
-                    else
-                    {
-                        m_MaxSpeed = 5f;
-                        
-                    }
-                    */
-
-
-                    // If the input is moving the player right and the player is facing left...
-                    if (move > 0 && !m_FacingRight)
-                    {
-                        // ... flip the player.
-                        Flip();
+                        this.transform.position = new Vector3(this.transform.position.x + move, -3.16f, this.transform.position.z);
+                        if (!m_FacingRight)
+                         {
+                            Flip();
+                        }
                     }
                     // Otherwise if the input is moving the player left and the player is facing right...
-                    else if (move < 0 && m_FacingRight)
-                    {
-                        // ... flip the player.
-                        Flip();
-                    }
-                
-           
+                    else if (left)
+            {
+                this.transform.position = new Vector3(this.transform.position.x - move, -3.16f, this.transform.position.z);
+                if (m_FacingRight)
+                {
+                    // ... flip the player.
+                    Flip();
+                }
+            }
         }
 
 

@@ -21,24 +21,24 @@ public class MoveShadow : MonoBehaviour {
         {
             if(this.transform.position.x < min)
             {
-                this.GetComponent<UnityStandardAssets._2D.PNJmovement>().Move(0, false, false);
+                this.GetComponent<UnityStandardAssets._2D.PNJmovement>().Move(0, false, false,true);
                 Destroy(this.gameObject);
             }
             else
             {
-                this.GetComponent<UnityStandardAssets._2D.PNJmovement>().Move(-1, false, false);
+                this.GetComponent<UnityStandardAssets._2D.PNJmovement>().Move(0.04f, false, false,true);
             }
         }
         else
         {
             if (this.transform.position.x > max)
             {
-                this.GetComponent<UnityStandardAssets._2D.PNJmovement>().Move(0, false, false);
+                this.GetComponent<UnityStandardAssets._2D.PNJmovement>().Move(0, false, false,false);
                 Destroy(this.gameObject);
             }
             else
             {
-                this.GetComponent<UnityStandardAssets._2D.PNJmovement>().Move(1, false, false);
+                this.GetComponent<UnityStandardAssets._2D.PNJmovement>().Move(0.04f, false, false,false);
             }
         }
 	}
