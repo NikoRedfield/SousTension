@@ -60,7 +60,7 @@ public class ConclusionEnquete : MonoBehaviour {
         }
         if(!PlayerData.Journal1 && !PlayerData.Journal2)
         {
-            indice2.SetActive(true);
+            unknown2.SetActive(true);
         }
         if(PlayerData.Sang1 && PlayerData.Journal1)
         {

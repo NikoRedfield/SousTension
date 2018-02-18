@@ -12,6 +12,20 @@ public class SkipToNextScene : MonoBehaviour {
         if (Input.GetKeyDown("s"))
         {
             StopAllCoroutines();
+            if (NextScene.Equals("Bonus"))
+            {
+                if (PlayerData.santeMentale >= PlayerData.maxSanteMentale * 0.5)
+                {
+                    SceneManager.LoadScene(NextScene);
+                    return;
+                }
+                else
+                {
+                    NextScene = "Conclusion";
+                    SceneManager.LoadScene(NextScene);
+                    return;
+                }
+            }
             SceneManager.LoadScene(NextScene);
         }
 	}

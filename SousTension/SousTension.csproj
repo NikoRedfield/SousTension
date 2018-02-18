@@ -343,6 +343,7 @@
     <Compile Include="Assets\Scripts\MonsterSpawn.cs" />
     <Compile Include="Assets\Scripts\MusicTone.cs" />
     <Compile Include="Assets\Scripts\Notebook\ConclusionEnquete.cs" />
+    <Compile Include="Assets\Scripts\Notebook\EndingAudio.cs" />
     <Compile Include="Assets\Scripts\Notebook\EnqueteChoice.cs" />
     <Compile Include="Assets\Scripts\Notebook\NavigateCharacter.cs" />
     <Compile Include="Assets\Scripts\Notebook\NavigateEnquete.cs" />
