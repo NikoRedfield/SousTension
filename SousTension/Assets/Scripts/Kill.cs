@@ -29,6 +29,7 @@ public class Kill : MonoBehaviour {
             else
             {
                 StartCoroutine(BackStation());
+                PlayerData.caughtOnce = true;
             }
           
         }

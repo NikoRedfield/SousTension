@@ -19,6 +19,7 @@ public class BasicQTE : MonoBehaviour {
     public Sprite disjoncteurClosed;
     public Sprite disjoncteurOpen;
     public GameObject CheckGenerators;
+    public GameObject FillEmpty;
 
     private int valideInput = 0;    //Current number of correct inputs
     private AudioSource source;
@@ -56,6 +57,7 @@ public class BasicQTE : MonoBehaviour {
                 authoriseInput = true;
                 displayedUI.SetActive(true);
                 fillMeter.gameObject.SetActive(true);
+                FillEmpty.SetActive(true);
                 fillMeter.fillAmount = 0;
             }
         }
@@ -76,6 +78,7 @@ public class BasicQTE : MonoBehaviour {
             authoriseInput = false;
             displayedUI.SetActive(false);
             fillMeter.gameObject.SetActive(false);
+            FillEmpty.SetActive(false);
         }
     }
 

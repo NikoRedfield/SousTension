@@ -66,7 +66,7 @@ public class MonsterLocalMovement : MonoBehaviour
 
     void ResizeMonster()
     {
-        if (this.transform.localScale.x <= 2)
+        if (this.transform.localScale.x <= 0.3)
         {
             size++;
             newX = newX * facteur;
@@ -100,7 +100,7 @@ public class MonsterLocalMovement : MonoBehaviour
 
     void MoveMonster()
     {
-        if (this.transform.localScale.x >= 2)
+        if (this.transform.localScale.x >= 0.3)
         {
 
             if (!PosFound)

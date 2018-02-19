@@ -17,8 +17,9 @@ public class SpeechOnce : MonoBehaviour {
             case "Station":
                 if (!PlayerData.stationOnce)
                 {
-                    yield return new WaitForSeconds(delay);
                     PlayerData.stationOnce = true;
+                    yield return new WaitForSeconds(delay);
+                    
                     gameObject.SetActive(false);
                     break;
                 }
@@ -30,8 +31,9 @@ public class SpeechOnce : MonoBehaviour {
             case "Tunnel":
                 if (!PlayerData.tunnelOnce)
                 {
-                    yield return new WaitForSeconds(delay);
                     PlayerData.tunnelOnce = true;
+                    yield return new WaitForSeconds(delay);
+                    
                     gameObject.SetActive(false);
                     break;
                 }
@@ -43,8 +45,9 @@ public class SpeechOnce : MonoBehaviour {
             case "LocalElectrique":
                 if (!PlayerData.localOnce)
                 {
-                    yield return new WaitForSeconds(delay);
                     PlayerData.localOnce = true;
+                    yield return new WaitForSeconds(delay);
+                   
                     gameObject.SetActive(false);
                     break;
                 }

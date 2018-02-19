@@ -394,6 +394,7 @@
     <Compile Include="Assets\Scripts\UI\Journal.cs" />
     <Compile Include="Assets\Scripts\UI\Key.cs" />
     <Compile Include="Assets\Scripts\UI\sangScript.cs" />
+    <Compile Include="Assets\Scripts\UI\SpeechCaught.cs" />
     <Compile Include="Assets\Scripts\UI\SpeechOnce.cs" />
     <Compile Include="Assets\Scripts\UI\YouPicked.cs" />
   </ItemGroup>
