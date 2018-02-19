@@ -387,12 +387,14 @@
     <Compile Include="Assets\Scripts\SwitchDisplayUI.cs" />
     <Compile Include="Assets\Scripts\TimeManager.cs" />
     <Compile Include="Assets\Scripts\TutoBreath.cs" />
+    <Compile Include="Assets\Scripts\UI\ActiveDeactiveOnEnter.cs" />
     <Compile Include="Assets\Scripts\UI\AnimatedArrow.cs" />
     <Compile Include="Assets\Scripts\UI\AnimFeu.cs" />
     <Compile Include="Assets\Scripts\UI\BlockEntrance.cs" />
     <Compile Include="Assets\Scripts\UI\Journal.cs" />
     <Compile Include="Assets\Scripts\UI\Key.cs" />
     <Compile Include="Assets\Scripts\UI\sangScript.cs" />
+    <Compile Include="Assets\Scripts\UI\SpeechOnce.cs" />
     <Compile Include="Assets\Scripts\UI\YouPicked.cs" />
   </ItemGroup>
   <ItemGroup>

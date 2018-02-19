@@ -33,4 +33,10 @@ public class PlayerData {
     public static bool objective3;
     public static bool objective5;
     public static bool generators;
+
+    /*Speech Once*/
+    public static bool stationOnce;
+    public static bool tunnelOnce;
+    public static bool localOnce;
+    public static bool caughtOnce;
 }
