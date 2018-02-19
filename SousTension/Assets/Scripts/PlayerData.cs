@@ -22,6 +22,8 @@ public class PlayerData {
     public static bool Journal1;
     public static bool Journal2;
 
+    public static bool clues;
+
     /*Spawn Positions*/
     public static Vector3 station1 = new Vector3(21,-3.16f,0);
     public static Vector3 tunnel1 = new Vector3(95,9.65f,0);

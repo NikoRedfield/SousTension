@@ -182,6 +182,7 @@ public class Notebook : MonoBehaviour {
 
     public void DisplayEnquete()
     {
+        PlayerData.clues = false;
         fichesEnquete.SetActive(true);
         fichesEnquete.transform.GetChild(0).gameObject.SetActive(true);
         controls.SetActive(false);

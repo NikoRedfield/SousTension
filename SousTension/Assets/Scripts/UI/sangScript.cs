@@ -32,6 +32,7 @@ public class sangScript : MonoBehaviour {
             Debug.Log("Collision detectee");
             moveBox();
             PlayerData.Esang = true;
+            PlayerData.clues = true;
         }
     }
 
