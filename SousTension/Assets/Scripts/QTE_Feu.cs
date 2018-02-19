@@ -12,6 +12,7 @@ public class QTE_Feu : MonoBehaviour {
     public Sprite[] touchedButtons;
     public GameObject[] linkedObjects;
     public GameObject UI;
+    public bool animated;
 
     private bool begin;
     private int i;
@@ -147,6 +148,10 @@ public class QTE_Feu : MonoBehaviour {
         UI.SetActive(false);
         player.GetComponent<Platformer2DUserControl>().SetAuthorisation(true);
         over = true;
+        if (animated)
+        {
+            this.GetComponent<AnimFeu>().SetFixed();
+        }
     }
 
     //Check what UI to display

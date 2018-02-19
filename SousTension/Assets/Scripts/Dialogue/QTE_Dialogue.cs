@@ -13,6 +13,7 @@ public class QTE_Dialogue : MonoBehaviour {
     public GameObject[] linkedObjects;
     public GameObject UI;
     public Narration FollowupDialogue;
+    public bool animated;
 
     private bool begin;
     private int i;
@@ -126,6 +127,10 @@ public class QTE_Dialogue : MonoBehaviour {
         }
         UI.SetActive(false);
         FollowupDialogue.StartDialogue();
+        if (animated)
+        {
+            this.GetComponent<AnimFeu>().SetFixed();
+        }
         gameObject.SetActive(false);
     }
 

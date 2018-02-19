@@ -18,6 +18,7 @@ public class BasicQTE : MonoBehaviour {
     public Sprite[] Keys;
     public Sprite disjoncteurClosed;
     public Sprite disjoncteurOpen;
+    public GameObject CheckGenerators;
 
     private int valideInput = 0;    //Current number of correct inputs
     private AudioSource source;
@@ -26,6 +27,7 @@ public class BasicQTE : MonoBehaviour {
     private GameObject displayedUI;
     private int controllerState;
     private int spriteIndex = 0;
+    private bool fixedGen = false;
 
     // Use this for initialization
     void Start () {
@@ -128,6 +130,10 @@ public class BasicQTE : MonoBehaviour {
         {
             objects.SetActive(true);
         }
+        if (CheckGenerators != null)
+        {
+            CheckGenerators.GetComponent<CountGenerator>().AddGenerator();
+        }
     }
 
     //Success Feedback
@@ -189,4 +195,6 @@ public class BasicQTE : MonoBehaviour {
 
 
     }
+
+
 }

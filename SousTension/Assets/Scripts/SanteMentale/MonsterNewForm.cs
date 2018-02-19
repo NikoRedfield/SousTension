@@ -24,7 +24,7 @@ public class MonsterNewForm : MonoBehaviour {
         Debug.Log("Required SM for monster: " + requiredSM);
         engaged = false;
         cam = GameObject.Find("Main Camera");
-        monsterFinalSize = 5;
+        monsterFinalSize = 3;
         monsterInitSize = 0;
 	}
 	
@@ -91,7 +91,7 @@ public class MonsterNewForm : MonoBehaviour {
         }
         else
         {
-            monster.transform.localScale = new Vector3(monster.transform.localScale.x + 0.014f, monster.transform.localScale.y, monster.transform.localScale.z);
+            monster.transform.localScale = new Vector3(monster.transform.localScale.x + 0.009f, monster.transform.localScale.y, monster.transform.localScale.z);
             source.volume = 1; ;//0.002f;
         }
     }
