@@ -24,7 +24,7 @@ public class MonsterNewForm : MonoBehaviour {
         Debug.Log("Required SM for monster: " + requiredSM);
         engaged = false;
         cam = GameObject.Find("Main Camera");
-        monsterFinalSize = 3;
+        monsterFinalSize = 2;
         monsterInitSize = 0;
 	}
 	
