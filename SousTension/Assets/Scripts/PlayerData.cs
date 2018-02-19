@@ -30,7 +30,7 @@ public class PlayerData {
     public static string currentScene="";
 
     /*Objectives*/
-    public static bool objective3 = true;
-    public static bool objective5 = true;
-    public static bool generators = true;
+    public static bool objective3;
+    public static bool objective5;
+    public static bool generators;
 }
