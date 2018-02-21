@@ -363,6 +363,7 @@
     <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\PlayMusicRandomly.cs" />
     <Compile Include="Assets\Scripts\QTE_Feu.cs" />
+    <Compile Include="Assets\Scripts\ResetPlayerData.cs" />
     <Compile Include="Assets\Scripts\RespawnHole.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\Bulle.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\DebugCommands.cs" />
@@ -381,6 +382,7 @@
     <Compile Include="Assets\Scripts\SanteMentale\SoundMentale.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\StopMovement.cs" />
     <Compile Include="Assets\Scripts\SetInactiveAfterDelay.cs" />
+    <Compile Include="Assets\Scripts\SetResolution.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\Scripts\ShadowPNJ\MoveShadow.cs" />
     <Compile Include="Assets\Scripts\ShadowPNJ\PNJmovement.cs" />
@@ -389,6 +391,7 @@
     <Compile Include="Assets\Scripts\SmoothScale.cs" />
     <Compile Include="Assets\Scripts\Sprint.cs" />
     <Compile Include="Assets\Scripts\SwitchDisplayUI.cs" />
+    <Compile Include="Assets\Scripts\TagScript.cs" />
     <Compile Include="Assets\Scripts\TimeManager.cs" />
     <Compile Include="Assets\Scripts\TutoBreath.cs" />
     <Compile Include="Assets\Scripts\UI\ActiveDeactiveOnEnter.cs" />

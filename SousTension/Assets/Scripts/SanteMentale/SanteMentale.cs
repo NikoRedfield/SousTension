@@ -8,6 +8,7 @@ public class SanteMentale : MonoBehaviour {
     public int diminution = 0;
     public int diminution2 = 0;
     public GameObject Monster;
+    public GameObject dialEnabled;
 
     private Slider slider;
     private int delay = 1;
@@ -32,6 +33,10 @@ public class SanteMentale : MonoBehaviour {
         {
             currentTime += delay;
             Debug.Log(PlayerData.santeMentale);
+            if(dialEnabled != null && dialEnabled.activeSelf)
+            {
+                return;
+            }
             PlayerData.santeMentale -= diminution;
             slider.value = PlayerData.santeMentale;
         }

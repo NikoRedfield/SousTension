@@ -34,7 +34,7 @@ public class DisplayUIScene : MonoBehaviour {
         {
             keyboardControlsUI.SetActive(false);
             gamepadControlsUI.SetActive(false);
-            SceneManager.LoadScene("Intro");
+            SceneManager.LoadScene("Station");
         }
     }
 

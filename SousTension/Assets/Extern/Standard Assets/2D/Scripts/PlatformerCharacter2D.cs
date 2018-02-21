@@ -9,10 +9,11 @@ namespace UnityStandardAssets._2D
         public GameObject canvasBoard;
         public AudioClip walk;
         public AudioClip run;
+        public AudioClip crouchSfx;
 
         [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
         [SerializeField] private float m_JumpForce = 400f;                  // Amount of force added when the player jumps.
-        [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;  // Amount of maxSpeed applied to crouching movement. 1 = 100%
+        [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .9f;  // Amount of maxSpeed applied to crouching movement. 1 = 100%
         [SerializeField] private bool m_AirControl = false;                 // Whether or not a player can steer while jumping;
         [SerializeField] private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character
 
@@ -101,7 +102,7 @@ namespace UnityStandardAssets._2D
                     move = (crouch ? move * m_CrouchSpeed : move);
 
                     // The Speed animator parameter is set to the absolute value of the horizontal input.
-                    m_Anim.SetFloat("Speed", Mathf.Abs(move));
+                    
 
                     // Move the character
                     m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, m_Rigidbody2D.velocity.y);
@@ -111,7 +112,15 @@ namespace UnityStandardAssets._2D
                     if (running)
                     {
                         m_MaxSpeed = 10f;
-                        source.clip = run;
+                        if (crouch)
+                        {
+                            source.clip = crouchSfx;
+                        }
+                        if (!crouch)
+                        {
+                            source.clip = run;
+                        }
+                        
                         if (!source.isPlaying)
                         {
                             source.Play();
@@ -126,7 +135,15 @@ namespace UnityStandardAssets._2D
                     else
                     {
                         m_MaxSpeed = 5f;
-                        source.clip = walk;
+                        if (crouch)
+                        {
+                            source.clip = crouchSfx;
+                        }
+                        if (!crouch)
+                        {
+                            source.clip = walk;
+                        }
+                        
                         if (!source.isPlaying)
                         {
                             source.Play();
@@ -137,6 +154,8 @@ namespace UnityStandardAssets._2D
                         }
                         //PlayerData.sprint++;
                     }
+
+                    m_Anim.SetFloat("Speed", Mathf.Abs(move * m_MaxSpeed));
 
 
 
@@ -199,10 +218,13 @@ namespace UnityStandardAssets._2D
             {
                 pastPosition = this.transform.position.x;
             }
-            if (this.transform.position.x != pastPosition)
+            if (Math.Abs(this.transform.position.x - pastPosition) >= 0.001)
+                //this.transform.position.x != pastPosition && !m_Anim.GetBool("Crouch"))
             {
                 pastPosition = this.transform.position.x;
+                Debug.Log("Moving" + pastPosition);
                 return true;
+                
             }
             else
             {

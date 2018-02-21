@@ -9,6 +9,7 @@ public class LaunchDialogueOnEnter : MonoBehaviour {
     public Narration dialogue;
     public bool dial3 = false;
     public bool dial6 = false;
+    public GameObject monster;
 
     private static bool done6;
     private GameObject player;
@@ -47,6 +48,8 @@ public class LaunchDialogueOnEnter : MonoBehaviour {
                 player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().SetAuthorisation(false);
                 player.GetComponent<UnityStandardAssets._2D.PlatformerCharacter2D>().Move(0, false, false);
                 dialogue.StartDialogue();
+                monster.GetComponent<MonsterNewForm>().SetSpawn(false);
+                monster.GetComponent<MonsterNewForm>().ResetFeedback();
                 alreadyTold = true;
                 done6 = true;
             }

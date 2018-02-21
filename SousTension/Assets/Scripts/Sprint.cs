@@ -31,7 +31,7 @@ public class Sprint : MonoBehaviour {
             if (!source.isPlaying)
             {
                 source.clip = breathStart;
-                source.loop = true;
+               // source.loop = true;
                 source.Play();
             }
             if(sprintValue <= 0)
@@ -51,7 +51,7 @@ public class Sprint : MonoBehaviour {
                 }
                
             }
-            Debug.Log("Sprint: " + sprintValue);
+           // Debug.Log("Sprint: " + sprintValue);
         }
         else
         {
@@ -64,7 +64,7 @@ public class Sprint : MonoBehaviour {
             {
                 sprintValue = maxSprint;
             }
-            Debug.Log("Sprint: " + sprintValue);
+          //  Debug.Log("Sprint: " + sprintValue);
         }
 	}
 

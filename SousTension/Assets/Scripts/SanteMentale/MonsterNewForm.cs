@@ -13,7 +13,7 @@ public class MonsterNewForm : MonoBehaviour {
     private bool engaged; //Checks if the monster's feedback has been engaged
     private int requiredSM; //Required SM in order to release the monster
     private bool finalForm; //Checks if the monster has reached his final form
-    private int monsterFinalSize; //The width the monster must acquire in order to be considered into his final form
+    private float monsterFinalSize; //The width the monster must acquire in order to be considered into his final form
     private GameObject cam;
     private int monsterInitSize;
 
@@ -26,13 +26,21 @@ public class MonsterNewForm : MonoBehaviour {
         Debug.Log("Required SM for monster: " + requiredSM);
         engaged = false;
         cam = GameObject.Find("Main Camera");
-        monsterFinalSize = 2;
+        monsterFinalSize = 1.5f;
         monsterInitSize = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if((PlayerData.santeMentale <= requiredSM && PlayerData.objective3 && !PlayerData.objective5) || spawnNow || (PlayerData.santeMentale <= requiredSM && PlayerData.generators))
+        if (source.isPlaying)
+        {
+            Debug.Log("DDNKSJDHFKDSHFDSKJGFKFDHGKJ");
+        }
+        if (!source.isPlaying)
+        {
+            //Debug.Log("Putain sa mère ça marche pas");
+        }
+		if(/*(PlayerData.santeMentale <= requiredSM && PlayerData.objective3 && !PlayerData.objective5) || */spawnNow || (PlayerData.santeMentale <= requiredSM && PlayerData.generators))
         {
             if (!engaged)
             {
@@ -53,7 +61,7 @@ public class MonsterNewForm : MonoBehaviour {
 	}
 
 
-    private void ResetFeedback()
+    public void ResetFeedback()
     {
         monster.transform.localScale = new Vector3(monsterInitSize, monster.transform.localScale.y, monster.transform.localScale.z);
         monster.SetActive(false);
@@ -93,8 +101,12 @@ public class MonsterNewForm : MonoBehaviour {
         }
         else
         {
-            monster.transform.localScale = new Vector3(monster.transform.localScale.x + 0.009f, monster.transform.localScale.y, monster.transform.localScale.z);
+            monster.transform.localScale = new Vector3(monster.transform.localScale.x + 0.007f, monster.transform.localScale.y, monster.transform.localScale.z);
             source.volume = 1; ;//0.002f;
+            if (!source.isPlaying)
+            {
+                source.Play();
+            }
         }
     }
 

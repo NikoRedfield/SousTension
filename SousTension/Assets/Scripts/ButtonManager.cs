@@ -69,5 +69,9 @@ public class ButtonManager : MonoBehaviour {
     {
         SceneManager.LoadScene("Menu");
     }
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
 }
  

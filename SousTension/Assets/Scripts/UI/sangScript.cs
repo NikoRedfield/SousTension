@@ -33,6 +33,7 @@ public class sangScript : MonoBehaviour {
             moveBox();
             PlayerData.Esang = true;
             PlayerData.clues = true;
+            this.GetComponent<AudioSource>().Play();
         }
     }
 

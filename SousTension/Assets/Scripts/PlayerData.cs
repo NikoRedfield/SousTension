@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerData {
 
-    public static int maxSanteMentale = 300;
-    public static int santeMentale = 300;
+    public static int maxSanteMentale = 1500;
+    public static int santeMentale = 1500;
     public static int caughtByMonster = 0;
 
     public static bool TutoBreath = false;
@@ -44,4 +44,30 @@ public class PlayerData {
 
     /*Monster Spawn*/
     public static bool spawnedAfterLocal;
+
+
+    public static void ResetAllData()
+    {
+        santeMentale = maxSanteMentale;
+        caughtByMonster = 0;
+        TutoBreath = false;
+        hasKey = false;
+        Esang = false;
+        Sang1 = false;
+        Sang2 = false;
+        Ejournal = false;
+        Journal1 = false;
+        Journal2 = false;
+        clues = false;
+        previousScene = "";
+        currentScene = "";
+        objective3 = false;
+        objective5 = false;
+        generators = false;
+        stationOnce = false;
+        tunnelOnce = false;
+        localOnce = false;
+        caughtOnce = false;
+        spawnedAfterLocal = false;
+    }
 }

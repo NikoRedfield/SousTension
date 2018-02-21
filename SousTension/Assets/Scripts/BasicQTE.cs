@@ -20,6 +20,7 @@ public class BasicQTE : MonoBehaviour {
     public Sprite disjoncteurOpen;
     public GameObject CheckGenerators;
     public GameObject FillEmpty;
+    public int smAdded = 50;
 
     private int valideInput = 0;    //Current number of correct inputs
     private AudioSource source;
@@ -137,6 +138,7 @@ public class BasicQTE : MonoBehaviour {
         {
             CheckGenerators.GetComponent<CountGenerator>().AddGenerator();
         }
+        PlayerData.santeMentale += smAdded;
     }
 
     //Success Feedback

@@ -14,6 +14,7 @@ public class QTE_Dialogue : MonoBehaviour {
     public GameObject UI;
     public Narration FollowupDialogue;
     public bool animated;
+    public int smAdded = 150;
 
     private bool begin;
     private int i;
@@ -131,6 +132,7 @@ public class QTE_Dialogue : MonoBehaviour {
         {
            GameObject.Find("Feu").GetComponent<AnimFeu>().SetFixed();
         }
+        PlayerData.santeMentale += smAdded;
         gameObject.SetActive(false);
     }
 

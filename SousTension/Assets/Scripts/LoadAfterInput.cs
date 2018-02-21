@@ -13,7 +13,7 @@ public class LoadAfterInput : MonoBehaviour
     //Load the given scene after the stated input has been made
     private void Update()
     {
-        if (Input.GetButton(input))
+        if (Input.GetButton(input) || Input.anyKey)
         {
             SceneManager.LoadScene(_nextScene);
         }

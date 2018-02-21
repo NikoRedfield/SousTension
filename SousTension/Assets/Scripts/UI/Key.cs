@@ -5,6 +5,7 @@ using UnityEngine;
 public class Key : MonoBehaviour {
 
     public GameObject PickedUpKey;
+    public int smAdded = 75;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +27,7 @@ public class Key : MonoBehaviour {
             this.GetComponent<SpriteRenderer>().enabled = false;
             PlayerData.hasKey = true;
             PickedUpKey.SetActive(true);
+            PlayerData.santeMentale += smAdded;
         }
     }
 }

@@ -18,6 +18,8 @@ public class Journal : MonoBehaviour {
         {
             this.GetComponent<SpriteRenderer>().enabled = false;
             PlayerData.Ejournal = true;
+            PlayerData.clues = true;
+            this.GetComponent<AudioSource>().Play();
         }
         
     }

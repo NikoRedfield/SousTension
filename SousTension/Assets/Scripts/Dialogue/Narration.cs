@@ -120,15 +120,17 @@ public class Narration : MonoBehaviour
             currentTextArea.transform.SetParent(panel);
             mtext = currentTextArea.GetComponent<Text>();
             mtext.font = dialFont;
-            if(currentDialogue.npcName != "Theo :" && currentDialogue.npcName != "Théo (à lui-même) :")
+            if(currentDialogue.npcName != "Theo :" && currentDialogue.npcName != "Théo (à lui-même) :" && currentDialogue.npcName != "?????")
             {
                 fadePortrait1.SetActive(false);
                 portraitTheo.SetActive(true);
                 Debug.Log(currentDialogue.npcName);
                 fadePortrait1.GetComponent<Image>().sprite = currentDialogue.portrait;
                 portrait2.GetComponent<Image>().sprite = currentDialogue.portrait;
-
-              
+            }
+            if(currentDialogue.npcName == "?????")
+            {
+                fadePortrait1.SetActive(true);
             }
             else
             {
@@ -233,16 +235,17 @@ public class Narration : MonoBehaviour
                     currentTextArea.transform.SetParent(panel);
                     mtext = currentTextArea.GetComponent<Text>();
                     mtext.font = dialFont;
-                    if (currentDialogue.npcName != "Theo :" && currentDialogue.npcName != "Théo (à lui-même) :")
+                    if (currentDialogue.npcName != "Theo :" && currentDialogue.npcName != "Théo (à lui-même) :" && currentDialogue.npcName != "?????")
                     {
                        fadePortrait1.SetActive(false);
                         portraitTheo.SetActive(true);
                         Debug.Log(currentDialogue.npcName);
                         fadePortrait1.GetComponent<Image>().sprite = currentDialogue.portrait;
                         portrait2.GetComponent<Image>().sprite = currentDialogue.portrait;
-
-                 
-                        
+                    }
+                    if (currentDialogue.npcName == "?????")
+                    {
+                        fadePortrait1.SetActive(true);
                     }
                     else
                     {
@@ -392,6 +395,8 @@ public class Narration : MonoBehaviour
                 return "#782cd5";
             case "Theo :":
                 return "#6db5ff";
+            case "?????":
+                return "#BF3113";
 
             default:
                 return "npc error color name";

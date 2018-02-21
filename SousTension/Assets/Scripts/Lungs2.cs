@@ -42,7 +42,7 @@ public class Lungs2 : MonoBehaviour
         relax = 0;
         begin = false;
         targetRelax = 60;
-        bonus = 30;
+        bonus = 100;
         timer = 20;
         controller = this.GetComponent<ControllerStatus>();
         controllerState = controller.ControllerCheck();
