@@ -321,6 +321,7 @@
     <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueTrigger.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\LaunchDialogueOnEnter.cs" />
     <Compile Include="Assets\Scripts\Dialogue\LaunchNarration.cs" />
     <Compile Include="Assets\Scripts\Dialogue\LaunchNarrationKey.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Narration.cs" />
@@ -368,6 +369,8 @@
     <Compile Include="Assets\Scripts\SanteMentale\Hole.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\MonsterInsta.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\MonsterNewForm.cs" />
+    <Compile Include="Assets\Scripts\SanteMentale\MonsterSpawnAfterLocal.cs" />
+    <Compile Include="Assets\Scripts\SanteMentale\MonsterSpawnNOW.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\PlayBeastIncoming.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\SanteMentale.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\Shadow.cs" />

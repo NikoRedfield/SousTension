@@ -15,13 +15,14 @@ public class BlockEntrance : MonoBehaviour {
     private int index;
     private bool authorise = false;
     private string sceneToLoad;
+    private bool authorise2;
 
 
 	
 	// Update is called once per frame
 	void Update () {
         HashAuthorisation();
-        if(authorise && Input.GetAxis("Vertical") > 0 &&!door)
+        if(authorise && Input.GetAxis("Vertical") > 0 &&!door && authorise2)
         {
             SceneManager.LoadScene(sceneToLoad);
         }
@@ -42,6 +43,7 @@ public class BlockEntrance : MonoBehaviour {
         {
             EnterUI.SetActive(true);
         }
+        authorise2 = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -50,7 +52,9 @@ public class BlockEntrance : MonoBehaviour {
         {
             bulleToDisplay.SetActive(false);
             EnterUI.SetActive(false);
+            
         }
+        authorise2 = false;
     }
 
    private void HashAuthorisation()

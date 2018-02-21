@@ -17,6 +17,8 @@ public class MonsterNewForm : MonoBehaviour {
     private GameObject cam;
     private int monsterInitSize;
 
+    private bool spawnNow;
+
 
 	void Start () {
         source = this.GetComponent<AudioSource>();
@@ -30,7 +32,7 @@ public class MonsterNewForm : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(PlayerData.santeMentale <= requiredSM)
+		if((PlayerData.santeMentale <= requiredSM && PlayerData.objective3 && !PlayerData.objective5) || spawnNow || (PlayerData.santeMentale <= requiredSM && PlayerData.generators))
         {
             if (!engaged)
             {
@@ -132,5 +134,10 @@ public class MonsterNewForm : MonoBehaviour {
             cam.GetComponent<CameraFollow2D>().enabled = true;
             cam.GetComponent<CameraScroll>().enabled = false;
         }
+    }
+
+    public void SetSpawn(bool value)
+    {
+        this.spawnNow = value;
     }
 }

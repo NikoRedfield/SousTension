@@ -129,7 +129,7 @@ public class QTE_Dialogue : MonoBehaviour {
         FollowupDialogue.StartDialogue();
         if (animated)
         {
-            this.GetComponent<AnimFeu>().SetFixed();
+           GameObject.Find("Feu").GetComponent<AnimFeu>().SetFixed();
         }
         gameObject.SetActive(false);
     }

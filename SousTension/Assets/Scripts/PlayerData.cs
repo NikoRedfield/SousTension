@@ -41,4 +41,7 @@ public class PlayerData {
     public static bool tunnelOnce;
     public static bool localOnce;
     public static bool caughtOnce;
+
+    /*Monster Spawn*/
+    public static bool spawnedAfterLocal;
 }

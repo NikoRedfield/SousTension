@@ -42,6 +42,9 @@ namespace UnityStandardAssets._2D
             {
                 running = !running;
             }
+           
+
+
         }
 
         private void FixedUpdate()
@@ -60,8 +63,8 @@ namespace UnityStandardAssets._2D
 
             // Set the vertical animation
             m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
+           
 
-         
         }
 
 
@@ -191,6 +194,18 @@ namespace UnityStandardAssets._2D
         public void SetSprint(bool value)
         {
             this.running = value;
+        }
+
+        public bool CheckCeiling()
+        {
+            if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

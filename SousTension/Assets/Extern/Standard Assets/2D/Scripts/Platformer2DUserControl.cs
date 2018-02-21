@@ -56,14 +56,27 @@ namespace UnityStandardAssets._2D
                 if (CrossPlatformInputManager.GetButtonDown("CrouchController"))
                 {
                     crouch = !crouch;
+                    if (!GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().GetBool("Ladder"))
+                    {
+                        GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetBool("Crouch", crouch);
+                    }
+                    
                 }
-                if (CrossPlatformInputManager.GetButton("Stand"))
+                if (CrossPlatformInputManager.GetButton("Stand") && !m_Character.CheckCeiling())
                 {
                     crouch = false;
+                    if (!GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().GetBool("Ladder"))
+                    {
+                        GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetBool("Crouch", false);
+                    }
                 }
                 if (CrossPlatformInputManager.GetButtonDown("CrouchKey"))
                 {
                     crouch = true;
+                    if (!GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().GetBool("Ladder"))
+                    {
+                        GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetBool("Crouch", true);
+                    }
                 }
                 if (CrossPlatformInputManager.GetButtonDown("Select") && !book.activeSelf)
                 {
@@ -126,6 +139,7 @@ namespace UnityStandardAssets._2D
                 // Pass all parameters to the character control script.
                 m_Character.Move(h, crouch, m_Jump);
                 m_Jump = false;
+              
             }
          
             
