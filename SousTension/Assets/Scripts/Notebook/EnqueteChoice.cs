@@ -7,6 +7,9 @@ public class EnqueteChoice : MonoBehaviour {
 
     public Button HighlightChoice;
     public NavigateEnquete enquete;
+    public AudioClip clip;
+
+    private AudioSource source;
 
     private void Awake()
     {
@@ -15,6 +18,7 @@ public class EnqueteChoice : MonoBehaviour {
             HighlightChoice.Select();
             HighlightChoice.OnSelect(null);
         }
+        source = this.GetComponentInParent<AudioSource>();
 
     }
 
@@ -23,6 +27,8 @@ public class EnqueteChoice : MonoBehaviour {
         PlayerData.Sang1 = true;
         enquete.SetCurrentIndex(1);
         enquete.DisplayData(enquete.GetCurrentIndex(), 0);
+        source.clip = clip;
+        source.Play();
         this.gameObject.SetActive(false);
         return;
     }
@@ -32,6 +38,8 @@ public class EnqueteChoice : MonoBehaviour {
         PlayerData.Sang2 = true;
         enquete.SetCurrentIndex(2);
         enquete.DisplayData(enquete.GetCurrentIndex(), 0);
+        source.clip = clip;
+        source.Play();
         this.gameObject.SetActive(false);
         return;
     }
@@ -41,6 +49,8 @@ public class EnqueteChoice : MonoBehaviour {
         PlayerData.Journal1 = true;
         enquete.SetCurrentIndex(1);
         enquete.DisplayData(enquete.GetCurrentIndex(), 4);
+        source.clip = clip;
+        source.Play();
         this.gameObject.SetActive(false);
         return;
     }
@@ -50,6 +60,8 @@ public class EnqueteChoice : MonoBehaviour {
         PlayerData.Journal2 = true;
         enquete.SetCurrentIndex(2);
         enquete.DisplayData(enquete.GetCurrentIndex(), 4);
+        source.clip = clip;
+        source.Play();
         this.gameObject.SetActive(false);
         return;
     }

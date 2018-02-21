@@ -7,6 +7,8 @@ namespace UnityStandardAssets._2D
     public class PlatformerCharacter2D : MonoBehaviour
     {
         public GameObject canvasBoard;
+        public AudioClip walk;
+        public AudioClip run;
 
         [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
         [SerializeField] private float m_JumpForce = 400f;                  // Amount of force added when the player jumps.
@@ -27,6 +29,8 @@ namespace UnityStandardAssets._2D
 
         private float pastPosition = 0;
 
+        private AudioSource source;
+
         private void Awake()
         {
             // Setting up references.
@@ -34,6 +38,7 @@ namespace UnityStandardAssets._2D
             m_CeilingCheck = transform.Find("CeilingCheck");
             m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
+            source = this.GetComponent<AudioSource>();
         }
 
         private void Update()
@@ -81,6 +86,7 @@ namespace UnityStandardAssets._2D
                     if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
                     {
                         crouch = true;
+                        
                     }
                 }
 
@@ -105,12 +111,30 @@ namespace UnityStandardAssets._2D
                     if (running)
                     {
                         m_MaxSpeed = 10f;
+                        source.clip = run;
+                        if (!source.isPlaying)
+                        {
+                            source.Play();
+                        }
+                        if (jump || !m_Grounded)
+                        {
+                            source.Stop();
+                        }
                        // PlayerData.sprint--;
                        // Debug.Log("Sprint: " + PlayerData.sprint);
                     }
                     else
                     {
                         m_MaxSpeed = 5f;
+                        source.clip = walk;
+                        if (!source.isPlaying)
+                        {
+                            source.Play();
+                        }
+                        if (jump || !m_Grounded)
+                        {
+                            source.Stop();
+                        }
                         //PlayerData.sprint++;
                     }
 
@@ -182,6 +206,7 @@ namespace UnityStandardAssets._2D
             }
             else
             {
+                source.Stop();
                 return false;
             }
         }

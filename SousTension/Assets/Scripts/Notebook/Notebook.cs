@@ -10,6 +10,8 @@ public class Notebook : MonoBehaviour {
     public GameObject fichesPerso;
     public GameObject fichesEvts;
     public GameObject fichesEnquete;
+    public AudioClip open;
+    public AudioClip close;
 
     //private GameObject story;
     private GameObject codex;

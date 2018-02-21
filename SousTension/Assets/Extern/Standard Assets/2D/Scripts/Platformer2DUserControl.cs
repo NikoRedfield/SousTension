@@ -10,6 +10,7 @@ namespace UnityStandardAssets._2D
         public bool backward = true;
         public int backSpeed = -1;
 
+
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
         private bool crouch;
@@ -26,6 +27,7 @@ namespace UnityStandardAssets._2D
 
         private bool mAxis = false;
 
+
         
 
         private void Awake()
@@ -38,7 +40,6 @@ namespace UnityStandardAssets._2D
             gamepadControlsUI = controlRootUI.transform.Find("GamepadControls").gameObject;
             ControlsUI = keyboardControlsUI;
             book = GameObject.Find("NoteBook").transform.Find("BookUI").gameObject;
-
 
             controller = GameObject.Find("Manager").GetComponent<ControllerStatus>();
         }
@@ -59,6 +60,7 @@ namespace UnityStandardAssets._2D
                     if (!GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().GetBool("Ladder"))
                     {
                         GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetBool("Crouch", crouch);
+
                     }
                     
                 }
@@ -92,6 +94,16 @@ namespace UnityStandardAssets._2D
                 {
                     Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
                     book.SetActive(!book.activeSelf);
+                    if (book.activeSelf)
+                    {
+                        book.GetComponentInParent<AudioSource>().clip = book.GetComponent<Notebook>().open;
+                        book.GetComponentInParent<AudioSource>().Play();
+                    }
+                    if (!book.activeSelf)
+                    {
+                        book.GetComponentInParent<AudioSource>().clip = book.GetComponent<Notebook>().close;
+                        book.GetComponentInParent<AudioSource>().Play();
+                    }
                 }
                 if(CrossPlatformInputManager.GetAxis("BookAxis") > 0)
                 {
@@ -100,6 +112,16 @@ namespace UnityStandardAssets._2D
                         mAxis = true;
                         Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
                         book.SetActive(!book.activeSelf);
+                        if (book.activeSelf)
+                        {
+                            book.GetComponentInParent<AudioSource>().clip = book.GetComponent<Notebook>().open;
+                            book.GetComponentInParent<AudioSource>().Play();
+                        }
+                        if (!book.activeSelf)
+                        {
+                            book.GetComponentInParent<AudioSource>().clip = book.GetComponent<Notebook>().close;
+                            book.GetComponentInParent<AudioSource>().Play();
+                        }
                     }
                 }
                 if (CrossPlatformInputManager.GetAxis("BookAxis") == 0)

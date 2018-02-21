@@ -8,6 +8,7 @@ public class NavigateEvts : MonoBehaviour {
 
     public GameObject fichesPerso;
     public GameObject fichesEnquete;
+    public AudioClip clip;
 
     private float h;
     private int fichesCount;
@@ -20,14 +21,15 @@ public class NavigateEvts : MonoBehaviour {
     private bool check = false;
     private int waitForSubmit = 0;
     private GameObject controls;
+    private AudioSource source;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
        fichesCount = this.transform.childCount;
        // story = GameObject.Find("BookUI").transform.GetChild(1).gameObject;
         codex = GameObject.Find("BookUI").transform.GetChild(1).gameObject;
         controls = GameObject.Find("BookUI").transform.GetChild(0).gameObject;
-
+        source = this.GetComponentInParent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -40,6 +42,8 @@ public class NavigateEvts : MonoBehaviour {
             {
                 currentIndex++;
                 DisplayData(currentIndex, currentIndex - 1);
+                source.clip = clip;
+                source.Play();
             }
             if (h > 0)
             {
@@ -49,12 +53,16 @@ public class NavigateEvts : MonoBehaviour {
                     currentTime = 0;
                     currentIndex++;
                     DisplayData(currentIndex, currentIndex - 1);
+                    source.clip = clip;
+                    source.Play();
                 }
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow) && currentIndex >0)
             {
                 currentIndex--;
                 DisplayData(currentIndex, currentIndex + 1);
+                source.clip = clip;
+                source.Play();
             }
             if ( h < -0.8 ) {
                 currentTime++;
@@ -63,6 +71,8 @@ public class NavigateEvts : MonoBehaviour {
                     currentTime = 0;
                     currentIndex--;
                     DisplayData(currentIndex, currentIndex + 1);
+                    source.clip = clip;
+                    source.Play();
                 }
             }
             if (CrossPlatformInputManager.GetButtonDown("SelectBook"))
@@ -82,6 +92,8 @@ public class NavigateEvts : MonoBehaviour {
                     codex.transform.GetChild(0).GetComponent<Button>().Select();
                     codex.transform.GetChild(0).GetComponent<Button>().OnSelect(null);
                     waitForSubmit = 0;
+                    source.clip = clip;
+                    source.Play();
                     this.gameObject.SetActive(false);
                 }
             }
