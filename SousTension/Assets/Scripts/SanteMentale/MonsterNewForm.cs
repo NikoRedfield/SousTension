@@ -32,15 +32,8 @@ public class MonsterNewForm : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (source.isPlaying)
-        {
-            Debug.Log("DDNKSJDHFKDSHFDSKJGFKFDHGKJ");
-        }
-        if (!source.isPlaying)
-        {
-            Debug.Log("Putain sa mère ça marche pas");
-            source.Play();
-        }
+   
+     
 		if((PlayerData.santeMentale <= requiredSM && PlayerData.objective3 && !PlayerData.objective5) || spawnNow || (PlayerData.santeMentale <= requiredSM && PlayerData.generators))
         {
             if (!engaged)

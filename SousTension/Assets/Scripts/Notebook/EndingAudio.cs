@@ -74,7 +74,7 @@ public class EndingAudio : MonoBehaviour {
                 PlayEnd();
             }
         }
-        if (currentScene.Equals("Menu"))
+        if (currentScene.Equals("Menu") || currentScene.Equals("Credits"))
         {
             Destroy(transform.gameObject);
         }

@@ -55,6 +55,7 @@ public class Kill : MonoBehaviour {
         yield return new WaitForSeconds(source.clip.length - 2);
         PlayerData.santeMentale = 500;
         PlayerData.caughtByMonster++;
+        PlayerData.spawnAfterCaughtOnce = true;
         SceneManager.LoadScene("Station");
     }
 }

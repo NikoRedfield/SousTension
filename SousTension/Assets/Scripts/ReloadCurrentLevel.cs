@@ -15,6 +15,7 @@ public class ReloadCurrentLevel : MonoBehaviour {
         if (Input.GetKeyDown("="))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
         }
 	}
 }

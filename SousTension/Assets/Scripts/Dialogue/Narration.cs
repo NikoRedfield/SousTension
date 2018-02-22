@@ -100,7 +100,7 @@ public class Narration : MonoBehaviour
 
         if (currentDialogue.npcName != "")
         {
-            mtext.text += "\n";
+            //mtext.text += "\n";
             mtext.font = nameFont;
             if (currentDialogue.npcName != "Theo :")
             {
@@ -110,12 +110,18 @@ public class Narration : MonoBehaviour
             {
                 mtext.text = mtext.text + "<size=24><color=#6db5ff><b>   " + currentDialogue.npcName;
             }
-            if(currentDialogue.indication != "")
+            mtext.text += "</b></color></size>";
+            if (currentDialogue.indication != "")
             {
+                GameObject oldText = currentTextArea;
+                currentTextArea = (GameObject)Instantiate(textArea);
+                currentTextArea.transform.SetParent(oldText.transform);
+                currentTextArea.transform.position = new Vector3(currentTextArea.transform.position.x + currentDialogue.spacingIndication, currentTextArea.transform.position.y, currentTextArea.transform.position.z);
+                mtext = currentTextArea.GetComponent<Text>();
                 mtext.font = dialFont;
-                mtext.text += "<i>" + currentDialogue.indication + "</i>";
+                mtext.text += "<size=20><color=" + PickNPCcolor(currentDialogue.npcName) + "><i>" + currentDialogue.indication + "</i></color></size>";
             }
-            mtext.text += "</b></color></size>\n\n";
+           
             currentTextArea = (GameObject)Instantiate(textArea);
             currentTextArea.transform.SetParent(panel);
             mtext = currentTextArea.GetComponent<Text>();
@@ -145,7 +151,7 @@ public class Narration : MonoBehaviour
                 
 
             }
-            mtext.text += "<size=20><color=white></color></size>";
+            mtext.text += "\n<size=20><color=white></color></size>";
             coroutine = PlayText(15);
         }
         if (currentDialogue.npcName == "")

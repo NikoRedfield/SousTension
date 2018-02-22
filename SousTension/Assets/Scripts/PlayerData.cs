@@ -45,6 +45,8 @@ public class PlayerData {
     /*Monster Spawn*/
     public static bool spawnedAfterLocal;
 
+    public static bool spawnAfterCaughtOnce;
+
 
     public static void ResetAllData()
     {
@@ -69,5 +71,6 @@ public class PlayerData {
         localOnce = false;
         caughtOnce = false;
         spawnedAfterLocal = false;
+        spawnAfterCaughtOnce = false;
     }
 }

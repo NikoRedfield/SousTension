@@ -50,6 +50,7 @@ public class LaunchDialogueOnEnter : MonoBehaviour {
                 dialogue.StartDialogue();
                 monster.GetComponent<MonsterNewForm>().SetSpawn(false);
                 monster.GetComponent<MonsterNewForm>().ResetFeedback();
+                monster.SetActive(false);
                 alreadyTold = true;
                 done6 = true;
             }

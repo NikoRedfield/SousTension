@@ -15,9 +15,10 @@ public class Deus : MonoBehaviour {
 
     private void ChangePosition()
     {
-        if (PlayerData.currentScene.Equals("Station") && PlayerData.previousScene.Equals("Tunnel"))
+        if (PlayerData.currentScene.Equals("Station") && (PlayerData.previousScene.Equals("Tunnel") || PlayerData.spawnAfterCaughtOnce))
         {
             player.transform.position = PlayerData.station1;
+            PlayerData.spawnAfterCaughtOnce = false;
             return;
         }
         if (PlayerData.currentScene.Equals("Tunnel") && PlayerData.previousScene.Equals("LocalElectrique"))

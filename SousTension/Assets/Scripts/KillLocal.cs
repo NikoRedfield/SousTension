@@ -30,6 +30,7 @@ public class KillLocal : MonoBehaviour {
             else
             {
                 StartCoroutine(BackStation());
+                PlayerData.caughtOnce = true;
             }
         }
     }
@@ -52,8 +53,9 @@ public class KillLocal : MonoBehaviour {
         source.Play();
         fade.Fade(false, 30f);
         yield return new WaitForSeconds(0);
-        PlayerData.santeMentale = 240;
+        PlayerData.santeMentale = 500;
         PlayerData.caughtByMonster++;
+        PlayerData.spawnAfterCaughtOnce = true;
         SceneManager.LoadScene("Station");
     }
 }
