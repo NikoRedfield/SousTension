@@ -23,7 +23,7 @@ public class MonsterMovement : MonoBehaviour
         {
             Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
             pos.x = Mathf.Clamp01(pos.x + Screen.width);
-            pos.y = Mathf.Clamp01(pos.y);
+            pos.y = 0.5f;//Mathf.Clamp01(pos.y);
             transform.position = Camera.main.ViewportToWorldPoint(pos);
         }
         else

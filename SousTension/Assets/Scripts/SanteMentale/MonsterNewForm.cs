@@ -95,7 +95,7 @@ public class MonsterNewForm : MonoBehaviour {
         }
         else
         {
-            monster.transform.localScale = new Vector3(monster.transform.localScale.x + 0.0025f, monster.transform.localScale.y, monster.transform.localScale.z);
+            monster.transform.localScale = new Vector3(monster.transform.localScale.x + 0.002f, monster.transform.localScale.y, monster.transform.localScale.z);
             source.volume = 1; ;//0.002f;
             if (!source.isPlaying)
             {
