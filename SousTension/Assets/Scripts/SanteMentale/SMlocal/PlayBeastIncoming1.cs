@@ -31,7 +31,7 @@ public class PlayBeastIncoming1 : MonoBehaviour {
         }
         else
         {
-            if(PlayerData.santeMentale >= PlayerData.maxSanteMentale * 0.19)
+            if(PlayerData.santeMentale >= PlayerData.maxSanteMentale * 0.19 && started)
             {
                 source.Stop();
             }

@@ -92,6 +92,19 @@ public class BlockEntrance : MonoBehaviour {
                     authorise = false;
                     break;
                 }
+
+            case "LocalElectrique":
+                if (PlayerData.generators)
+                {
+                    authorise = true;
+                    sceneToLoad = "Tunnel";
+                    break;
+                }
+                else
+                {
+                    authorise = false;
+                    break;
+                }
             default:
                 authorise = false;
                 break;

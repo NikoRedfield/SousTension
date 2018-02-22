@@ -365,6 +365,7 @@
     <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\PlayMusicRandomly.cs" />
     <Compile Include="Assets\Scripts\QTE_Feu.cs" />
+    <Compile Include="Assets\Scripts\ReloadCurrentLevel.cs" />
     <Compile Include="Assets\Scripts\ResetPlayerData.cs" />
     <Compile Include="Assets\Scripts\RespawnHole.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\Bulle.cs" />

@@ -57,28 +57,28 @@ public class QTE_Dialogue : MonoBehaviour {
         switch (i)
         {
             case 0:
-                if(Input.GetButton("QTE_feu") && Input.GetAxis("Vertical") < 0)
+                if(Input.GetButton("QTE_feu") && (Input.GetAxis("Vertical") < 0 || Input.GetAxis("DpadV") < 0))
                 {
                     i += 2;
                 }
                 break;
 
             case 2:
-                if (Input.GetButton("QTE_feu") && Input.GetAxis("Horizontal") < 0)
+                if (Input.GetButton("QTE_feu") && (Input.GetAxis("Horizontal") < 0 || Input.GetAxis("DpadH") < 0))
                 {
                     i += 2;
                 }
                 break;
 
             case 4:
-                if (Input.GetButton("QTE_feu") && Input.GetAxis("Horizontal") > 0)
+                if (Input.GetButton("QTE_feu") &&( Input.GetAxis("Horizontal") > 0 || Input.GetAxis("DpadH") > 0))
                 {
                     i += 2;
                 }
                 break;
 
             case 6:
-                if (Input.GetButton("QTE_feu") && Input.GetAxis("Horizontal") < 0)
+                if (Input.GetButton("QTE_feu") && (Input.GetAxis("Horizontal") < 0 || Input.GetAxis("DpadH") < 0))
                 {
                     i += 2;
                 }
@@ -86,28 +86,28 @@ public class QTE_Dialogue : MonoBehaviour {
 
 
             case 8:
-                if (Input.GetButton("QTE_feu") && Input.GetAxis("Horizontal") > 0)
+                if (Input.GetButton("QTE_feu") && (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("DpadH") > 0))
                 {
                     i += 2;
                 }
                 break;
 
             case 10:
-                if (Input.GetButton("QTE_feu") && Input.GetAxis("Horizontal") < 0)
+                if (Input.GetButton("QTE_feu") && (Input.GetAxis("Horizontal") < 0 || Input.GetAxis("DpadH") < 0))
                 {
                     i += 2;
                 }
                 break;
 
             case 12:
-                if (Input.GetButton("QTE_feu") && Input.GetAxis("Horizontal") > 0)
+                if (Input.GetButton("QTE_feu") && (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("DpadH") > 0)) 
                 {
                     i += 2;
                 }
                 break;
 
             case 14:
-                if (Input.GetButton("QTE_feu") && Input.GetAxis("Vertical") > 0)
+                if (Input.GetButton("QTE_feu") && (Input.GetAxis("Vertical") > 0 || Input.GetAxis("DpadV") > 0))
                 {
                     i += 2;
                 }

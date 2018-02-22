@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DebugCommands : MonoBehaviour {
 
-    private int maxSanteMentale = 300;
+    private int maxSanteMentale = PlayerData.maxSanteMentale;
 
 	// Use this for initialization
 	void Start () {

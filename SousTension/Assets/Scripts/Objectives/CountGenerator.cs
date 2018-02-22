@@ -15,6 +15,7 @@ public class CountGenerator : MonoBehaviour {
         if(counter == numberOfGenerators)
         {
             PlayerData.generators = true;
+            this.GetComponent<AudioSource>().Play();
         }
     }
 }
