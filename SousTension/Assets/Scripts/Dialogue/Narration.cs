@@ -128,17 +128,21 @@ public class Narration : MonoBehaviour
                 fadePortrait1.GetComponent<Image>().sprite = currentDialogue.portrait;
                 portrait2.GetComponent<Image>().sprite = currentDialogue.portrait;
             }
-            if(currentDialogue.npcName == "?????")
-            {
-                fadePortrait1.SetActive(true);
-            }
+           
             else
             {
-
-                portraitTheo.SetActive(false);
-                fadePortrait1.SetActive(true);
-                portraitTheoZero.GetComponent<Image>().sprite = currentDialogue.portrait;
-                portraitTheo.GetComponent<Image>().sprite = currentDialogue.portrait;
+                if (currentDialogue.npcName == "?????")
+                {
+                    fadePortrait1.SetActive(true);
+                }
+                else
+                {
+                    portraitTheo.SetActive(false);
+                    fadePortrait1.SetActive(true);
+                    portraitTheoZero.GetComponent<Image>().sprite = currentDialogue.portrait;
+                    portraitTheo.GetComponent<Image>().sprite = currentDialogue.portrait;
+                }
+                
 
             }
             mtext.text += "<size=20><color=white></color></size>";
@@ -243,16 +247,21 @@ public class Narration : MonoBehaviour
                         fadePortrait1.GetComponent<Image>().sprite = currentDialogue.portrait;
                         portrait2.GetComponent<Image>().sprite = currentDialogue.portrait;
                     }
-                    if (currentDialogue.npcName == "?????")
-                    {
-                        fadePortrait1.SetActive(true);
-                    }
+                    
                     else
                     {
-                        portraitTheo.SetActive(false);
-                        fadePortrait1.SetActive(true);
-                        portraitTheoZero.GetComponent<Image>().sprite = currentDialogue.portrait;
-                        portraitTheo.GetComponent<Image>().sprite = currentDialogue.portrait;
+                        if (currentDialogue.npcName == "?????")
+                        {
+                            fadePortrait1.SetActive(true);
+                        }
+                        else
+                        {
+                            portraitTheo.SetActive(false);
+                            fadePortrait1.SetActive(true);
+                            portraitTheoZero.GetComponent<Image>().sprite = currentDialogue.portrait;
+                            portraitTheo.GetComponent<Image>().sprite = currentDialogue.portrait;
+                        }
+                      
                     }
                 }
 

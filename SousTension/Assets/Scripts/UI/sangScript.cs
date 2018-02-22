@@ -34,6 +34,7 @@ public class sangScript : MonoBehaviour {
             PlayerData.Esang = true;
             PlayerData.clues = true;
             this.GetComponent<AudioSource>().Play();
+            StartCoroutine(StopPlayer());
         }
     }
 
@@ -60,5 +61,14 @@ public class sangScript : MonoBehaviour {
             newX = groupBox.transform.position.x + 0.01f;
             groupBox.transform.position = new Vector3(newX, groupBox.transform.position.y, groupBox.transform.position.z);
         }
+    }
+
+    private IEnumerator StopPlayer()
+    {
+        player.GetComponent<Platformer2DUserControl>().backward = false;
+        player.GetComponent<Platformer2DUserControl>().SetAuthorisation(false);
+        player.GetComponent<PlatformerCharacter2D>().Move(0, false, false);
+        yield return new WaitForSeconds(10);
+        player.GetComponent<Platformer2DUserControl>().SetAuthorisation(true);
     }
 }

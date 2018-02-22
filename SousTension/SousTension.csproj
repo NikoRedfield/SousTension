@@ -303,6 +303,7 @@
     <Compile Include="Assets\Scripts\ActivateObject.cs" />
     <Compile Include="Assets\Scripts\BasicQTE.cs" />
     <Compile Include="Assets\Scripts\ButtonManager.cs" />
+    <Compile Include="Assets\Scripts\Buttons_credits_script.cs" />
     <Compile Include="Assets\Scripts\CaisseBarrier.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow2D.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraScroll.cs" />
@@ -329,6 +330,7 @@
     <Compile Include="Assets\Scripts\Dialogue\QTE_Dialogue.cs" />
     <Compile Include="Assets\Scripts\DisplayUIScene.cs" />
     <Compile Include="Assets\Scripts\DoorStation.cs" />
+    <Compile Include="Assets\Scripts\ec_script.cs" />
     <Compile Include="Assets\Scripts\HelpLadder.cs" />
     <Compile Include="Assets\Scripts\InputAuthorisation.cs" />
     <Compile Include="Assets\Scripts\Interaction.cs" />
@@ -387,6 +389,7 @@
     <Compile Include="Assets\Scripts\ShadowPNJ\MoveShadow.cs" />
     <Compile Include="Assets\Scripts\ShadowPNJ\PNJmovement.cs" />
     <Compile Include="Assets\Scripts\ShadowPNJ\SpawnPNJ.cs" />
+    <Compile Include="Assets\Scripts\Situation.cs" />
     <Compile Include="Assets\Scripts\SkipToNextScene.cs" />
     <Compile Include="Assets\Scripts\SmoothScale.cs" />
     <Compile Include="Assets\Scripts\Sprint.cs" />

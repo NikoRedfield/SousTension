@@ -38,9 +38,10 @@ public class MonsterNewForm : MonoBehaviour {
         }
         if (!source.isPlaying)
         {
-            //Debug.Log("Putain sa mère ça marche pas");
+            Debug.Log("Putain sa mère ça marche pas");
+            source.Play();
         }
-		if(/*(PlayerData.santeMentale <= requiredSM && PlayerData.objective3 && !PlayerData.objective5) || */spawnNow || (PlayerData.santeMentale <= requiredSM && PlayerData.generators))
+		if((PlayerData.santeMentale <= requiredSM && PlayerData.objective3 && !PlayerData.objective5) || spawnNow || (PlayerData.santeMentale <= requiredSM && PlayerData.generators))
         {
             if (!engaged)
             {
@@ -101,7 +102,7 @@ public class MonsterNewForm : MonoBehaviour {
         }
         else
         {
-            monster.transform.localScale = new Vector3(monster.transform.localScale.x + 0.007f, monster.transform.localScale.y, monster.transform.localScale.z);
+            monster.transform.localScale = new Vector3(monster.transform.localScale.x + 0.003f, monster.transform.localScale.y, monster.transform.localScale.z);
             source.volume = 1; ;//0.002f;
             if (!source.isPlaying)
             {
