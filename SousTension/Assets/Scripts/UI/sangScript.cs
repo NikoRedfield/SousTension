@@ -7,6 +7,8 @@ using UnityStandardAssets._2D;
 public class sangScript : MonoBehaviour {
 
     public GameObject monster;
+    public GameObject Bulle;
+    public string text2;
 
     private GameObject player;
     public GameObject groupBox;
@@ -40,6 +42,7 @@ public class sangScript : MonoBehaviour {
             {
                 StartCoroutine(StopPlayer());
             }
+            StartCoroutine(DisplayBubble());
             
         }
     }
@@ -76,5 +79,15 @@ public class sangScript : MonoBehaviour {
         player.GetComponent<PlatformerCharacter2D>().Move(0, false, false);
         yield return new WaitForSeconds(10);
         player.GetComponent<Platformer2DUserControl>().SetAuthorisation(true);
+        
+    }
+
+    private IEnumerator DisplayBubble()
+    {
+        Bulle.SetActive(true);
+        yield return new WaitForSeconds(6);
+        Bulle.GetComponentInChildren<Text>().text = text2;
+        yield return new WaitForSeconds(7);
+        Bulle.SetActive(false);
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MonsterSpawnAfterLocal : MonoBehaviour {
 
     public MonsterNewForm monster;
+ 
 
 	// Use this for initialization
 	void Start () {
@@ -19,4 +20,6 @@ public class MonsterSpawnAfterLocal : MonoBehaviour {
             PlayerData.spawnedAfterLocal = true;
         }
 	}
+
+
 }

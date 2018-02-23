@@ -5,6 +5,7 @@ using UnityEngine;
 public class MonsterSpawnNOW : MonoBehaviour {
 
     public MonsterNewForm monster;
+    public GameObject Bulle;
 
 	// Use this for initialization
 	void Start () {
@@ -19,5 +20,14 @@ public class MonsterSpawnNOW : MonoBehaviour {
     void OnDisable()
     {
         monster.SetSpawn(true);
+        if(Bulle != null)
+        {
+            Debug.Log("trouvé!!!!!");
+            Bulle.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("Pastrouvé :'(");
+        }
     }
 }

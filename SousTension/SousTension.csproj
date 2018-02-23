@@ -369,6 +369,7 @@
     <Compile Include="Assets\Scripts\ResetPlayerData.cs" />
     <Compile Include="Assets\Scripts\RespawnHole.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\Bulle.cs" />
+    <Compile Include="Assets\Scripts\SanteMentale\BulleD3.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\DebugCommands.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\Hole.cs" />
     <Compile Include="Assets\Scripts\SanteMentale\MonsterInsta.cs" />
