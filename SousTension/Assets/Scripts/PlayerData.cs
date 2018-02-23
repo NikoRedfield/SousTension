@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerData {
 
-    public static int maxSanteMentale = 1500;
-    public static int santeMentale = 1500;
+    public static int maxSanteMentale = 1700;
+    public static int santeMentale = 1700;
     public static int caughtByMonster = 0;
 
     public static bool TutoBreath = false;

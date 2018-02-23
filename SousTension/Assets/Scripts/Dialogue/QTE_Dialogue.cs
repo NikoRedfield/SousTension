@@ -15,6 +15,7 @@ public class QTE_Dialogue : MonoBehaviour {
     public Narration FollowupDialogue;
     public bool animated;
     public int smAdded = 150;
+    public AudioClip workingSFX;
 
     private bool begin;
     private int i;
@@ -23,6 +24,7 @@ public class QTE_Dialogue : MonoBehaviour {
     private ControllerStatus controller;
     private int controllerState;
     private Sprite[] touches;
+    private AudioSource source;
 
     // Use this for initialization
     void Start () {
@@ -31,6 +33,8 @@ public class QTE_Dialogue : MonoBehaviour {
         touches = touchesKey;
         controllerState = controller.ControllerCheck();
         SwitchBoard();     //Switch UI depending on the device used
+        source = this.GetComponent<AudioSource>();
+        source.clip = workingSFX;
     }
 	
 	// Update is called once per frame
@@ -60,6 +64,10 @@ public class QTE_Dialogue : MonoBehaviour {
                 if(Input.GetButton("QTE_feu") && (Input.GetAxis("Vertical") < 0 || Input.GetAxis("DpadV") < 0))
                 {
                     i += 2;
+                    if (!source.isPlaying)
+                    {
+                        source.Play();
+                    }
                 }
                 break;
 
@@ -67,6 +75,10 @@ public class QTE_Dialogue : MonoBehaviour {
                 if (Input.GetButton("QTE_feu") && (Input.GetAxis("Horizontal") < 0 || Input.GetAxis("DpadH") < 0))
                 {
                     i += 2;
+                    if (!source.isPlaying)
+                    {
+                        source.Play();
+                    }
                 }
                 break;
 
@@ -74,6 +86,10 @@ public class QTE_Dialogue : MonoBehaviour {
                 if (Input.GetButton("QTE_feu") &&( Input.GetAxis("Horizontal") > 0 || Input.GetAxis("DpadH") > 0))
                 {
                     i += 2;
+                    if (!source.isPlaying)
+                    {
+                        source.Play();
+                    }
                 }
                 break;
 
@@ -81,6 +97,10 @@ public class QTE_Dialogue : MonoBehaviour {
                 if (Input.GetButton("QTE_feu") && (Input.GetAxis("Horizontal") < 0 || Input.GetAxis("DpadH") < 0))
                 {
                     i += 2;
+                    if (!source.isPlaying)
+                    {
+                        source.Play();
+                    }
                 }
                 break;
 
@@ -89,6 +109,10 @@ public class QTE_Dialogue : MonoBehaviour {
                 if (Input.GetButton("QTE_feu") && (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("DpadH") > 0))
                 {
                     i += 2;
+                    if (!source.isPlaying)
+                    {
+                        source.Play();
+                    }
                 }
                 break;
 
@@ -96,6 +120,10 @@ public class QTE_Dialogue : MonoBehaviour {
                 if (Input.GetButton("QTE_feu") && (Input.GetAxis("Horizontal") < 0 || Input.GetAxis("DpadH") < 0))
                 {
                     i += 2;
+                    if (!source.isPlaying)
+                    {
+                        source.Play();
+                    }
                 }
                 break;
 
@@ -103,6 +131,10 @@ public class QTE_Dialogue : MonoBehaviour {
                 if (Input.GetButton("QTE_feu") && (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("DpadH") > 0)) 
                 {
                     i += 2;
+                    if (!source.isPlaying)
+                    {
+                        source.Play();
+                    }
                 }
                 break;
 
@@ -110,6 +142,10 @@ public class QTE_Dialogue : MonoBehaviour {
                 if (Input.GetButton("QTE_feu") && (Input.GetAxis("Vertical") > 0 || Input.GetAxis("DpadV") > 0))
                 {
                     i += 2;
+                    if (!source.isPlaying)
+                    {
+                        source.Play();
+                    }
                 }
                 break;
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Journal : MonoBehaviour {
 
+    public GameObject Bulle;
+
     private void Start()
     {
         if (PlayerData.Ejournal)
@@ -20,7 +22,15 @@ public class Journal : MonoBehaviour {
             PlayerData.Ejournal = true;
             PlayerData.clues = true;
             this.GetComponent<AudioSource>().Play();
+            StartCoroutine(ActivateThought());
         }
         
+    }
+
+    private IEnumerator ActivateThought()
+    {
+        Bulle.SetActive(true);
+        yield return new WaitForSeconds(6);
+        Bulle.SetActive(false);
     }
 }

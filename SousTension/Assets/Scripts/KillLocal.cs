@@ -53,7 +53,7 @@ public class KillLocal : MonoBehaviour {
         source.Play();
         fade.Fade(false, 30f);
         yield return new WaitForSeconds(0);
-        PlayerData.santeMentale = 500;
+        PlayerData.santeMentale = 1000;
         PlayerData.caughtByMonster++;
         PlayerData.spawnAfterCaughtOnce = true;
         SceneManager.LoadScene("Station");

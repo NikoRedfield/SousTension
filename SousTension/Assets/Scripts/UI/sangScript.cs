@@ -6,6 +6,8 @@ using UnityStandardAssets._2D;
 
 public class sangScript : MonoBehaviour {
 
+    public GameObject monster;
+
     private GameObject player;
     public GameObject groupBox;
     private bool firstTime = false;
@@ -34,7 +36,11 @@ public class sangScript : MonoBehaviour {
             PlayerData.Esang = true;
             PlayerData.clues = true;
             this.GetComponent<AudioSource>().Play();
-            StartCoroutine(StopPlayer());
+            if (!monster.activeSelf)
+            {
+                StartCoroutine(StopPlayer());
+            }
+            
         }
     }
 
