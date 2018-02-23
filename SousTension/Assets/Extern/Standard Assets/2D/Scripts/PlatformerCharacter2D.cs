@@ -44,9 +44,13 @@ namespace UnityStandardAssets._2D
 
         private void Update()
         {
-            if (CrossPlatformInputManager.GetButtonDown("Run"))
+            if (CrossPlatformInputManager.GetButton("Run"))
             {
-                running = !running;
+                running = true;
+            }
+            else
+            {
+                running = false;
             }
            
 
@@ -222,7 +226,7 @@ namespace UnityStandardAssets._2D
                 //this.transform.position.x != pastPosition && !m_Anim.GetBool("Crouch"))
             {
                 pastPosition = this.transform.position.x;
-                Debug.Log("Moving" + pastPosition);
+               // Debug.Log("Moving" + pastPosition);
                 return true;
                 
             }

@@ -66,7 +66,7 @@ public class Notebook : MonoBehaviour {
                 delay++;
             }
         }*/
-        if (CrossPlatformInputManager.GetAxisRaw("Horizontal") != 0 && CheckListen())
+        if ((CrossPlatformInputManager.GetAxisRaw("Horizontal") != 0 || CrossPlatformInputManager.GetAxisRaw("DpadH") != 0) && CheckListen())
         {
             if (delay > 6)
             {

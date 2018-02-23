@@ -11,6 +11,7 @@ public class NavigateEnquete : MonoBehaviour {
     public AudioClip clip;
 
     private float h;
+    private float h2;
     private int fichesCount;
     private int currentIndex = 0;
    // private GameObject fiches;
@@ -38,6 +39,7 @@ public class NavigateEnquete : MonoBehaviour {
         if (!codex.activeSelf && !fichesEvts.activeSelf && !fichesPerso.activeSelf)
         {
             h = CrossPlatformInputManager.GetAxis("Arrows");
+            h2 = CrossPlatformInputManager.GetAxis("DpadH");
             if (Input.GetKeyDown(KeyCode.RightArrow) && currentIndex < fichesCount - 1)
             {
                 currentIndex++;
@@ -45,7 +47,7 @@ public class NavigateEnquete : MonoBehaviour {
                 source.clip = clip;
                 source.Play();
             }
-            if (h > 0)
+            if (h > 0 || h2 > 0)
             {
                 currentTime++;
                 if (currentIndex < fichesCount -1 && currentTime > delay )
@@ -64,7 +66,7 @@ public class NavigateEnquete : MonoBehaviour {
                 source.clip = clip;
                 source.Play();
             }
-            if ( h < -0.8 ) {
+            if ( h < -0.8 || h2 < -0.8) {
                 currentTime++;
                 if (currentIndex > 0 && currentTime > delay)
                 {

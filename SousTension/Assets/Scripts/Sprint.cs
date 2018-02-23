@@ -38,10 +38,15 @@ public class Sprint : MonoBehaviour {
             {
              
                 characterControl.SetSprint(false);
+                sprintValue = 0;
                 if(breathEnd != null)
                 {
                     source.Stop();
-                    secondSource.PlayOneShot(breathEnd);
+                    if (!secondSource.isPlaying)
+                    {
+                        secondSource.PlayOneShot(breathEnd);
+                    }
+                    
                   
                    
                 }

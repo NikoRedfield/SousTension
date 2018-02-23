@@ -80,7 +80,7 @@ namespace UnityStandardAssets._2D
                         GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetBool("Crouch", true);
                     }
                 }
-                if (CrossPlatformInputManager.GetButtonDown("Select") && !book.activeSelf)
+                if (CrossPlatformInputManager.GetButtonDown("Controls") && !book.activeSelf)
                 {
                     Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
                     // Boolean used to prevent error from switching input device while displaying Controls UI
@@ -105,6 +105,7 @@ namespace UnityStandardAssets._2D
                         book.GetComponentInParent<AudioSource>().Play();
                     }
                 }
+                /*
                 if(CrossPlatformInputManager.GetAxis("BookAxis") > 0)
                 {
                     if (!mAxis)
@@ -128,6 +129,7 @@ namespace UnityStandardAssets._2D
                 {
                     mAxis = false;
                 }
+                */
                 if(book.activeSelf || ControlsUI.activeSelf)
                 {
                     Time.timeScale = 0;

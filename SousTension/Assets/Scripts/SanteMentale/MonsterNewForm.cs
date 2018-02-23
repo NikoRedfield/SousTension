@@ -60,6 +60,7 @@ public class MonsterNewForm : MonoBehaviour {
         monster.transform.localScale = new Vector3(monsterInitSize, monster.transform.localScale.y, monster.transform.localScale.z);
         monster.SetActive(false);
         source.volume = 0;
+        source.loop = false;
         source.Stop();
         engaged = false;
         finalForm = false;
@@ -95,12 +96,13 @@ public class MonsterNewForm : MonoBehaviour {
         }
         else
         {
-            monster.transform.localScale = new Vector3(monster.transform.localScale.x + 0.0015f, monster.transform.localScale.y, monster.transform.localScale.z);
-            source.volume = 1; ;//0.002f;
+            monster.transform.localScale = new Vector3(monster.transform.localScale.x + 0.0018f, monster.transform.localScale.y, monster.transform.localScale.z);
+            source.volume = 1; //0.002f;
+            /*
             if (!source.isPlaying)
             {
                 source.Play();
-            }
+            }*/
         }
     }
 
